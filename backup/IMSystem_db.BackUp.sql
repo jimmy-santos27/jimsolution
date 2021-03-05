@@ -1,0 +1,4072 @@
+
+
+CREATE TABLE `tblaccountstatus` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `STATNAME` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblaccountstatus VALUES("1","GOOD ACCT");
+INSERT INTO tblaccountstatus VALUES("5","BAD ACCOUNT");
+INSERT INTO tblaccountstatus VALUES("6","RUDE CUSTOMER");
+INSERT INTO tblaccountstatus VALUES("7","DELAYED PAYMENT");
+INSERT INTO tblaccountstatus VALUES("8","Very Good Acct.");
+
+
+
+CREATE TABLE `tblarea` (
+  `AREAID` int(11) NOT NULL AUTO_INCREMENT,
+  `AREA` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`AREAID`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblarea VALUES("1","CAINTA, RIZAL");
+INSERT INTO tblarea VALUES("2","SAN MIGUEL, BULACAN");
+INSERT INTO tblarea VALUES("3","PASIG CITY");
+
+
+
+CREATE TABLE `tblarpaycheck` (
+  `ORCID` int(11) NOT NULL AUTO_INCREMENT,
+  `ORID` int(11) DEFAULT NULL,
+  `CHKNO` varchar(20) DEFAULT NULL,
+  `CHKAMOUNT` double(12,2) DEFAULT 0.00,
+  `CHKDATE` varchar(10) DEFAULT NULL,
+  `BANK` varchar(100) DEFAULT NULL,
+  `ACCTNO` varchar(30) DEFAULT NULL,
+  `CLEARDATE` varchar(10) DEFAULT NULL,
+  `BOUNCED` char(1) DEFAULT 'F',
+  `BOUNCEDATE` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ORCID`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblarpaycheck VALUES("1","1","12312312","1200.00","2020-06-26","BPI","","2020-01-01","T","2020-06-26");
+INSERT INTO tblarpaycheck VALUES("2","1","1231211","1100.00","2020-06-26","METROBANK","","2020-07-02","F","");
+INSERT INTO tblarpaycheck VALUES("3","1","123123","1000.00","2020-06-26","CHINABANK","","2020-06-26","F","");
+INSERT INTO tblarpaycheck VALUES("6","1","12312","1200.00","2020-06-27","BDO","","2020-06-27","F","");
+
+
+
+CREATE TABLE `tblarpaydetl` (
+  `ORPID` int(11) NOT NULL AUTO_INCREMENT,
+  `ORID` int(255) DEFAULT NULL,
+  `ORNO` varchar(20) DEFAULT NULL,
+  `SLSID` int(11) DEFAULT NULL,
+  `INVOICENO` varchar(20) DEFAULT NULL,
+  `DRNO` char(20) DEFAULT NULL,
+  `AMOUNT` double(12,2) DEFAULT 0.00,
+  `BOUNCEDAMT` double(12,2) DEFAULT 0.00,
+  `DISCOUNT` double(12,2) DEFAULT 0.00,
+  `PTYPE` char(30) DEFAULT 'PAY',
+  `CMAMT` double(12,2) DEFAULT 0.00,
+  `RRNO` varchar(20) DEFAULT NULL,
+  `RRID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ORPID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+
+
+CREATE TABLE `tblarpayhead` (
+  `ORID` int(11) NOT NULL AUTO_INCREMENT,
+  `ORNO` char(20) DEFAULT NULL,
+  `CUSTNAME` varchar(255) DEFAULT NULL,
+  `CUSTOMERID` int(11) DEFAULT 0,
+  `PAIDAMT` double(12,2) DEFAULT 0.00,
+  `CASHAMT` double(12,2) DEFAULT 0.00,
+  `TOTALCHK` double(12,2) DEFAULT 0.00,
+  `CARDAMT` double(12,2) DEFAULT 0.00,
+  `CARDNAME` varchar(100) DEFAULT NULL,
+  `CCNO` varchar(20) DEFAULT NULL,
+  `CCEXPIRY` char(10) DEFAULT NULL,
+  `CCAPPROVAL` varchar(20) DEFAULT NULL,
+  `ENTDATE` varchar(10) DEFAULT NULL,
+  `REFNO` varchar(20) DEFAULT NULL,
+  `PAYTYPE` int(1) DEFAULT 1,
+  `NOTE` longtext DEFAULT NULL,
+  `CANCELLED` char(1) DEFAULT 'F',
+  `ISPRINTED` char(1) DEFAULT 'F',
+  `TOTALBOUNCED` double(12,2) DEFAULT 0.00,
+  `OFFCREDIT` double(12,2) DEFAULT 0.00,
+  `USERID` int(11) DEFAULT 0,
+  `U_NAME` varchar(100) DEFAULT NULL,
+  `TOTALSALES` double(12,2) DEFAULT 0.00,
+  `BOUNCEDSALES` double(12,2) DEFAULT 0.00,
+  PRIMARY KEY (`ORID`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblarpayhead VALUES("1","1","A&D HARDWARE","2","6500.00","1000.00","4500.00","1000.00","jimmy","131231","2031-06-26","1231231","2020-06-26","","1","TEST","F","F","1200.00","0.00","128","Jimmy R. Santos","0.00","0.00");
+
+
+
+CREATE TABLE `tblautonumber` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `CODENAME` varchar(50) DEFAULT NULL,
+  `FLDNAME` varchar(50) DEFAULT NULL,
+  `STARTVALUE` char(3) DEFAULT NULL,
+  `AUTOTYPE` char(3) DEFAULT 'RAN',
+  `RANDOMKEY` varchar(255) DEFAULT '123ABC456DEF789GHJ0K',
+  `CODESIZE` int(2) DEFAULT 7,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblautonumber VALUES("1","Product Code","PROCODE","","INC","2312SFASJDOFIO32904283403423049OEIRW03894","7");
+INSERT INTO tblautonumber VALUES("2","Customer Code","custcode","","RAN","123456789JIMMY01212412","7");
+INSERT INTO tblautonumber VALUES("3","Supplier Code","suppcode","","RAN","ABCD123210996867JLJKL3423","7");
+INSERT INTO tblautonumber VALUES("4","Salesman Code","smancode","","RAN","SDFADF3324212LJKHHOMMX,ZNV318906756445677","7");
+
+
+
+CREATE TABLE `tblcarbrand` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `CARBRAND` varchar(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `CARBRAND` (`CARBRAND`)
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblcarbrand VALUES("1","MAZDA");
+INSERT INTO tblcarbrand VALUES("2","ISUZU");
+INSERT INTO tblcarbrand VALUES("3","TOYOTA");
+INSERT INTO tblcarbrand VALUES("4","UNIVERSAL");
+INSERT INTO tblcarbrand VALUES("5","FORD");
+INSERT INTO tblcarbrand VALUES("6","FUSO");
+INSERT INTO tblcarbrand VALUES("7","MITSUBISHI");
+INSERT INTO tblcarbrand VALUES("8","HINO");
+INSERT INTO tblcarbrand VALUES("9","HONDA");
+INSERT INTO tblcarbrand VALUES("10","NISSAN");
+INSERT INTO tblcarbrand VALUES("12","KIA");
+INSERT INTO tblcarbrand VALUES("13","DAIHATSU");
+INSERT INTO tblcarbrand VALUES("14","NISSAN/DATS");
+INSERT INTO tblcarbrand VALUES("15","HYUNDAI");
+INSERT INTO tblcarbrand VALUES("16","SUZUKI");
+INSERT INTO tblcarbrand VALUES("17","OTHER");
+INSERT INTO tblcarbrand VALUES("18","CHEVROLET");
+INSERT INTO tblcarbrand VALUES("20","LAMBORGHINI ( TEST )");
+INSERT INTO tblcarbrand VALUES("21","Chicharon");
+INSERT INTO tblcarbrand VALUES("27","sdfadsfasdfsad");
+INSERT INTO tblcarbrand VALUES("28","sdfasdfasdfas");
+INSERT INTO tblcarbrand VALUES("29","sdfasdfasd");
+
+
+
+CREATE TABLE `tblcarmake` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `CARMAKE` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `CARMAKE` (`CARMAKE`)
+) ENGINE=MyISAM AUTO_INCREMENT=192 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblcarmake VALUES("1","HIACE");
+INSERT INTO tblcarmake VALUES("2","ELF");
+INSERT INTO tblcarmake VALUES("3","NPR");
+INSERT INTO tblcarmake VALUES("4","RENEGADE");
+INSERT INTO tblcarmake VALUES("5","T-3500,T-4100");
+INSERT INTO tblcarmake VALUES("6","ELF,JBR");
+INSERT INTO tblcarmake VALUES("7","FIERRA");
+INSERT INTO tblcarmake VALUES("8","TAMARAW FX");
+INSERT INTO tblcarmake VALUES("9","FIGHTER");
+INSERT INTO tblcarmake VALUES("10","KC-20");
+INSERT INTO tblcarmake VALUES("11","L-300");
+INSERT INTO tblcarmake VALUES("12","ELF, NHR,C150,C250");
+INSERT INTO tblcarmake VALUES("13","FM, FV");
+INSERT INTO tblcarmake VALUES("14","BENZ TYPE");
+INSERT INTO tblcarmake VALUES("15","TRUCK");
+INSERT INTO tblcarmake VALUES("16","TAMARAW OLD");
+INSERT INTO tblcarmake VALUES("17","CANTER");
+INSERT INTO tblcarmake VALUES("18","COROLLA");
+INSERT INTO tblcarmake VALUES("19","EXR");
+INSERT INTO tblcarmake VALUES("20","PAJERO");
+INSERT INTO tblcarmake VALUES("21","FTR, HINO");
+INSERT INTO tblcarmake VALUES("22","CIVIC");
+INSERT INTO tblcarmake VALUES("23","HILUX");
+INSERT INTO tblcarmake VALUES("24","CORONA");
+INSERT INTO tblcarmake VALUES("25","TFR");
+INSERT INTO tblcarmake VALUES("26","BIDA");
+INSERT INTO tblcarmake VALUES("27","NKR");
+INSERT INTO tblcarmake VALUES("28","GEMINI");
+INSERT INTO tblcarmake VALUES("29","GALANT");
+INSERT INTO tblcarmake VALUES("30","LITE ACE");
+INSERT INTO tblcarmake VALUES("31","B-2200");
+INSERT INTO tblcarmake VALUES("32","GIGA");
+INSERT INTO tblcarmake VALUES("33","NHR,NPR");
+INSERT INTO tblcarmake VALUES("34","VOLKSWAGEN");
+INSERT INTO tblcarmake VALUES("35","PATROL");
+INSERT INTO tblcarmake VALUES("36","LAND CRUISER");
+INSERT INTO tblcarmake VALUES("37","TAMARAW  FX");
+INSERT INTO tblcarmake VALUES("38","LASER");
+INSERT INTO tblcarmake VALUES("39","REVO");
+INSERT INTO tblcarmake VALUES("40","LANCER");
+INSERT INTO tblcarmake VALUES("41","SENTRA");
+INSERT INTO tblcarmake VALUES("42","DATSUN P-UP");
+INSERT INTO tblcarmake VALUES("43","HIACE GRANDIA");
+INSERT INTO tblcarmake VALUES("44","PATHFINDER");
+INSERT INTO tblcarmake VALUES("45","DYNA");
+INSERT INTO tblcarmake VALUES("46","KB-26");
+INSERT INTO tblcarmake VALUES("47","ADVENTURE");
+INSERT INTO tblcarmake VALUES("48","L-200");
+INSERT INTO tblcarmake VALUES("49","BUS");
+INSERT INTO tblcarmake VALUES("50","CRESSIDA");
+INSERT INTO tblcarmake VALUES("51","FRONTIER");
+INSERT INTO tblcarmake VALUES("52","VIOS");
+INSERT INTO tblcarmake VALUES("53","HILANDER");
+INSERT INTO tblcarmake VALUES("54","B-2500");
+INSERT INTO tblcarmake VALUES("55","ACCORD");
+INSERT INTO tblcarmake VALUES("56","CRV");
+INSERT INTO tblcarmake VALUES("57","CITY");
+INSERT INTO tblcarmake VALUES("58","COROLLA '95-'96 AE");
+INSERT INTO tblcarmake VALUES("59","MIRAGE");
+INSERT INTO tblcarmake VALUES("60","NKR NEW, NPR");
+INSERT INTO tblcarmake VALUES("61","323");
+INSERT INTO tblcarmake VALUES("62","ALTIS");
+INSERT INTO tblcarmake VALUES("63","CXM");
+INSERT INTO tblcarmake VALUES("64","AUXILLARY FAN W/O");
+INSERT INTO tblcarmake VALUES("65","L-200, L-300");
+INSERT INTO tblcarmake VALUES("66","TERRANO");
+INSERT INTO tblcarmake VALUES("67","313  TRUCK");
+INSERT INTO tblcarmake VALUES("68","TELSTAR");
+INSERT INTO tblcarmake VALUES("69","TMK");
+INSERT INTO tblcarmake VALUES("70","FSR, EXR");
+INSERT INTO tblcarmake VALUES("71","CXM,FSR,EXR");
+INSERT INTO tblcarmake VALUES("72","BENZ  TRUCK");
+INSERT INTO tblcarmake VALUES("73","KB-21, KB-26, KB-4");
+INSERT INTO tblcarmake VALUES("74","CROWN");
+INSERT INTO tblcarmake VALUES("75","STARLET");
+INSERT INTO tblcarmake VALUES("76","FUEGO");
+INSERT INTO tblcarmake VALUES("77","620-720");
+INSERT INTO tblcarmake VALUES("78","KB-21");
+INSERT INTO tblcarmake VALUES("79","T-4100");
+INSERT INTO tblcarmake VALUES("80","AUV");
+INSERT INTO tblcarmake VALUES("81","VAN  TYPE");
+INSERT INTO tblcarmake VALUES("82","COURIER");
+INSERT INTO tblcarmake VALUES("83","TOYOTA, MITSUBISHI");
+INSERT INTO tblcarmake VALUES("84","KB-20");
+INSERT INTO tblcarmake VALUES("85","TMK,TD");
+INSERT INTO tblcarmake VALUES("86","HATCHBACK");
+INSERT INTO tblcarmake VALUES("87","TOURIST BUS");
+INSERT INTO tblcarmake VALUES("88","T-2500,T-4100");
+INSERT INTO tblcarmake VALUES("89","T-2500");
+INSERT INTO tblcarmake VALUES("90","LANCER, COROLLA, G");
+INSERT INTO tblcarmake VALUES("91","STANZA");
+INSERT INTO tblcarmake VALUES("92","T-3500");
+INSERT INTO tblcarmake VALUES("93","MINI BRAZILIA");
+INSERT INTO tblcarmake VALUES("94","BUS  TYPE");
+INSERT INTO tblcarmake VALUES("95","JBR, SBR");
+INSERT INTO tblcarmake VALUES("96","HILANDER, NHR, NPR");
+INSERT INTO tblcarmake VALUES("97","CPB 12, UD, TRUCK");
+INSERT INTO tblcarmake VALUES("98","FM");
+INSERT INTO tblcarmake VALUES("99","BENZ  TYPE");
+INSERT INTO tblcarmake VALUES("100","TAXI");
+INSERT INTO tblcarmake VALUES("101","SH");
+INSERT INTO tblcarmake VALUES("102","KT WIDE");
+INSERT INTO tblcarmake VALUES("103","E-2000  VAN");
+INSERT INTO tblcarmake VALUES("104","FESTIVA");
+INSERT INTO tblcarmake VALUES("105","ANFRA");
+INSERT INTO tblcarmake VALUES("106","TROOPER");
+INSERT INTO tblcarmake VALUES("108","DV57");
+INSERT INTO tblcarmake VALUES("109","T-4100, E-3000");
+INSERT INTO tblcarmake VALUES("110","CH520 TRUCK");
+INSERT INTO tblcarmake VALUES("111","SUNNY  P-UP");
+INSERT INTO tblcarmake VALUES("112","CROSSWIND");
+INSERT INTO tblcarmake VALUES("113","KS TRUCK");
+INSERT INTO tblcarmake VALUES("114","ELF,NPR");
+INSERT INTO tblcarmake VALUES("115","JBR");
+INSERT INTO tblcarmake VALUES("116","KB-20, KB-25");
+INSERT INTO tblcarmake VALUES("117","E-3000");
+INSERT INTO tblcarmake VALUES("118","CALIFORNIA");
+INSERT INTO tblcarmake VALUES("119","CPB 12 UD TRUCK");
+INSERT INTO tblcarmake VALUES("120","CORTINA");
+INSERT INTO tblcarmake VALUES("121","NKR, NPR, NISSAN 3");
+INSERT INTO tblcarmake VALUES("122","CAR");
+INSERT INTO tblcarmake VALUES("123","BFM");
+INSERT INTO tblcarmake VALUES("124","AUV,FIERRA 4");
+INSERT INTO tblcarmake VALUES("125","VOLVO");
+INSERT INTO tblcarmake VALUES("126","B-10");
+INSERT INTO tblcarmake VALUES("127","BESTA");
+INSERT INTO tblcarmake VALUES("128","CIMARRON");
+INSERT INTO tblcarmake VALUES("129","FV-320");
+INSERT INTO tblcarmake VALUES("130","SUNNY P-UP,C-20,C-");
+INSERT INTO tblcarmake VALUES("131","TRACTOR");
+INSERT INTO tblcarmake VALUES("132","RANGER");
+INSERT INTO tblcarmake VALUES("133","BENZ");
+INSERT INTO tblcarmake VALUES("134","ATOS");
+INSERT INTO tblcarmake VALUES("135","FORTUNER");
+INSERT INTO tblcarmake VALUES("136","GH");
+INSERT INTO tblcarmake VALUES("137","INNOVA");
+INSERT INTO tblcarmake VALUES("138","H-6300");
+INSERT INTO tblcarmake VALUES("139","AVANZA");
+INSERT INTO tblcarmake VALUES("140","BUS, JEEPNEY");
+INSERT INTO tblcarmake VALUES("141","V-12");
+INSERT INTO tblcarmake VALUES("142","PRIDE");
+INSERT INTO tblcarmake VALUES("143","URVAN, CARAVAN");
+INSERT INTO tblcarmake VALUES("144","HI ACE");
+INSERT INTO tblcarmake VALUES("145","BUS, TRUCK");
+INSERT INTO tblcarmake VALUES("146","D-MAX");
+INSERT INTO tblcarmake VALUES("147","CHAPA TYPE");
+INSERT INTO tblcarmake VALUES("148","HILUX '93-'95");
+INSERT INTO tblcarmake VALUES("149","LADY");
+INSERT INTO tblcarmake VALUES("150","UNIVERSE");
+INSERT INTO tblcarmake VALUES("151","GRACE");
+INSERT INTO tblcarmake VALUES("152","STAREX");
+INSERT INTO tblcarmake VALUES("153","EAGLE");
+INSERT INTO tblcarmake VALUES("154","ESCAPE");
+INSERT INTO tblcarmake VALUES("155","EXALTA");
+INSERT INTO tblcarmake VALUES("156","DATSUN");
+INSERT INTO tblcarmake VALUES("157","OTHER");
+INSERT INTO tblcarmake VALUES("158","JAZZ");
+INSERT INTO tblcarmake VALUES("159","ACCENT");
+INSERT INTO tblcarmake VALUES("160","KC-2700");
+INSERT INTO tblcarmake VALUES("161","APV");
+INSERT INTO tblcarmake VALUES("162","MAZDA 3");
+INSERT INTO tblcarmake VALUES("163","X-TRAIL");
+INSERT INTO tblcarmake VALUES("164","RAV-4");
+INSERT INTO tblcarmake VALUES("165","RIO");
+INSERT INTO tblcarmake VALUES("166","CARRY");
+INSERT INTO tblcarmake VALUES("167","EVERY/SCRUM");
+INSERT INTO tblcarmake VALUES("168","I-10");
+INSERT INTO tblcarmake VALUES("169","VANETTE");
+INSERT INTO tblcarmake VALUES("170","MONTERO");
+INSERT INTO tblcarmake VALUES("171","GETZ");
+INSERT INTO tblcarmake VALUES("172","CAMRY");
+INSERT INTO tblcarmake VALUES("173","SWIFT");
+INSERT INTO tblcarmake VALUES("174","PICANTO");
+INSERT INTO tblcarmake VALUES("175","OUTLANDER");
+INSERT INTO tblcarmake VALUES("176","LYNX");
+INSERT INTO tblcarmake VALUES("177","YARIS");
+INSERT INTO tblcarmake VALUES("178","MATRIX");
+INSERT INTO tblcarmake VALUES("179","OPTRA");
+INSERT INTO tblcarmake VALUES("180","ALTO");
+INSERT INTO tblcarmake VALUES("181","FOCUS");
+INSERT INTO tblcarmake VALUES("182","TUCSON");
+INSERT INTO tblcarmake VALUES("183","GRAND VITARA");
+INSERT INTO tblcarmake VALUES("184","ELANTRA");
+INSERT INTO tblcarmake VALUES("185","FIESTA");
+INSERT INTO tblcarmake VALUES("186","AVEO");
+INSERT INTO tblcarmake VALUES("189","1113");
+INSERT INTO tblcarmake VALUES("191","GALLARDO");
+
+
+
+CREATE TABLE `tblcategory` (
+  `CATEGID` int(11) NOT NULL AUTO_INCREMENT,
+  `CATEGORIES` varchar(100) DEFAULT NULL,
+  `USERID` int(11) DEFAULT NULL,
+  `CATCODE` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`CATEGID`),
+  UNIQUE KEY `CATEGID` (`CATEGID`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblcategory VALUES("1","SHORT","","");
+INSERT INTO tblcategory VALUES("2","CRACKERS","","");
+INSERT INTO tblcategory VALUES("3","SWEETS","","");
+INSERT INTO tblcategory VALUES("4","DIMSUM","","");
+INSERT INTO tblcategory VALUES("5","PHP PRODUCTS","","");
+INSERT INTO tblcategory VALUES("6","DRINKING WATER","","");
+INSERT INTO tblcategory VALUES("7","TEST","","");
+
+
+
+CREATE TABLE `tblcolor` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `COLOR` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `COLOR` (`COLOR`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblcolor VALUES("1","TEAL GREEN");
+INSERT INTO tblcolor VALUES("2","BLACK");
+INSERT INTO tblcolor VALUES("3","OLD ROSE");
+INSERT INTO tblcolor VALUES("4","WHITE");
+INSERT INTO tblcolor VALUES("5","PINK");
+INSERT INTO tblcolor VALUES("6","ARMY GREEN");
+INSERT INTO tblcolor VALUES("7","NAVY BLUE");
+INSERT INTO tblcolor VALUES("8","BLACK - WHITE DOT");
+INSERT INTO tblcolor VALUES("9","BLACK - WHITE LINE");
+INSERT INTO tblcolor VALUES("10","BEIGE");
+INSERT INTO tblcolor VALUES("11","TEST COLOR");
+
+
+
+CREATE TABLE `tblcountry` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `COUNTRY` varchar(100) DEFAULT NULL,
+  `FOREX` char(5) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `COUNTRY` (`COUNTRY`)
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblcountry VALUES("1","TAIWAN","NTD");
+INSERT INTO tblcountry VALUES("2","CHINA","CNY");
+INSERT INTO tblcountry VALUES("3","THAILAND","THB");
+INSERT INTO tblcountry VALUES("4","JAPAN","YEN");
+INSERT INTO tblcountry VALUES("6","GERMANY","EUR");
+INSERT INTO tblcountry VALUES("7","U.S.","USD");
+INSERT INTO tblcountry VALUES("8","ITALY","EUR");
+INSERT INTO tblcountry VALUES("9","SOUTH KOREA","KRW");
+INSERT INTO tblcountry VALUES("11","PHILIPPINES","PHP");
+INSERT INTO tblcountry VALUES("18","SINGAPORE","SGD");
+INSERT INTO tblcountry VALUES("20","AUSTRALIA","AUD");
+INSERT INTO tblcountry VALUES("21","UNITED KINGDOM","GBP");
+
+
+
+CREATE TABLE `tblcustomer` (
+  `CUSTOMERID` int(11) NOT NULL AUTO_INCREMENT,
+  `custname` varchar(255) DEFAULT NULL,
+  `custcode` varchar(20) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `area` varchar(255) DEFAULT NULL,
+  `STATNAME` varchar(50) DEFAULT NULL,
+  `CONTACT` varchar(100) DEFAULT NULL,
+  `PHONE` varchar(50) DEFAULT NULL,
+  `MOBILENO` varchar(50) DEFAULT NULL,
+  `FAXNO` varchar(50) DEFAULT NULL,
+  `EMAILADD` varchar(40) DEFAULT NULL,
+  `TERMS` int(5) NOT NULL DEFAULT 0,
+  `ENTDATE` char(10) DEFAULT NULL,
+  `note` varchar(500) DEFAULT NULL,
+  `creditlimit` double(12,2) DEFAULT 0.00,
+  `balance` double(12,2) DEFAULT 0.00,
+  `BADACCT` char(3) DEFAULT NULL,
+  `DISCOUNTPER` double(6,2) DEFAULT 0.00,
+  `SMANNAME` varchar(100) DEFAULT NULL,
+  `SMANCODE` char(20) DEFAULT NULL,
+  `SALESMANID` int(11) DEFAULT NULL,
+  `TINNO` varchar(20) DEFAULT NULL,
+  `CUSTTYPE` int(1) DEFAULT 1,
+  `TYPENAME` varchar(30) DEFAULT 'Retail',
+  `ISHIDDEN` char(3) DEFAULT NULL,
+  `DRDATE` date DEFAULT NULL,
+  PRIMARY KEY (`CUSTOMERID`),
+  UNIQUE KEY `custname` (`custname`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblcustomer VALUES("1","CASH SALE","CASH001"," ","CAINTA, RIZAL",""," ","","","","","0","2020-06-01","","10000000.00","284.00","","0.00","","","","","1","Retail","","");
+INSERT INTO tblcustomer VALUES("2","ANNA","AN001"," ","CAINTA, RIZAL","","ANNA","","","","","30","2020-07-01","","100000.00","6844.00","","0.00","","","","","2","Wholesale","","");
+INSERT INTO tblcustomer VALUES("3","DAISY MANALO","DM001","GRACIA ST., MARICK SUBD., STO. DOMINGO, CAINTA, RIZAL","CAINTA, RIZAL","","DAISY","","","","","30","2020-06-01","","100000.00","1000.00","","0.00","","","","","2","Wholesale","","");
+INSERT INTO tblcustomer VALUES("4","LYDIA - BROOKSIDE","LYB001","287 BURLINGTON ST., BROOKSIDE SUBD., CAINTA, RIZAL","","","LYDIA","","","","","0","2020-06-29","","1000000.00","730.00","","0.00","","","","","1","RETAIL","","");
+INSERT INTO tblcustomer VALUES("5","TITSER TIN","TT001","ROADFER, STO, DOMINGO, CAINTA, RIZAL","","","TITSER TIN","","","","","0","2020-06-29","","10000.00","220.00","","0.00","","","","","1","RETAIL","","");
+INSERT INTO tblcustomer VALUES("6","ANNE FACTORY OUTLET","AFO-001","VICENTA COR GRACIA ST., STO. DOMINGO, CAINTA RIZAL","CAINTA, RIZAL","","JO-ANNE ","","","","","0","2020-06-01","","100000.00","3826.00","","0.00","","","","","2","Wholesale","","");
+INSERT INTO tblcustomer VALUES("7","EVA GUTTIEREZ","EG001","IRISH ST., ESLA HOMES, STO. DOMINGO, CAINTA, RIZAL","CAINTA, RIZAL","","EVA","","","","","0","2020-07-03","","100000.00","1000.00","","0.00","","","","","2","Wholesale","","");
+INSERT INTO tblcustomer VALUES("8","NANAY AU","AU001","IRISH ST., CAINTA, RIZAL","CAINTA, RIZAL","","NANAY AU","","","","","30","2020-07-03","","100000.00","800.00","","0.00","","","","","2","Wholesale","","");
+INSERT INTO tblcustomer VALUES("9","JHING GUANZON OLANO","JHING01","GREENHILLS GARDEN, BONI SERRANO, WEST CRAME, QC","CAINTA, RIZAL","","JHING","","","","","0","2020-06-01","","100000.00","2130.00","","0.00","","","","","2","Wholesale","","");
+INSERT INTO tblcustomer VALUES("10","REINIELLE ROGEL","RG001","SANTOLAN PASIG","PASIG CITY","","REIN","","","","","0","2020-06-01","","100000.00","530.00","","0.00","","","","","1","Retail","","");
+INSERT INTO tblcustomer VALUES("11","TEST CUSTOMER","0512","UNIT 305 ESLA","CAINTA, RIZAL","","jeremy","7543356","09776070274","","MARKJEREMYSANTOS@GMAIL.COM","1","2020-07-05","","50.00","0.00","","0.00","","","","","1","Retail","","");
+
+
+
+CREATE TABLE `tblholdings` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `REGNAME` varchar(255) DEFAULT NULL,
+  `REGADDRESS` varchar(255) DEFAULT NULL,
+  `REGCONTACTNO` varchar(255) DEFAULT NULL,
+  `REGEMAIL` varchar(255) DEFAULT NULL,
+  `LICENSEKEY` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblholdings VALUES("1","21e091b9bace8960825f5adfaf7f080d048c6582","Unit 305 Esla Urban Villa, Esla Homes, Sto. Domingo, Cainta, Rizal","09278842558","jimmyrsantos@yahoo.com","");
+
+
+
+CREATE TABLE `tblitembrand` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `ITEMBRAND` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `ITEMBRAND` (`ITEMBRAND`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblitembrand VALUES("1","MALL DISPLAY");
+INSERT INTO tblitembrand VALUES("2","AUTHENTIC BULACAN PRODUCTS");
+INSERT INTO tblitembrand VALUES("3","PHB");
+INSERT INTO tblitembrand VALUES("4","AQUA SIS PURIFIED WATER");
+INSERT INTO tblitembrand VALUES("5","SIOPAO KING");
+INSERT INTO tblitembrand VALUES("6","SIOMAI KING");
+INSERT INTO tblitembrand VALUES("7","TEST DISPLAY");
+
+
+
+CREATE TABLE `tblitemmake` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `ITEMMAKE` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `ITEMMAKE` (`ITEMMAKE`)
+) ENGINE=MyISAM AUTO_INCREMENT=616 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblitemmake VALUES("1","HU-1121");
+INSERT INTO tblitemmake VALUES("2","M-1066");
+INSERT INTO tblitemmake VALUES("3","HU-2228,HG-4410");
+INSERT INTO tblitemmake VALUES("4","E-036");
+INSERT INTO tblitemmake VALUES("5","E-366");
+INSERT INTO tblitemmake VALUES("6","E-134");
+INSERT INTO tblitemmake VALUES("7","E-359");
+INSERT INTO tblitemmake VALUES("8","E-177");
+INSERT INTO tblitemmake VALUES("9","M-466");
+INSERT INTO tblitemmake VALUES("10","M-716");
+INSERT INTO tblitemmake VALUES("11","E-032");
+INSERT INTO tblitemmake VALUES("12","HORSE");
+INSERT INTO tblitemmake VALUES("13","E-362");
+INSERT INTO tblitemmake VALUES("14","E-368");
+INSERT INTO tblitemmake VALUES("15","6X12");
+INSERT INTO tblitemmake VALUES("16","E-166");
+INSERT INTO tblitemmake VALUES("17","M-462");
+INSERT INTO tblitemmake VALUES("18","E-552");
+INSERT INTO tblitemmake VALUES("19","E-551");
+INSERT INTO tblitemmake VALUES("20","E-364");
+INSERT INTO tblitemmake VALUES("21","E-550");
+INSERT INTO tblitemmake VALUES("22","OKAMURA");
+INSERT INTO tblitemmake VALUES("23","E-038");
+INSERT INTO tblitemmake VALUES("24","E-381");
+INSERT INTO tblitemmake VALUES("25","E-382");
+INSERT INTO tblitemmake VALUES("26","E-167");
+INSERT INTO tblitemmake VALUES("27","E-168");
+INSERT INTO tblitemmake VALUES("28","E-363");
+INSERT INTO tblitemmake VALUES("29","E-383");
+INSERT INTO tblitemmake VALUES("30","E-361");
+INSERT INTO tblitemmake VALUES("31","E-548");
+INSERT INTO tblitemmake VALUES("32","SYF-20");
+INSERT INTO tblitemmake VALUES("33","E-547");
+INSERT INTO tblitemmake VALUES("34","E-549");
+INSERT INTO tblitemmake VALUES("35","E-275");
+INSERT INTO tblitemmake VALUES("36","E-343");
+INSERT INTO tblitemmake VALUES("37","M-2025");
+INSERT INTO tblitemmake VALUES("38","E-248");
+INSERT INTO tblitemmake VALUES("39","E-566");
+INSERT INTO tblitemmake VALUES("40","E-554");
+INSERT INTO tblitemmake VALUES("41","E-555");
+INSERT INTO tblitemmake VALUES("42","E-556");
+INSERT INTO tblitemmake VALUES("43","S-1161");
+INSERT INTO tblitemmake VALUES("44","HG-2063");
+INSERT INTO tblitemmake VALUES("45","HG-2081");
+INSERT INTO tblitemmake VALUES("46","PVC");
+INSERT INTO tblitemmake VALUES("47","CL-9142");
+INSERT INTO tblitemmake VALUES("48","SUPERTONE");
+INSERT INTO tblitemmake VALUES("49","E-449");
+INSERT INTO tblitemmake VALUES("50","E-444");
+INSERT INTO tblitemmake VALUES("51","E-445");
+INSERT INTO tblitemmake VALUES("52","TOHO");
+INSERT INTO tblitemmake VALUES("53","E-448");
+INSERT INTO tblitemmake VALUES("54","E-432");
+INSERT INTO tblitemmake VALUES("55","SYS-4128");
+INSERT INTO tblitemmake VALUES("56","M-111");
+INSERT INTO tblitemmake VALUES("57","MF-06-106");
+INSERT INTO tblitemmake VALUES("58","MAGNET  TYPE");
+INSERT INTO tblitemmake VALUES("59","HARRY");
+INSERT INTO tblitemmake VALUES("60","MASTER");
+INSERT INTO tblitemmake VALUES("61","KZ-63");
+INSERT INTO tblitemmake VALUES("62","HG-5092,  HGMB1026");
+INSERT INTO tblitemmake VALUES("63","KZ-51");
+INSERT INTO tblitemmake VALUES("64","3-POINTS");
+INSERT INTO tblitemmake VALUES("65","HG-5051");
+INSERT INTO tblitemmake VALUES("66","IGNITION CABLE");
+INSERT INTO tblitemmake VALUES("68","FLASHER RELAY");
+INSERT INTO tblitemmake VALUES("69","11X39");
+INSERT INTO tblitemmake VALUES("70","11X36");
+INSERT INTO tblitemmake VALUES("71","1034");
+INSERT INTO tblitemmake VALUES("72","8X31");
+INSERT INTO tblitemmake VALUES("73","SYF-140");
+INSERT INTO tblitemmake VALUES("74","DJ-818");
+INSERT INTO tblitemmake VALUES("75","DJ-8045");
+INSERT INTO tblitemmake VALUES("76","DJ-8050");
+INSERT INTO tblitemmake VALUES("77","DJ-8058");
+INSERT INTO tblitemmake VALUES("78","DJ-8065");
+INSERT INTO tblitemmake VALUES("79","DJ-8100");
+INSERT INTO tblitemmake VALUES("80","DJ-95");
+INSERT INTO tblitemmake VALUES("81","NS-90");
+INSERT INTO tblitemmake VALUES("82","DJ-808");
+INSERT INTO tblitemmake VALUES("83","DJ-505");
+INSERT INTO tblitemmake VALUES("84","DJ-606");
+INSERT INTO tblitemmake VALUES("85","DJ-199");
+INSERT INTO tblitemmake VALUES("86","DJ-404");
+INSERT INTO tblitemmake VALUES("87","DJ-200");
+INSERT INTO tblitemmake VALUES("88","DJ-91");
+INSERT INTO tblitemmake VALUES("89","DJ-88");
+INSERT INTO tblitemmake VALUES("90","HU-2218");
+INSERT INTO tblitemmake VALUES("91","4000");
+INSERT INTO tblitemmake VALUES("92","ROLL");
+INSERT INTO tblitemmake VALUES("93","HELLA TYPE");
+INSERT INTO tblitemmake VALUES("94","105-8045");
+INSERT INTO tblitemmake VALUES("95","2 TONS");
+INSERT INTO tblitemmake VALUES("96","30 TONS");
+INSERT INTO tblitemmake VALUES("97","4721");
+INSERT INTO tblitemmake VALUES("98","VDC");
+INSERT INTO tblitemmake VALUES("99","M-2014");
+INSERT INTO tblitemmake VALUES("100","18-1048");
+INSERT INTO tblitemmake VALUES("101","MAGIC");
+INSERT INTO tblitemmake VALUES("102","SYS");
+INSERT INTO tblitemmake VALUES("103","MITSUBA WIPER MOTOR");
+INSERT INTO tblitemmake VALUES("104","84-8");
+INSERT INTO tblitemmake VALUES("105","4401");
+INSERT INTO tblitemmake VALUES("106","4402");
+INSERT INTO tblitemmake VALUES("107","UNIVERSAL HANDLE COVER");
+INSERT INTO tblitemmake VALUES("108","DJ-6002");
+INSERT INTO tblitemmake VALUES("109","HG-2161");
+INSERT INTO tblitemmake VALUES("110","DJ-7003");
+INSERT INTO tblitemmake VALUES("111","M-805");
+INSERT INTO tblitemmake VALUES("112","E-422");
+INSERT INTO tblitemmake VALUES("113","E-430");
+INSERT INTO tblitemmake VALUES("114","2-POINTS");
+INSERT INTO tblitemmake VALUES("115","HOSE CLAMP");
+INSERT INTO tblitemmake VALUES("116","E-156");
+INSERT INTO tblitemmake VALUES("117","14"");
+INSERT INTO tblitemmake VALUES("118","15"");
+INSERT INTO tblitemmake VALUES("119","YANKEE");
+INSERT INTO tblitemmake VALUES("120","4001");
+INSERT INTO tblitemmake VALUES("121","4651");
+INSERT INTO tblitemmake VALUES("122","4652");
+INSERT INTO tblitemmake VALUES("123","9212, 9214");
+INSERT INTO tblitemmake VALUES("124","SYS-9214");
+INSERT INTO tblitemmake VALUES("125","PRESTONE");
+INSERT INTO tblitemmake VALUES("126","WS-001");
+INSERT INTO tblitemmake VALUES("127","6002");
+INSERT INTO tblitemmake VALUES("128","6052");
+INSERT INTO tblitemmake VALUES("129","6014");
+INSERT INTO tblitemmake VALUES("130","4002");
+INSERT INTO tblitemmake VALUES("131","6001");
+INSERT INTO tblitemmake VALUES("132","6024");
+INSERT INTO tblitemmake VALUES("133","5006");
+INSERT INTO tblitemmake VALUES("134","#13");
+INSERT INTO tblitemmake VALUES("135","#14");
+INSERT INTO tblitemmake VALUES("136","OFFROAD, DJ-906");
+INSERT INTO tblitemmake VALUES("137","#6");
+INSERT INTO tblitemmake VALUES("138","SJ-118");
+INSERT INTO tblitemmake VALUES("139","E-392");
+INSERT INTO tblitemmake VALUES("140","DJ-5001");
+INSERT INTO tblitemmake VALUES("141","DJ-5002");
+INSERT INTO tblitemmake VALUES("142","TACOMETER");
+INSERT INTO tblitemmake VALUES("143","OFFROAD, DJ-902");
+INSERT INTO tblitemmake VALUES("144","DJ-8035");
+INSERT INTO tblitemmake VALUES("145","SJ-128");
+INSERT INTO tblitemmake VALUES("146","H-740");
+INSERT INTO tblitemmake VALUES("147","M-740");
+INSERT INTO tblitemmake VALUES("148","DJ-100");
+INSERT INTO tblitemmake VALUES("149","S-502");
+INSERT INTO tblitemmake VALUES("150","S-501");
+INSERT INTO tblitemmake VALUES("151","2 TRUMPETS");
+INSERT INTO tblitemmake VALUES("152","9K-104");
+INSERT INTO tblitemmake VALUES("153","9K-103, M-1074");
+INSERT INTO tblitemmake VALUES("154","CL-207");
+INSERT INTO tblitemmake VALUES("155","S-5902");
+INSERT INTO tblitemmake VALUES("156","LAMBADA");
+INSERT INTO tblitemmake VALUES("157","BEEP-BEEP");
+INSERT INTO tblitemmake VALUES("158","THIS  CAR  IS  BACKING  UP");
+INSERT INTO tblitemmake VALUES("159","MACARENA");
+INSERT INTO tblitemmake VALUES("160","VS-540");
+INSERT INTO tblitemmake VALUES("161","BACK SUPPORT");
+INSERT INTO tblitemmake VALUES("162","MOTORCYCLE");
+INSERT INTO tblitemmake VALUES("163","TOP LAMP");
+INSERT INTO tblitemmake VALUES("164","1133");
+INSERT INTO tblitemmake VALUES("165","2801");
+INSERT INTO tblitemmake VALUES("166","DL-200");
+INSERT INTO tblitemmake VALUES("167","M-760");
+INSERT INTO tblitemmake VALUES("168","SUPER OFFROADER, 1281");
+INSERT INTO tblitemmake VALUES("169","DJ-901");
+INSERT INTO tblitemmake VALUES("170","2830");
+INSERT INTO tblitemmake VALUES("171","E-380");
+INSERT INTO tblitemmake VALUES("172","E-104");
+INSERT INTO tblitemmake VALUES("173","CL-703");
+INSERT INTO tblitemmake VALUES("174","VS-539");
+INSERT INTO tblitemmake VALUES("175","1230, M-2017");
+INSERT INTO tblitemmake VALUES("176","VS-562");
+INSERT INTO tblitemmake VALUES("177","VS-558");
+INSERT INTO tblitemmake VALUES("178","VS-559");
+INSERT INTO tblitemmake VALUES("179","VS-564");
+INSERT INTO tblitemmake VALUES("180","VS-567");
+INSERT INTO tblitemmake VALUES("181","VS-568");
+INSERT INTO tblitemmake VALUES("182","VS-571");
+INSERT INTO tblitemmake VALUES("183","2548");
+INSERT INTO tblitemmake VALUES("184","O-10");
+INSERT INTO tblitemmake VALUES("185","M-2015");
+INSERT INTO tblitemmake VALUES("186","M-2016");
+INSERT INTO tblitemmake VALUES("187","SUPER OFFROADER, 1282");
+INSERT INTO tblitemmake VALUES("188","E-294");
+INSERT INTO tblitemmake VALUES("189","A-1");
+INSERT INTO tblitemmake VALUES("190","3 IN 1 COCKPIT");
+INSERT INTO tblitemmake VALUES("191","M-2010");
+INSERT INTO tblitemmake VALUES("192","M-2011");
+INSERT INTO tblitemmake VALUES("193","M-2020");
+INSERT INTO tblitemmake VALUES("194","VS-893");
+INSERT INTO tblitemmake VALUES("195","M-4");
+INSERT INTO tblitemmake VALUES("196","JA-F2");
+INSERT INTO tblitemmake VALUES("197","UFO");
+INSERT INTO tblitemmake VALUES("198","JA-102");
+INSERT INTO tblitemmake VALUES("199","DOUBLE FACE");
+INSERT INTO tblitemmake VALUES("200","DUAL ANTENNA");
+INSERT INTO tblitemmake VALUES("201","CH-535");
+INSERT INTO tblitemmake VALUES("202","YH-5020");
+INSERT INTO tblitemmake VALUES("203","YH-5021");
+INSERT INTO tblitemmake VALUES("204","1141-1");
+INSERT INTO tblitemmake VALUES("205","HG-3107,HG-5056");
+INSERT INTO tblitemmake VALUES("206","CALIFORNIA SCENT");
+INSERT INTO tblitemmake VALUES("207","GLX");
+INSERT INTO tblitemmake VALUES("208","DJ-7001");
+INSERT INTO tblitemmake VALUES("209","DJ-6052");
+INSERT INTO tblitemmake VALUES("210","DJ-112");
+INSERT INTO tblitemmake VALUES("211","H-1");
+INSERT INTO tblitemmake VALUES("212","H-3");
+INSERT INTO tblitemmake VALUES("213","H-2");
+INSERT INTO tblitemmake VALUES("214","CHB");
+INSERT INTO tblitemmake VALUES("215","M-2013");
+INSERT INTO tblitemmake VALUES("216","H-4");
+INSERT INTO tblitemmake VALUES("217","3770");
+INSERT INTO tblitemmake VALUES("218","DJ-1030");
+INSERT INTO tblitemmake VALUES("219","CBX");
+INSERT INTO tblitemmake VALUES("220","VS-886");
+INSERT INTO tblitemmake VALUES("221","VS-894");
+INSERT INTO tblitemmake VALUES("222","SY-26");
+INSERT INTO tblitemmake VALUES("223","MY CARR");
+INSERT INTO tblitemmake VALUES("224","SCREW TYPE");
+INSERT INTO tblitemmake VALUES("225","SY-8");
+INSERT INTO tblitemmake VALUES("226","KDS");
+INSERT INTO tblitemmake VALUES("227","E-467");
+INSERT INTO tblitemmake VALUES("228","E-493");
+INSERT INTO tblitemmake VALUES("229","S-5904");
+INSERT INTO tblitemmake VALUES("230","E-652");
+INSERT INTO tblitemmake VALUES("231","E-651");
+INSERT INTO tblitemmake VALUES("232","E-495");
+INSERT INTO tblitemmake VALUES("233","M-3100");
+INSERT INTO tblitemmake VALUES("234","SY-16");
+INSERT INTO tblitemmake VALUES("235","GI");
+INSERT INTO tblitemmake VALUES("236","HU-1036");
+INSERT INTO tblitemmake VALUES("237","E-74");
+INSERT INTO tblitemmake VALUES("238","APOLLO");
+INSERT INTO tblitemmake VALUES("239","BH-1155");
+INSERT INTO tblitemmake VALUES("240","MINI");
+INSERT INTO tblitemmake VALUES("241","WF-326");
+INSERT INTO tblitemmake VALUES("242","3 TRUMPETS");
+INSERT INTO tblitemmake VALUES("243","5 TRUMPETS");
+INSERT INTO tblitemmake VALUES("244","SYS-4127");
+INSERT INTO tblitemmake VALUES("245","4124");
+INSERT INTO tblitemmake VALUES("246","4126");
+INSERT INTO tblitemmake VALUES("247","4126, 4124");
+INSERT INTO tblitemmake VALUES("248","4127");
+INSERT INTO tblitemmake VALUES("249","E-482");
+INSERT INTO tblitemmake VALUES("250","OVAL");
+INSERT INTO tblitemmake VALUES("251","HU-1026");
+INSERT INTO tblitemmake VALUES("252","PL-3254");
+INSERT INTO tblitemmake VALUES("253","YC-385");
+INSERT INTO tblitemmake VALUES("254","1375");
+INSERT INTO tblitemmake VALUES("255","1385");
+INSERT INTO tblitemmake VALUES("256","DJ-8054");
+INSERT INTO tblitemmake VALUES("257","DJ-8057");
+INSERT INTO tblitemmake VALUES("258","S-1150");
+INSERT INTO tblitemmake VALUES("259","5"3/4 INNER");
+INSERT INTO tblitemmake VALUES("260","5"3/4 OUTER");
+INSERT INTO tblitemmake VALUES("261","E-347");
+INSERT INTO tblitemmake VALUES("262","GALAXY");
+INSERT INTO tblitemmake VALUES("263","DJ-767");
+INSERT INTO tblitemmake VALUES("264","DJ-7002");
+INSERT INTO tblitemmake VALUES("265","6000");
+INSERT INTO tblitemmake VALUES("266","M-470, GREEN BODY");
+INSERT INTO tblitemmake VALUES("267","EP-106");
+INSERT INTO tblitemmake VALUES("268","A-160");
+INSERT INTO tblitemmake VALUES("269","E-250");
+INSERT INTO tblitemmake VALUES("270","E-350");
+INSERT INTO tblitemmake VALUES("271","DISCO KM-105");
+INSERT INTO tblitemmake VALUES("272","BH-1030");
+INSERT INTO tblitemmake VALUES("273","BH-1022");
+INSERT INTO tblitemmake VALUES("274","D-11");
+INSERT INTO tblitemmake VALUES("275","M-770");
+INSERT INTO tblitemmake VALUES("276","DJ-757");
+INSERT INTO tblitemmake VALUES("277","D-16");
+INSERT INTO tblitemmake VALUES("278","M-463");
+INSERT INTO tblitemmake VALUES("279","SEARCHER");
+INSERT INTO tblitemmake VALUES("280","RH-148");
+INSERT INTO tblitemmake VALUES("281","M-472");
+INSERT INTO tblitemmake VALUES("282","6 TONE");
+INSERT INTO tblitemmake VALUES("283","1141");
+INSERT INTO tblitemmake VALUES("284","JA-F1");
+INSERT INTO tblitemmake VALUES("285","JA-101");
+INSERT INTO tblitemmake VALUES("286","PUMA");
+INSERT INTO tblitemmake VALUES("287","06-2314");
+INSERT INTO tblitemmake VALUES("288","CA-12V");
+INSERT INTO tblitemmake VALUES("289","CA-24V");
+INSERT INTO tblitemmake VALUES("290","2201");
+INSERT INTO tblitemmake VALUES("291","HELLA");
+INSERT INTO tblitemmake VALUES("292","4405");
+INSERT INTO tblitemmake VALUES("293","CH-327");
+INSERT INTO tblitemmake VALUES("294","1245");
+INSERT INTO tblitemmake VALUES("295","VS-541");
+INSERT INTO tblitemmake VALUES("296","VS-543");
+INSERT INTO tblitemmake VALUES("297","V-10");
+INSERT INTO tblitemmake VALUES("298","6"");
+INSERT INTO tblitemmake VALUES("299","M-467");
+INSERT INTO tblitemmake VALUES("300","2804");
+INSERT INTO tblitemmake VALUES("301","KZ-53");
+INSERT INTO tblitemmake VALUES("302","C-105");
+INSERT INTO tblitemmake VALUES("303","5520");
+INSERT INTO tblitemmake VALUES("304","1275");
+INSERT INTO tblitemmake VALUES("305","IPF");
+INSERT INTO tblitemmake VALUES("306","KKD");
+INSERT INTO tblitemmake VALUES("307","S-5224");
+INSERT INTO tblitemmake VALUES("308","COMBINATION");
+INSERT INTO tblitemmake VALUES("309","SUPER GRIP");
+INSERT INTO tblitemmake VALUES("310","BAMBOO");
+INSERT INTO tblitemmake VALUES("311","BEADS");
+INSERT INTO tblitemmake VALUES("312","PHONE  TYPE");
+INSERT INTO tblitemmake VALUES("313","PG-16");
+INSERT INTO tblitemmake VALUES("314","PG-17");
+INSERT INTO tblitemmake VALUES("315","BOSCH  RELAY");
+INSERT INTO tblitemmake VALUES("316","LTF21W2");
+INSERT INTO tblitemmake VALUES("317","CL-918");
+INSERT INTO tblitemmake VALUES("318","DJ-949");
+INSERT INTO tblitemmake VALUES("319","E-613");
+INSERT INTO tblitemmake VALUES("320","E-614");
+INSERT INTO tblitemmake VALUES("321","M-474");
+INSERT INTO tblitemmake VALUES("322","M-464");
+INSERT INTO tblitemmake VALUES("323","E-267");
+INSERT INTO tblitemmake VALUES("324","E-271");
+INSERT INTO tblitemmake VALUES("325","RH-130");
+INSERT INTO tblitemmake VALUES("326","RH-131");
+INSERT INTO tblitemmake VALUES("327","HU-1110");
+INSERT INTO tblitemmake VALUES("328","MOCC");
+INSERT INTO tblitemmake VALUES("329","HU-1041");
+INSERT INTO tblitemmake VALUES("330","JET  AIR");
+INSERT INTO tblitemmake VALUES("331","1270");
+INSERT INTO tblitemmake VALUES("332","1238");
+INSERT INTO tblitemmake VALUES("333","KJ-9");
+INSERT INTO tblitemmake VALUES("334","6 SOUND");
+INSERT INTO tblitemmake VALUES("335","A-29");
+INSERT INTO tblitemmake VALUES("336","SIDE PILLAR");
+INSERT INTO tblitemmake VALUES("337","M-585");
+INSERT INTO tblitemmake VALUES("338","1247");
+INSERT INTO tblitemmake VALUES("339","#67");
+INSERT INTO tblitemmake VALUES("340","OPEN TYPE SINGLE");
+INSERT INTO tblitemmake VALUES("341","RUBBER  DUCKIE");
+INSERT INTO tblitemmake VALUES("342","285S");
+INSERT INTO tblitemmake VALUES("343","CUSTOM VAN");
+INSERT INTO tblitemmake VALUES("344","WHIP");
+INSERT INTO tblitemmake VALUES("345","MF-039");
+INSERT INTO tblitemmake VALUES("346","D-5");
+INSERT INTO tblitemmake VALUES("347","LTES5");
+INSERT INTO tblitemmake VALUES("348","LTD2W60");
+INSERT INTO tblitemmake VALUES("349","LTF81W2");
+INSERT INTO tblitemmake VALUES("350","3 WIDE MIRROR");
+INSERT INTO tblitemmake VALUES("351","BABY TURBO");
+INSERT INTO tblitemmake VALUES("352","M-473");
+INSERT INTO tblitemmake VALUES("353","RAPID RELAY");
+INSERT INTO tblitemmake VALUES("354","4191");
+INSERT INTO tblitemmake VALUES("355","4291");
+INSERT INTO tblitemmake VALUES("356","NAUTILUS");
+INSERT INTO tblitemmake VALUES("357","9123");
+INSERT INTO tblitemmake VALUES("358","M-471");
+INSERT INTO tblitemmake VALUES("359","4412");
+INSERT INTO tblitemmake VALUES("360","BP6ES");
+INSERT INTO tblitemmake VALUES("361","ELECTRONIC");
+INSERT INTO tblitemmake VALUES("362","INTERIOR");
+INSERT INTO tblitemmake VALUES("363","NIKKO");
+INSERT INTO tblitemmake VALUES("364","PILLOW  BOOT");
+INSERT INTO tblitemmake VALUES("365","SY-731");
+INSERT INTO tblitemmake VALUES("366","SOM");
+INSERT INTO tblitemmake VALUES("367","HG-5001");
+INSERT INTO tblitemmake VALUES("368","HU-5026");
+INSERT INTO tblitemmake VALUES("369","HG-5050,HU-3156");
+INSERT INTO tblitemmake VALUES("370","HG-5507,HU-3197,HU-3198");
+INSERT INTO tblitemmake VALUES("371","HG-5076");
+INSERT INTO tblitemmake VALUES("372","HG-5061");
+INSERT INTO tblitemmake VALUES("373","HG-5062");
+INSERT INTO tblitemmake VALUES("374","HU-3023,HG-5004");
+INSERT INTO tblitemmake VALUES("375","HG-5003");
+INSERT INTO tblitemmake VALUES("376","HG-5077");
+INSERT INTO tblitemmake VALUES("377","HG-5096");
+INSERT INTO tblitemmake VALUES("378","E-607");
+INSERT INTO tblitemmake VALUES("379","HG-2022");
+INSERT INTO tblitemmake VALUES("380","HG-2023");
+INSERT INTO tblitemmake VALUES("381","HU-1005, HU-1003");
+INSERT INTO tblitemmake VALUES("382","M-594L");
+INSERT INTO tblitemmake VALUES("383","HG-5072");
+INSERT INTO tblitemmake VALUES("384","HG-5044");
+INSERT INTO tblitemmake VALUES("385","E-418");
+INSERT INTO tblitemmake VALUES("386","E-473");
+INSERT INTO tblitemmake VALUES("387","HG-5045");
+INSERT INTO tblitemmake VALUES("388","HG-5092,  HGMB1024");
+INSERT INTO tblitemmake VALUES("389","HU-5086");
+INSERT INTO tblitemmake VALUES("390","1455");
+INSERT INTO tblitemmake VALUES("391","E-346");
+INSERT INTO tblitemmake VALUES("392","HU-3032");
+INSERT INTO tblitemmake VALUES("393","HU-5079,FJ-045");
+INSERT INTO tblitemmake VALUES("394","HU-5083");
+INSERT INTO tblitemmake VALUES("395","HU-5090");
+INSERT INTO tblitemmake VALUES("396","JF-10");
+INSERT INTO tblitemmake VALUES("397","VS-882");
+INSERT INTO tblitemmake VALUES("398","E-417");
+INSERT INTO tblitemmake VALUES("399","E-423");
+INSERT INTO tblitemmake VALUES("400","HU-4085");
+INSERT INTO tblitemmake VALUES("401","KN-750L");
+INSERT INTO tblitemmake VALUES("402","CL-520");
+INSERT INTO tblitemmake VALUES("403","HU-1024");
+INSERT INTO tblitemmake VALUES("404","34802");
+INSERT INTO tblitemmake VALUES("405","TIY-505");
+INSERT INTO tblitemmake VALUES("406","SJ-119");
+INSERT INTO tblitemmake VALUES("407","CL-203");
+INSERT INTO tblitemmake VALUES("408","M-666");
+INSERT INTO tblitemmake VALUES("409","HG-4407");
+INSERT INTO tblitemmake VALUES("410","SYF-88");
+INSERT INTO tblitemmake VALUES("411","E-357,SB-10");
+INSERT INTO tblitemmake VALUES("412","S-67");
+INSERT INTO tblitemmake VALUES("413","SWAN LAMP");
+INSERT INTO tblitemmake VALUES("414","CL-715");
+INSERT INTO tblitemmake VALUES("415","M-2002");
+INSERT INTO tblitemmake VALUES("416","HU-1044");
+INSERT INTO tblitemmake VALUES("417","TIY-528");
+INSERT INTO tblitemmake VALUES("418","TIY-504");
+INSERT INTO tblitemmake VALUES("419","SJ-101");
+INSERT INTO tblitemmake VALUES("420","KOA 2139");
+INSERT INTO tblitemmake VALUES("421","HG-5104");
+INSERT INTO tblitemmake VALUES("422","2336");
+INSERT INTO tblitemmake VALUES("423","4125");
+INSERT INTO tblitemmake VALUES("424","37034");
+INSERT INTO tblitemmake VALUES("425","#158");
+INSERT INTO tblitemmake VALUES("426","#619");
+INSERT INTO tblitemmake VALUES("427","#634");
+INSERT INTO tblitemmake VALUES("428","#69");
+INSERT INTO tblitemmake VALUES("429","10X31");
+INSERT INTO tblitemmake VALUES("430","10X36");
+INSERT INTO tblitemmake VALUES("431","11X44");
+INSERT INTO tblitemmake VALUES("432","250  PSI   MINI");
+INSERT INTO tblitemmake VALUES("433","3 PINS");
+INSERT INTO tblitemmake VALUES("434","4 PINS");
+INSERT INTO tblitemmake VALUES("435","AIR  TYPE");
+INSERT INTO tblitemmake VALUES("436","AIR PRESSURE");
+INSERT INTO tblitemmake VALUES("437","AMPERE");
+INSERT INTO tblitemmake VALUES("438","ASTRO");
+INSERT INTO tblitemmake VALUES("439","BADMINTON  DESIGN");
+INSERT INTO tblitemmake VALUES("440","BFM");
+INSERT INTO tblitemmake VALUES("441","BH-1151");
+INSERT INTO tblitemmake VALUES("442","BH-1209");
+INSERT INTO tblitemmake VALUES("443","BH-1251");
+INSERT INTO tblitemmake VALUES("444","BULL");
+INSERT INTO tblitemmake VALUES("445","CB  TYPE");
+INSERT INTO tblitemmake VALUES("446","CL-204");
+INSERT INTO tblitemmake VALUES("447","CL-307");
+INSERT INTO tblitemmake VALUES("448","DING DONG BELL");
+INSERT INTO tblitemmake VALUES("449","DISCO LAMP UFO");
+INSERT INTO tblitemmake VALUES("450","E-0347,GT  PHANTOM");
+INSERT INTO tblitemmake VALUES("451","E-304");
+INSERT INTO tblitemmake VALUES("452","EAGLE  TYPE");
+INSERT INTO tblitemmake VALUES("453","FLORESCENT  TWIN");
+INSERT INTO tblitemmake VALUES("454","FLOWER");
+INSERT INTO tblitemmake VALUES("455","FOR  REAR  GLASS");
+INSERT INTO tblitemmake VALUES("456","GT  PHANTOM");
+INSERT INTO tblitemmake VALUES("457","HOOD ORNAMENT");
+INSERT INTO tblitemmake VALUES("458","HU-1006");
+INSERT INTO tblitemmake VALUES("459","HU-1010");
+INSERT INTO tblitemmake VALUES("460","HU-1046");
+INSERT INTO tblitemmake VALUES("461","HU-1093");
+INSERT INTO tblitemmake VALUES("462","HU-3033");
+INSERT INTO tblitemmake VALUES("463","HU-3051");
+INSERT INTO tblitemmake VALUES("464","HU-5053");
+INSERT INTO tblitemmake VALUES("465","INCOMPLETE");
+INSERT INTO tblitemmake VALUES("466","J-130");
+INSERT INTO tblitemmake VALUES("467","JBA-60");
+INSERT INTO tblitemmake VALUES("468","LEATHER");
+INSERT INTO tblitemmake VALUES("469","LOCK  TYPE");
+INSERT INTO tblitemmake VALUES("470","M-2018");
+INSERT INTO tblitemmake VALUES("471","M-2021");
+INSERT INTO tblitemmake VALUES("472","M-2022");
+INSERT INTO tblitemmake VALUES("473","M-3101");
+INSERT INTO tblitemmake VALUES("474","M-38");
+INSERT INTO tblitemmake VALUES("475","M-803");
+INSERT INTO tblitemmake VALUES("476","MAGNETIC");
+INSERT INTO tblitemmake VALUES("477","MEAN  MOTHER");
+INSERT INTO tblitemmake VALUES("478","MEDIUM");
+INSERT INTO tblitemmake VALUES("479","MINI UFO");
+INSERT INTO tblitemmake VALUES("480","MONZA");
+INSERT INTO tblitemmake VALUES("481","ND FUEL");
+INSERT INTO tblitemmake VALUES("482","ND-129");
+INSERT INTO tblitemmake VALUES("483","NIKEN");
+INSERT INTO tblitemmake VALUES("484","NS-1160");
+INSERT INTO tblitemmake VALUES("485","NS-1162");
+INSERT INTO tblitemmake VALUES("486","NS-1181");
+INSERT INTO tblitemmake VALUES("487","NS-157");
+INSERT INTO tblitemmake VALUES("488","OIL");
+INSERT INTO tblitemmake VALUES("489","PIERROR");
+INSERT INTO tblitemmake VALUES("490","PL-1074");
+INSERT INTO tblitemmake VALUES("491","PL-1076");
+INSERT INTO tblitemmake VALUES("492","PL-1079");
+INSERT INTO tblitemmake VALUES("493","PLUG-IN");
+INSERT INTO tblitemmake VALUES("494","POLE  TYPE");
+INSERT INTO tblitemmake VALUES("495","POLICE  SIREN");
+INSERT INTO tblitemmake VALUES("496","POWER  TONE");
+INSERT INTO tblitemmake VALUES("497","RACING");
+INSERT INTO tblitemmake VALUES("498","RB-160");
+INSERT INTO tblitemmake VALUES("499","S-2031");
+INSERT INTO tblitemmake VALUES("500","S-2036");
+INSERT INTO tblitemmake VALUES("501","S-5919");
+INSERT INTO tblitemmake VALUES("502","SIREN");
+INSERT INTO tblitemmake VALUES("503","SJ-309");
+INSERT INTO tblitemmake VALUES("504","SJ-359");
+INSERT INTO tblitemmake VALUES("505","SKI DESIGN");
+INSERT INTO tblitemmake VALUES("506","SKULL LAMP");
+INSERT INTO tblitemmake VALUES("507","SL-3");
+INSERT INTO tblitemmake VALUES("508","SPEEDOMETER");
+INSERT INTO tblitemmake VALUES("509","SPM-10");
+INSERT INTO tblitemmake VALUES("510","SWAN LENS");
+INSERT INTO tblitemmake VALUES("511","SYF-300");
+INSERT INTO tblitemmake VALUES("512","TEMPERATURE");
+INSERT INTO tblitemmake VALUES("513","TRANSISTOR  ECHO");
+INSERT INTO tblitemmake VALUES("514","TURTLE WAX");
+INSERT INTO tblitemmake VALUES("515","V-940");
+INSERT INTO tblitemmake VALUES("516","VHT");
+INSERT INTO tblitemmake VALUES("517","VOYAGER");
+INSERT INTO tblitemmake VALUES("518","VS-864");
+INSERT INTO tblitemmake VALUES("519","VS-878");
+INSERT INTO tblitemmake VALUES("520","WF-126");
+INSERT INTO tblitemmake VALUES("521","WOODEN");
+INSERT INTO tblitemmake VALUES("522","16"");
+INSERT INTO tblitemmake VALUES("523","17"");
+INSERT INTO tblitemmake VALUES("524","18"");
+INSERT INTO tblitemmake VALUES("525","19"");
+INSERT INTO tblitemmake VALUES("526","SJ-709");
+INSERT INTO tblitemmake VALUES("527","E-266");
+INSERT INTO tblitemmake VALUES("528","20"");
+INSERT INTO tblitemmake VALUES("529","21"");
+INSERT INTO tblitemmake VALUES("530","22"");
+INSERT INTO tblitemmake VALUES("531","24"");
+INSERT INTO tblitemmake VALUES("532","27"");
+INSERT INTO tblitemmake VALUES("533","E-264");
+INSERT INTO tblitemmake VALUES("534","#7");
+INSERT INTO tblitemmake VALUES("535","S-5920A");
+INSERT INTO tblitemmake VALUES("536","FAN FAREN");
+INSERT INTO tblitemmake VALUES("537","VS-892");
+INSERT INTO tblitemmake VALUES("538","POWERSONIC");
+INSERT INTO tblitemmake VALUES("539","H-7");
+INSERT INTO tblitemmake VALUES("540","9005");
+INSERT INTO tblitemmake VALUES("541","9006");
+INSERT INTO tblitemmake VALUES("542","NANE");
+INSERT INTO tblitemmake VALUES("543","KEY MATE");
+INSERT INTO tblitemmake VALUES("544","SJ-707");
+INSERT INTO tblitemmake VALUES("545","BH-1376");
+INSERT INTO tblitemmake VALUES("546","SH-1371");
+INSERT INTO tblitemmake VALUES("547","DJ-400");
+INSERT INTO tblitemmake VALUES("548","DJ-99");
+INSERT INTO tblitemmake VALUES("549","E-265");
+INSERT INTO tblitemmake VALUES("550","TORA-TORA");
+INSERT INTO tblitemmake VALUES("551","GEN");
+INSERT INTO tblitemmake VALUES("552","RED ZONE");
+INSERT INTO tblitemmake VALUES("553","PLASTIC BASE,STEEL & SCREW");
+INSERT INTO tblitemmake VALUES("554","GT");
+INSERT INTO tblitemmake VALUES("555","CL-500");
+INSERT INTO tblitemmake VALUES("556","HU-2223");
+INSERT INTO tblitemmake VALUES("557","NS-515");
+INSERT INTO tblitemmake VALUES("558","WF-902");
+INSERT INTO tblitemmake VALUES("559","LTF 3101 A/F");
+INSERT INTO tblitemmake VALUES("560","LTF 3102 B/F");
+INSERT INTO tblitemmake VALUES("561","LTF W2");
+INSERT INTO tblitemmake VALUES("562","LTF2000");
+INSERT INTO tblitemmake VALUES("563","DPS 3030");
+INSERT INTO tblitemmake VALUES("564","COMFORT");
+INSERT INTO tblitemmake VALUES("565","KB-9800");
+INSERT INTO tblitemmake VALUES("566","40FYMJK");
+INSERT INTO tblitemmake VALUES("567","VS-359");
+INSERT INTO tblitemmake VALUES("568","M-1467 TOP LAMP");
+INSERT INTO tblitemmake VALUES("569","644 A210 A/F");
+INSERT INTO tblitemmake VALUES("570","E-427");
+INSERT INTO tblitemmake VALUES("571","E-426");
+INSERT INTO tblitemmake VALUES("572","BH-1381");
+INSERT INTO tblitemmake VALUES("573","KZ-56");
+INSERT INTO tblitemmake VALUES("574","2002");
+INSERT INTO tblitemmake VALUES("575","10 TONS");
+INSERT INTO tblitemmake VALUES("576","15 TONS");
+INSERT INTO tblitemmake VALUES("577","18-1023");
+INSERT INTO tblitemmake VALUES("578","20 TONS");
+INSERT INTO tblitemmake VALUES("579","3 TONS");
+INSERT INTO tblitemmake VALUES("580","5 TONS");
+INSERT INTO tblitemmake VALUES("581","DISCO");
+INSERT INTO tblitemmake VALUES("582","ELECTRONIC SIREN");
+INSERT INTO tblitemmake VALUES("583","FL-10");
+INSERT INTO tblitemmake VALUES("584","HOTDOG");
+INSERT INTO tblitemmake VALUES("585","WD-40");
+INSERT INTO tblitemmake VALUES("586","WT-15");
+INSERT INTO tblitemmake VALUES("587","WANG WANG");
+INSERT INTO tblitemmake VALUES("588","MITAN BANANA");
+INSERT INTO tblitemmake VALUES("589","5X10");
+INSERT INTO tblitemmake VALUES("590","H-100");
+INSERT INTO tblitemmake VALUES("591","NO. 12");
+INSERT INTO tblitemmake VALUES("592","RH-136");
+INSERT INTO tblitemmake VALUES("593","RH-426");
+INSERT INTO tblitemmake VALUES("594","RH-434");
+INSERT INTO tblitemmake VALUES("595","LY-929");
+INSERT INTO tblitemmake VALUES("596","K-5");
+INSERT INTO tblitemmake VALUES("597","OFFROAD");
+INSERT INTO tblitemmake VALUES("598","NEWTON ALARM");
+INSERT INTO tblitemmake VALUES("599","SWALLOW");
+INSERT INTO tblitemmake VALUES("600","JET AIR");
+INSERT INTO tblitemmake VALUES("601","SJ-127");
+INSERT INTO tblitemmake VALUES("602","MF-512");
+INSERT INTO tblitemmake VALUES("603","M-1400");
+INSERT INTO tblitemmake VALUES("604","HT8010");
+INSERT INTO tblitemmake VALUES("605","WAGNEER");
+INSERT INTO tblitemmake VALUES("606","test");
+INSERT INTO tblitemmake VALUES("607","Lego - Harry Potter #1");
+INSERT INTO tblitemmake VALUES("608","Lego - Harry Potter #2");
+INSERT INTO tblitemmake VALUES("609","Lego - Harry Potter #3");
+INSERT INTO tblitemmake VALUES("610","Lego - Harry Potter #4");
+INSERT INTO tblitemmake VALUES("611","Lego - Harry Potter #5");
+INSERT INTO tblitemmake VALUES("612","Lego - Harry Potter #6");
+INSERT INTO tblitemmake VALUES("613","Lego - Harry Potter #7");
+INSERT INTO tblitemmake VALUES("614","Lego - Harry Potter #8");
+INSERT INTO tblitemmake VALUES("615","SPORTS CAR");
+
+
+
+CREATE TABLE `tblmenu` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `menuname` varchar(255) DEFAULT NULL,
+  `menucode` varchar(50) DEFAULT NULL,
+  `groupmenu` varchar(255) DEFAULT NULL,
+  `menutype` int(5) DEFAULT 0,
+  `link` varchar(255) DEFAULT NULL,
+  `tblName` varchar(50) DEFAULT NULL,
+  `tblName2` varchar(255) DEFAULT NULL,
+  `queryString` longtext DEFAULT NULL,
+  `queryString2` longtext DEFAULT NULL,
+  `dtColumns` longtext DEFAULT NULL,
+  `dtColumnHeader` longtext DEFAULT NULL,
+  `dtColnumeric` longtext DEFAULT NULL,
+  `dtColGroup` char(10) DEFAULT '-1',
+  `dtColSpan` int(3) DEFAULT 1,
+  `dtColTotal` longtext DEFAULT NULL,
+  `dtFunction` longtext DEFAULT NULL,
+  `dtPaperSize` char(20) DEFAULT 'paper',
+  `dtOrientation` varchar(20) DEFAULT 'portrait',
+  `icon` varchar(255) DEFAULT NULL,
+  `caret` varchar(255) DEFAULT NULL,
+  `USERID` varchar(255) DEFAULT NULL,
+  `STATUS` int(1) DEFAULT 0,
+  `dbcolumn` int(1) DEFAULT 1,
+  `dtrange` char(10) DEFAULT 'no',
+  `asof` char(20) DEFAULT 'no',
+  `bygroup` longtext DEFAULT NULL,
+  `func_name` varchar(255) DEFAULT NULL,
+  `sorting` longtext DEFAULT NULL,
+  `where_filter` longtext DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `menucode` (`menucode`,`menutype`)
+) ENGINE=MyISAM AUTO_INCREMENT=108 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblmenu VALUES("1","Master File","1000","1000","1","#","tblProduct","","","","","","","","1","","","","","fa fa-bar-chart fa-fw","fa fa-caret-down","128","","1","no","no","CATEGORIES, BRAND/MODEL","PrintDataView","PRONAME, CATEGORIES","INACTIVE !='No'");
+INSERT INTO tblmenu VALUES("2","Products","1001A","1000","2","dataGridForm","tblproduct","","SELECT *, PROID AS KEYID FROM tblproduct","","[{ 	"colName": "KEYID", 
+	"idName": "PROID", 
+	"Upload": "IMAGES",
+	"title": "ID", 
+	"display": "hidden", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"true", 
+	"class":"easyui-textbox" ,
+	"defVal":"" 
+},{ 	"colName": "PRONAME", 
+	"title": "Description",
+	"tdStyle":"width='350'",
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true",
+	"defVal":"" 
+},{ 	"colName": "PROCODE", 
+	"title": "Code", 
+	
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true",
+	"defVal":""  
+},{ 	"colName": "ITEMBRAND", 
+	"title": "Brand", 
+	
+	
+	"display": "", 
+	"input":"combo", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-combobox",
+	"sortable":"true",
+	"defVal":"url:'getCombo.php?comboName=ITEMBRAND',  method:'get',  valueField:'id', textField:'text',  panelHeight:'auto'" 
+},{ 	"colName": "CATEGORIES", 
+	"title": "Category", 
+	
+	"display": "", 
+	"input":"combo", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-combobox",
+	"sortable":"true",
+	"defVal":"url:'getCombo.php?comboName=CATEGORIES',  method:'get',  valueField:'id', textField:'text',  panelHeight:'auto'" 
+},{ 	"colName": "COLOR", 
+	"title": "Color", 
+	
+	"display": "", 
+	"input":"combo", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-combobox",
+	"sortable":"true",
+	"defVal":"url:'getCombo.php?comboName=COLOR',  method:'get',  valueField:'id', textField:'text',  panelHeight:'auto'" 
+},{ 	"colName": "entdate", 
+	"title": "Date", 
+	
+	"display": "", 
+	"input":"date", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-datebox",
+	"sortable":"true",
+	"defVal":""
+},{ 	"colName": "PROQTY", 
+	"title": "Qty", 
+	"tdStyle":"align='right'",
+	"display": "", 
+	"input":"spinner", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-numberspinner",
+	"sortable":"false",
+	"defVal":"" 
+},{ 	"colName": "UNIT", 
+	"title": "Unit", 
+	
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"cssStyle":" style='width:250px'",
+	"sortable":"true",
+	"defVal":"" 
+},{ 	"colName": "PROPRICE", 
+	"title": "Sell Price", 
+	"tdStyle":"align='right'",
+	"display": "", 
+	"input":"number", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-numberbox",
+	"sortable":"false",
+	"defVal":"" 
+},{ 	"colName": "WPROPRICE", 
+	"title": "WHOLESALE", 
+	"tdStyle":"align='right'",
+	"display": "", 
+	"input":"number", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-numberbox",
+	"sortable":"false",
+	"defVal":"" 
+},{ 	"colName": "PURPRICE", 
+	"title": "Unit Cost", 
+	"tdStyle":"align='right'",
+	"display": "", 
+	"input":"number", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-numberbox",
+	"sortable":"false",
+	"defVal":"" 
+},{ 	"colName": "AVGCOST", 
+	"title": "Avg. Cost", 
+	"tdStyle":"align='right'",
+	"display": "", 
+	"input":"number", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-numberbox",
+	"sortable":"false",
+	"defVal":"" 
+},{ 	"colName": "IMAGES", 
+	"title": "Picture", 
+	"tdStyle":"align='right'",
+	"display": "hidden", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"true", 
+	"class":"easyui-textbox",
+	"sortable":"false",
+	"defVal":"" 
+}]
+
+","","","","70","","","","","fa fa-bars fa-fw","","128","","1","no","no","","PrintDataView","","where concat(if(ISNULL(PRONAME) ,"",PRONAME), if(ISNULL(ITEMBRAND),"",ITEMBRAND), if(ISNULL(CATEGORIES),"",CATEGORIES)) like");
+INSERT INTO tblmenu VALUES("3","Categories","1005","1000","2","dataGridForm","tblcategory","","SELECT *, CATEGID AS KEYID FROM tblcategory","","[{ 	"colName": "KEYID", 
+	"title": "ID",
+	"idName":"CATEGID", 
+	"tdStyle":"width='10%'",
+	"display": "yes", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"true", 
+	"class":"easyui-textbox" ,
+	"sortable":"true" ,
+	"defVal":"" 
+},{ 	"colName": "CATEGORIES", 
+	"title": "Category", 
+	"tdStyle":"width='90%'",
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true" ,
+	"defVal":"" 
+}]
+","","","","50","","","","","fa fa-cubes fa-fw","","128","","1","no","no","","PrintDataImg","","where CATEGORIES LIKE ");
+INSERT INTO tblmenu VALUES("4","Sales","2000","2000","1","#","","","","","","","","","1","","","","","fa fa-shopping-cart fa-fw","fa fa-caret-down","128","","1","no","no","","","","");
+INSERT INTO tblmenu VALUES("5","Invoicing","2001","2000","2","invoicing","","","","","","","","","1","","","","","fa fa-shopping-cart fa-fw","","128","","2","no","no","","","","");
+INSERT INTO tblmenu VALUES("6","Sales Return","2002","2000","2","sareturn","","","","","","","","","1","","","","","fa fa-sliders fa-fw","","128","","2","no","no","","","","");
+INSERT INTO tblmenu VALUES("8","Customer","1101","1000","2","dataGridForm","tblcustomer","","SELECT *, CUSTOMERID AS KEYID FROM tblcustomer","","[{ 	"colName": "KEYID", 
+	"idName": "CUSTOMERID", 
+	"title": "ID", 
+	"display": "hidden", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"true", 
+	"class":"easyui-textbox" ,
+	"defVal":"" 
+},{ 	"colName": "custname", 
+	"title": "Customer",
+	"tdStyle":"width='350'",
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true",
+	"defVal":"" 
+},{ 	"colName": "custcode", 
+	"title": "Code", 
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"cssStyle":" style='width:250px'",
+	"sortable":"true",
+	"defVal":""  
+},{ 	"colName": "TYPENAME", 
+	"title": "Type", 
+	"display": "", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"true", 
+	"class":"",
+	"cssStyle":" style='width:250px'",
+	"sortable":"false",
+	"defVal":""  
+},{ 	"colName": "CUSTTYPE", 
+	"colId": "TYPENAME", 
+	"title": "Type", 
+	"display": "hidden", 
+	"input":"combo", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-combobox",
+	"sortable":"true",
+	"defVal":"url:'getCombo.php?comboName=CUSTTYPE', method: 'get', valueField:'id',textField:'text',panelHeight:'auto', onSelect: function(rec){$('#TYPENAME').val(rec.text); }" 
+},{ 	"colName": "CONTACT", 
+	"title": "Representative",
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true",
+	"defVal":"" 
+},{ 	"colName": "address", 
+	"title": "Address", 
+	"display": "hidden", 
+	"input":"textbox", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"false",
+	"defVal":"" 
+},{ 	"colName": "area", 
+	"title": "Area", 
+	"display": "", 
+	"input":"combo", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-combobox",
+	"sortable":"true",
+	"defVal":"url:'getCombo.php?comboName=AREA', method:'get', valueField:'id', textField:'text', panelHeight:'auto'" 
+},{ 	"colName": "PHONE", 
+	"title": "Tel. Nos.", 
+	"display": "", 
+	"input":"textbox", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"false",
+	"defVal":"" 
+},{ 	"colName": "MOBILENO", 
+	"title": "Mobile No.", 
+	"display": "", 
+	"input":"textbox", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"false",
+	"defVal":"" 
+},{ 	"colName": "EMAILADD", 
+	"title": "Email", 
+	"display": "", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"false",
+	"defVal":"" 
+},{ 	"colName": "ENTDATE", 
+	"title": "Date", 
+	"display": "", 
+	"input":"date", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-datebox",
+	"sortable":"true",
+	"defVal":""
+},{ 	"colName": "TERMS", 
+	"title": "Terms", 
+	"tdStyle":"align='right'",
+	"display": "", 
+	"input":"spinner", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-numberspinner",
+	"sortable":"true",
+	"defVal":"" 
+},{ 	"colName": "creditlimit", 
+	"title": "Credit Limit", 
+	"tdStyle":"align='right'",
+	"display": "", 
+	"input":"number", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-numberbox",
+	"sortable":"true",
+	"defVal":"" 
+}]
+ ","","","","60","","","","","fa fa-group fa-fw","","128","","2","no","no","","","","where custname LIKE ");
+INSERT INTO tblmenu VALUES("9","Salesman","1103","1000","888","dataGridForm","tblsalesman","","SELECT *, SALESMANID AS KEYID FROM tblsalesman","","[{ 	"colName": "KEYID", 
+	"idName": "SALESMANID", 
+	"title": "ID", 
+	"display": "hidden", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"true", 
+	"class":"easyui-textbox" ,
+	"defVal":"" 
+},{ 	"colName": "smanname", 
+	"title": "Salesman",
+	"tdStyle":"width='350'",
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true",
+	"defVal":"" 
+},{ 	"colName": "smancode", 
+	"title": "Code", 
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"cssStyle":" style='width:250px'",
+	"sortable":"true",
+	"defVal":""  
+},{ 	"colName": "RANK", 
+	"title": "Rank", 
+	"display": "", 
+	"input":"textbox", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"false",
+	"defVal":"" 
+},{ 	"colName": "RATE", 
+	"title": "Rate", 
+	"tdStyle":"align='right'",
+	"display": "", 
+	"input":"spinner", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-numberspinner",
+	"sortable":"true",
+	"defVal":"" 
+},{ 	"colName": "address", 
+	"title": "Address", 
+	"display": "hidden", 
+	"input":"textbox", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"false",
+	"defVal":"" 
+},{ 	"colName": "AREA", 
+	"title": "Area", 
+	"display": "", 
+	"input":"combo", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-combobox",
+	"sortable":"true",
+	"defVal":"url:'getCombo.php?comboName=AREA',  method:'get',  valueField:'id', textField:'text',  panelHeight:'auto'" 
+},{ 	"colName": "PHONE", 
+	"title": "Contact No.", 
+	"display": "", 
+	"input":"textbox", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"false",
+	"defVal":"" 
+},{ 	"colName": "EMAILADD", 
+	"title": "Email", 
+	"display": "", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"false",
+	"defVal":"" 
+},{ 	"colName": "DATEJOIN", 
+	"title": "Date", 
+	"display": "", 
+	"input":"date", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-datebox",
+	"sortable":"true",
+	"defVal":""
+  
+}]
+
+","","","","70","","","","","fa fa-user fa-fw","","128","","2","no","no","","","","where smanname LIKE ");
+INSERT INTO tblmenu VALUES("10","Area","1104","1000","2","dataGridForm","tblarea","","SELECT *, AREAID AS KEYID FROM tblarea","","[{ 	"colName": "KEYID", 
+	"title": "ID",
+	"idName":"AREAID", 
+	"tdStyle":"width='10%'",
+	"display": "yes", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"true", 
+	"class":"easyui-textbox" ,
+	"defVal":"" 
+},{ 	"colName": "AREA", 
+	"title": "Area", 
+	"tdStyle":"width='90%'",
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"defVal":"" 
+}]
+","","","","50","","","","","fa fa-globe fa-fw","","128","","2","no","no","","","","where AREA LIKE ");
+INSERT INTO tblmenu VALUES("11","Purchase","3000","3000","1","#","","","","","","","","","1","","","","","fa fa-truck fa-fw","fa fa-caret-down","128","","1","no","no","","","","");
+INSERT INTO tblmenu VALUES("12","Purchase Order","3001","3000","888","p_order","","","","","","","","","1","","","","","fa fa-clipboard fa-fw","","128","","3","no","no","","","","");
+INSERT INTO tblmenu VALUES("13","Receiving Report","3002","3000","2","receiving","","","","","","","","","1","","","","","fa fa-list-alt fa-fw","#","128","","3","no","no","","","","");
+INSERT INTO tblmenu VALUES("14","Purchase Return","3003","3000","2","pureturn","","","","","","","","","1","","","","","fa fa-sliders fa-fw","#","128","","3","no","no","","","","");
+INSERT INTO tblmenu VALUES("16","Settings","9000","9000","1","#","","","","","","","","","1","","","","","fa fa-gear fa-fw","fa fa-caret-down","128","","1","no","no","","","","");
+INSERT INTO tblmenu VALUES("17","User","9001","1000","2","dataGridForm","tbluseraccount","","SELECT *, USERID AS KEYID, "" AS U_PASSWORD FROM tbluseraccount","","[{ 	"colName": "KEYID", 
+	"idName": "USERID", 
+	"title": "ID", 
+	"tdStyle":"width='40'",
+	"display": "hidden", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"true", 
+	"class":"easyui-textbox",
+	"sortable":"true" ,
+	"defVal":"" 
+},
+{ 	"colName": "U_NAME", 
+	"title": "Full Name", 
+	"display": "", 
+	"tdStyle":"width='250'",
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true" ,
+	"defVal":"" 
+},{ 	"colName": "U_USERNAME", 
+	"title": "Username", 
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true" ,
+	"defVal":""  
+},{ 	"colName": "U_PASSWORD", 
+	"idName":"U_PASS",
+	"title": "Password", 
+	"display": "hidden", 
+	"input":"password", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-passwordbox",
+	"defVal":"" 
+},{ 	"colName": "U_ROLE", 
+	"title": "Role", 
+	"display": "", 
+	"input":"combo", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-combobox",
+	"sortable":"true" ,
+	"defVal":"url:'getCombo.php?comboName=U_ROLE', method:'get', valueField:'id', textField:'text', panelHeight:'auto'" 
+},{ 	"colName": "U_DATE", 
+	"title": "Date", 
+	"display": "", 
+	"input":"date", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-datebox",
+	"sortable":"true" ,
+	"defVal":""
+},{ 	"colName": "U_STATUS", 
+	"title": "Status", 
+	"display": "", 
+	"input":"combo", 
+	"required": "true", 
+	"readonly":"false",
+	"hidden":"false", 
+	"class":"easyui-combobox",
+	"sortable":"true" ,
+	"defVal":"url:'getCombo.php?comboName=U_STATUS', method:'get', valueField:'id', textField:'text', panelHeight:'auto'"  }]
+","","","","50","","","","","fa fa-group fa-fw","","128","","1","no","no","","","","where concat(u_name, u_username ) like ");
+INSERT INTO tblmenu VALUES("18","Back-Up Data","9002","9000","2","backup","","","","","","","","","1","","","","","fa fa-save fa-fw","","128","","1","no","no","","","","");
+INSERT INTO tblmenu VALUES("19","Restore Data","9003","9000","88888","#","","","","","","","","","1","","","","","fa fa-archive fa-fw","","128","","1","no","no","","","","");
+INSERT INTO tblmenu VALUES("20","Supplier","1102","1000","2","dataGridForm","tblsupplier","","SELECT *, SUPPLIERID AS KEYID FROM tblsupplier","","[{ 	"colName": "KEYID", 
+	"idName": "SUPPLIERID", 
+	"title": "ID", 
+	"display": "hidden", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"true", 
+	"class":"easyui-textbox" ,
+	"defVal":"" 
+},{ 	"colName": "suppname", 
+	"title": "Supplier",
+	"tdStyle":"width='350'",
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true",
+	"defVal":"" 
+},{ 	"colName": "suppcode", 
+	"title": "Code", 
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"cssStyle":" style='width:250px'",
+	"sortable":"true",
+	"defVal":""  
+},{ 	"colName": "CONTACT", 
+	"title": "Representative",
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true",
+	"defVal":"" 
+},{ 	"colName": "address", 
+	"title": "Address", 
+	"display": "hidden", 
+	"input":"textbox", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"false",
+	"defVal":"" 
+},{ 	"colName": "AREA", 
+	"title": "Area", 
+	"display": "", 
+	"input":"combo", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-combobox",
+	"sortable":"true",
+	"defVal":"url:'getCombo.php?comboName=AREA',  method:'get',  valueField:'id', textField:'text',  panelHeight:'auto'" 
+},{ 	"colName": "PHONE", 
+	"title": "Tel. Nos.", 
+	"display": "", 
+	"input":"textbox", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"false",
+	"defVal":"" 
+},{ 	"colName": "MOBILENO", 
+	"title": "Mobile No.", 
+	"display": "", 
+	"input":"textbox", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"false",
+	"defVal":"" 
+},{ 	"colName": "EMAILADD", 
+	"title": "Email", 
+	"display": "", 
+	"input":"email", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"false",
+	"defVal":"" 
+},{ 	"colName": "DATEJOIN", 
+	"title": "Date", 
+	"display": "", 
+	"input":"date", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-datebox",
+	"sortable":"true",
+	"defVal":""
+},{ 	"colName": "TERMS", 
+	"title": "Terms", 
+	"tdStyle":"align='right'",
+	"display": "", 
+	"input":"spinner", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-numberspinner",
+	"sortable":"true",
+	"defVal":"" 
+},{ 	"colName": "creditlimit", 
+	"title": "Credit Limit", 
+	"tdStyle":"align='right'",
+	"display": "", 
+	"input":"number", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-numberbox",
+	"sortable":"true",
+	"defVal":"" 
+}]
+ ","","","","60","","","","","fa fa-group fa-fw","","128","","3","no","no","","","","where suppname LIKE ");
+INSERT INTO tblmenu VALUES("22","Report","9900","9900","3","report","","","","","","","","","1","","","","","fa fa-print fa-fw","#","128","","1","no","no","","","","");
+INSERT INTO tblmenu VALUES("23","Product List","1001A","1000","4","","tblProduct","","select PRONAME, PROCODE, CATEGORIES, entdate, PROQTY,  FORMAT(PROPRICE,2) AS PROPRICE, FORMAT(WPROPRICE,2) AS WPROPRICE, FORMAT(PPROPRICE,2) AS PPROPRICE, FORMAT(PURPRICE,2) AS PURPRICE, FORMAT(FORPURPRICE,2) AS FORPURPRICE, FOREX, UNIT, LOCATION from tblproduct",""," 
+                { 'data': 'PRONAME' } ,
+                { 'data': 'PROCODE' } ,
+                { 'data': 'CATEGORIES' } ,
+                { 'data': 'entdate' } ,
+	{ 'data': 'PROQTY' } ,
+	{ 'data': 'UNIT' } ,
+                { 'data': 'PROPRICE' } ,
+ 	{ 'data': 'WPROPRICE' } ,
+	{ 'data': 'PPROPRICE' } ,
+	{ 'data': 'PURPRICE' },
+                { 'data': 'FOREX' } ,
+                { 'data': 'FORPURPRICE' },
+	{ 'data': 'LOCATION' }
+ ","Product Name, Code , Category , Date , Qty , Unit  ,  Sell Price  , Wholesale, Provincial, Php Cost, Forex,  Foreign Cost,  Locator ","[4,6,7,8,9,11]","-1","13","","","","landscape","fa fa-file-text fa-fw","","128","0","1","entdate","no","Products","PrintDataView","order by PRONAME, PROCODE","upper(INACTIVE) !='YES'");
+INSERT INTO tblmenu VALUES("24","Product Brochure","1002","1000","4","","tblProduct","","select PRONAME, PROCODE, IMAGES, CATEGORIES, SUPPLIERID, SUPPNAME, FORMAT(PROPRICE,2) AS PROPRICE, FORMAT(WPROPRICE,2) AS WPROPRICE, FORMAT(PPROPRICE,2) AS PPROPRICE, CONCAT('<img class="imgBrochure" src="../products/' , IMAGES , '" width="280px" height="150px" id="PICID"/> ') as IMGDISPLAY from tblproduct","","{IMGDISPLAY}","Product","[-1]","-1","1","","ProductBrochure","paper","portrait","fa fa-pause fa-fw","","128","0","1","entdate","no","Supplier, Products, CustomerType","PrintDataImg","order by CATEGORIES, PRONAME, PROCODE","upper(INACTIVE) !='YES' and IMAGES !=""");
+INSERT INTO tblmenu VALUES("25","New Release Products","1003","1000","4","","tblProduct","","select PRONAME, PROCODE, CATEGORIES, entdate, PROQTY,  FORMAT(PROPRICE,2) AS PROPRICE, FORMAT(WPROPRICE,2) AS WPROPRICE, FORMAT(PPROPRICE,2) AS PPROPRICE, FORMAT(PURPRICE,2) AS PURPRICE, FORMAT(FORPURPRICE,2) AS FORPURPRICE, FOREX, UNIT, LOCATION from tblproduct","","	{ 'data': 'entdate' } ,
+                { 'data': 'PRONAME' } ,
+                { 'data': 'PROCODE' } ,
+                { 'data': 'CATEGORIES' } ,
+                { 'data': 'PROQTY' } ,
+	{ 'data': 'UNIT' } ,
+                { 'data': 'PROPRICE' } ,
+ 	{ 'data': 'WPROPRICE' } ,
+	{ 'data': 'PPROPRICE' } ,
+	{ 'data': 'PURPRICE' },
+                { 'data': 'FOREX' } ,
+                { 'data': 'FORPURPRICE' },
+	{ 'data': 'LOCATION' }
+ ","Date,Product Name, Code , Category , Qty , Unit  ,  Sell Price  , Wholesale, Provincial, Php Cost, Forex,  Foreign Cost,  Locator ","[4,6,7,8,9,11]","3","13","","","","landscape","fa fa-navicon fa-fw","","128","0","1","entdate","no","Supplier, Products","PrintDataView","order by CATEGORIES, PRONAME, PROCODE","upper(INACTIVE) !='YES'");
+INSERT INTO tblmenu VALUES("26","Re-Order Product - PMF","1005A","1000","4","","tblProduct","","select PRONAME, PROCODE, CATEGORIES, entdate, PROQTY, UNIT,  REORDER, MAXQTY, LOCATION, SUPPNAME, SUPPLIERID from tblproduct","","
+                { 'data': 'PRONAME' } ,
+                { 'data': 'PROCODE' } ,
+                { 'data': 'CATEGORIES' } ,
+ 	{ 'data': 'SUPPNAME' } ,
+                { 'data': 'PROQTY' } ,
+ 	{ 'data': 'REORDER' } ,
+	{ 'data': 'MAXQTY' }  
+ ","Product Name, Code , Category , Suppllier, Qty , Min Qty  , Max Qty","[4,5,6]","2","7","","","paper","landscape","fa fa-thermometer fa-fw","","128","0","1","no","no","Supplier, Products","PrintDataView","order by CATEGORIES, PRONAME, PROCODE","upper(INACTIVE) !='YES' and PROQTY <= REORDER");
+INSERT INTO tblmenu VALUES("33","Inactive Products","1005C","1000","4","","tblProduct","","select PRONAME, PROCODE, CATEGORIES, entdate, PROQTY, FORMAT(PROPRICE,2) AS PROPRICE, FORMAT(WPROPRICE,2) AS WPROPRICE, FORMAT(PPROPRICE,2) AS PPROPRICE, FORMAT(PURPRICE,2) AS PURPRICE, FORMAT(FORPURPRICE,2) AS FORPURPRICE, FOREX, UNIT, LOCATION from tblproduct","","	{ 'data': 'entdate' } ,
+                { 'data': 'PRONAME' } ,
+                { 'data': 'PROCODE' } ,
+                { 'data': 'CATEGORIES' } ,
+                { 'data': 'PROQTY' } ,
+	{ 'data': 'UNIT' } ,
+                { 'data': 'PROPRICE' } ,
+ 	{ 'data': 'WPROPRICE' } ,
+	{ 'data': 'PPROPRICE' } ,
+	{ 'data': 'LOCATION' }
+ ","Product Name, Code , Category , Date , Qty , Unit  ,  Sell Price  , Wholesale, Provincial, Locator ","[4,6,7,8]","2","10","","","paper","landscape","fa fa-info fa-fw","","128","0","1","no","no","Products","PrintDataView","order by CATEGORIES, PRONAME, PROCODE","upper(INACTIVE) !='NO'");
+INSERT INTO tblmenu VALUES("35","Products By Supplier","1004","1000","4","","tblProduct","","select a.PRONAME, a.PROCODE, a.PROID, a.CATEGORIES,     FORMAT(a.PROPRICE,2) AS PROPRICE, FORMAT(a.WPROPRICE,2) AS WPROPRICE, FORMAT(a.PPROPRICE,2) AS PPROPRICE, FORMAT(a.PURPRICE,2) AS PURPRICE, FORMAT(a.FORPURPRICE,2) AS FORPURPRICE, a.FOREX,  a.LOCATION, B.SUPPNAME,B.SUPPLIERID, b.ENTDATE, c.QTY, c.UNIT,  FORMAT(c.PURPRICE,2) as UNITCOST from tblproduct as a,  tblpurchasehead as b, tblpurchasedetl as c","","                { 'data': 'SUPPNAME' },
+                { 'data': 'PRONAME' },
+                { 'data': 'PROCODE' },
+                { 'data': 'PROPRICE' },
+ 	{ 'data': 'WPROPRICE'} ,
+	{ 'data': 'PPROPRICE'} ,
+                { 'data': 'UNITCOST'},
+	{ 'data': 'ENTDATE'},
+	{ 'data': 'QTY'}
+ ","Supplier, Product Name, Code ,  Retail, Wholesale, Provincial, Unit Cost, Last Sold, QTY","[3,4,5,6,8]","0","9","","sPriceList","paper","landscape","fa fa-list-alt fa-fw","","128","0","1","b.ENTDATE","no","Supplier, Products","PrintDataView","order by b.SUPPNAME, a.PRONAME, B.ENTDATE DESC, B.RRID DESC","a.PROID = c.PROID and b.RRID = c.RRID");
+INSERT INTO tblmenu VALUES("36","Customer Price List - Sold Item","1004D","1000","4","","tblProduct","","select a.PRONAME, a.PROCODE, a.PROID, a.CATEGORIES,     FORMAT(a.PROPRICE,2) AS PROPRICE, FORMAT(a.WPROPRICE,2) AS WPROPRICE, FORMAT(a.PPROPRICE,2) AS PPROPRICE, FORMAT(a.PURPRICE,2) AS PURPRICE, FORMAT(a.FORPURPRICE,2) AS FORPURPRICE, a.FOREX,  a.LOCATION, B.CUSTNAME,B.CUSTOMERID, b.ENTDATE, c.QTY, c.UNIT,  FORMAT(c.PROPRICE,2) as SELLPRICE from tblproduct as a,  tblslshead as b, tbLslsdetl as c","","                { 'data': 'CUSTNAME' },
+                { 'data': 'PRONAME' },
+                { 'data': 'PROCODE' },
+                { 'data': 'PROPRICE' },
+ 	{ 'data': 'WPROPRICE'} ,
+	{ 'data': 'PPROPRICE'} ,
+                { 'data': 'SELLPRICE'},
+	{ 'data': 'ENTDATE'},
+	{ 'data': 'QTY'}
+ ","Customer, Product Name, Code ,  Retail, Wholesale, Provincial, Cust Price, Last Sold, QTY","[3,4,5,6,8]","0","9","","cPriceList","paper","landscape","fa fa-tags fa-fw","","","0","1","b.ENTDATE","no","*Customer, Products","PrintDataView","order by b.CUSTNAME, a.PRONAME, B.ENTDATE DESC","a.PROID = c.PROID and b.SLSID = c.SLSID");
+INSERT INTO tblmenu VALUES("37","Product Log (In/Out)","1009","1000","4","","tblProduct","","","","","","","","1","","","","","fa fa-list-alt fa-fw","","128","0","1","no","yes","Supplier, Products","PrintDataView","order by CATEGORIES, PRONAME, PROCODE","upper(INACTIVE) !='YES'");
+INSERT INTO tblmenu VALUES("38","Car Brand","1002","1000","22","carbrand/index.php","","","","","","","","","1","","","","","fa fa-car fa-fw","","128","0","1","no","no","","","","");
+INSERT INTO tblmenu VALUES("39","Car Make","1003","1000","22","carmake","","","","","","","","","1","","","","","fa fa-cab fa-fw","","128","0","1","no","no","","","","");
+INSERT INTO tblmenu VALUES("40","Item Make","1004","1000","22","itemmake","","","","","","","","","1","","","","","fa fa-industry fa-fw","","128","0","1","no","no","","","","");
+INSERT INTO tblmenu VALUES("41","Country Made","1006","1000","22","country","","","","","","","","","1","","","","","fa fa-flag fa-fw","","128","0","1","no","no","","","","");
+INSERT INTO tblmenu VALUES("42","Item Brand","1007","1000","2","dataGridForm","tblitembrand","","SELECT *, Id AS KEYID FROM tblitembrand","","[{ 	"colName": "KEYID", 
+	"title": "ID",
+	"idName":"Id", 
+	"tdStyle":"width='10%'",
+	"display": "yes", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"true", 
+	"class":"easyui-textbox" ,
+	"sortable":"true" ,
+	"defVal":"" 
+},{ 	"colName": "ITEMBRAND", 
+	"title": "Brand", 
+	"tdStyle":"width='90%'",
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true" ,
+	"defVal":"" 
+}]
+","","","","50","","","","","fa fa-steam fa-fw","","128","0","1","no","no","","","","where ITEMBRAND LIKE ");
+INSERT INTO tblmenu VALUES("43","Color","1008","1000","2","dataGridForm","tblcolor","","SELECT *, Id AS KEYID FROM tblcolor","","[{ 	"colName": "KEYID", 
+	"title": "ID",
+	"idName":"Id", 
+	"tdStyle":"width='10%'",
+	"display": "yes", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"true", 
+	"class":"easyui-textbox" ,
+	"sortable":"true" ,
+	"defVal":"" 
+},{ 	"colName": "COLOR", 
+	"title": "Color", 
+	"tdStyle":"width='90%'",
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true" ,
+	"defVal":"" 
+}]
+","","","","50","","","","","fa fa-th fa-fw","","128","0","1","no","no","","","","where COLOR LIKE ");
+INSERT INTO tblmenu VALUES("44","Stock Type","1009","1000","22","stocktype","","","","","","","","","1","","","","","fa fa-tags fa-fw","","128","0","1","no","no","","","","");
+INSERT INTO tblmenu VALUES("45","Master File","1100","1100","11","#","","","","","","","","","1","","","","","fa fa-building fa-fw","","128","0","1","no","no","","","","");
+INSERT INTO tblmenu VALUES("46","Status","1105","1100","22","status","","","","","","","","","1","","","","","fa fa-bell fa-fw","","128","0","1","no","no","","","","");
+INSERT INTO tblmenu VALUES("47","Replacement","2003","2000","2","adjustment","","","","","","","","","1","","","","","fa fa-gears fa-fw","","128","0","2","no","no","","","","");
+INSERT INTO tblmenu VALUES("48","Inventory Adustment","1001B","1000","2","adjustment/index.php?view=new","","","","","","","","","1","","","","","fa fa-gears fa-fw","","128","0","1","no","no","","","","");
+INSERT INTO tblmenu VALUES("49","Sales Report - Date Range","2020","2000","4","","tblpurchasehead","","SELECT CUSTNAME, CUSTCODE, ENTDATE, if(slstype=1,b.INVOICENO,b.DRNO) AS INVDR, if(slstype=1,INVDATE,DRDATE) AS INVDRDATE, PRONAME, PROID, PROCODE, QTY, FORMAT(PROPRICE,2) AS PROPRICE, DISCPER, FORMAT(DISCAMT,2) AS DISCAMT,  FORMAT(AMOUNT,2) AS AMOUNT, UNIT FROM tblslsdetl as a, tblslshead as b","","{ 'data': 'INVDR' },
+{ 'data': 'INVDRDATE'},
+{ 'data': 'CUSTNAME' },
+{ 'data': 'PRONAME' },
+{ 'data': 'QTY' },
+{ 'data': 'UNIT'},
+{ 'data': 'PROPRICE'} ,
+{ 'data': 'DISCAMT'},
+{ 'data': 'AMOUNT'}
+","No., Date, Customer, Product,Qty, Unit, Unit Price, Discount, Amount","[4,6,7,8]","-1","9","8","","paper","landscape","fa fa-map-o fa-fw","","","0","1","ENTDATE","no","","","order by ENTDATE, b.SLSID","a.SLSID = B.SLSID and CANCELLED !='Y'");
+INSERT INTO tblmenu VALUES("50","Price List (Retail)","1004A","1000","4","","tblProduct","","select PRONAME, PROCODE, CATEGORIES, entdate, PROQTY,  FORMAT(PROPRICE,2) AS PROPRICE, FORMAT(WPROPRICE,2) AS WPROPRICE, FORMAT(PPROPRICE,2) AS PPROPRICE, FORMAT(PURPRICE,2) AS PURPRICE, FORMAT(FORPURPRICE,2) AS FORPURPRICE, FOREX, UNIT, LOCATION from tblproduct",""," 
+                { 'data': 'PRONAME' } ,
+                { 'data': 'PROCODE' } ,
+                { 'data': 'CATEGORIES' } ,
+                 { 'data': 'PROPRICE' } 
+  ","Product Name, Code , Category , Price","[3]","2","4","","","paper","portrait","fa fa-star fa-fw","","","0","1","entdate","no","Products","PrintDataView","order by CATEGORIES, PRONAME, PROCODE","upper(INACTIVE) !='YES'");
+INSERT INTO tblmenu VALUES("51","Price List (Wholesale)","1004B","1000","4","","tblProduct","","select PRONAME, PROCODE, CATEGORIES, entdate, PROQTY,  FORMAT(PROPRICE,2) AS PROPRICE, FORMAT(WPROPRICE,2) AS WPROPRICE, FORMAT(PPROPRICE,2) AS PPROPRICE, FORMAT(PURPRICE,2) AS PURPRICE, FORMAT(FORPURPRICE,2) AS FORPURPRICE, FOREX, UNIT, LOCATION from tblproduct",""," 
+                { 'data': 'PRONAME' } ,
+                { 'data': 'PROCODE' } ,
+                { 'data': 'CATEGORIES' } ,
+ 	{ 'data': 'WPROPRICE' } 
+ ","Product Name, Code , Category , Price","[3]","2","4","","","paper","portrait","fa fa-star-half fa-fw","","","0","1","entdate","no","Products","PrintDataView","order by CATEGORIES, PRONAME, PROCODE","upper(INACTIVE) !='YES'");
+INSERT INTO tblmenu VALUES("52","Price List (Provincial)","1004C","1000","4","","tblProduct","","select PRONAME, PROCODE, CATEGORIES, entdate, PROQTY,  FORMAT(PROPRICE,2) AS PROPRICE, FORMAT(WPROPRICE,2) AS WPROPRICE, FORMAT(PPROPRICE,2) AS PPROPRICE, FORMAT(PURPRICE,2) AS PURPRICE, FORMAT(FORPURPRICE,2) AS FORPURPRICE, FOREX, UNIT, LOCATION from tblproduct",""," 
+                { 'data': 'PRONAME' } ,
+                { 'data': 'PROCODE' } ,
+                { 'data': 'CATEGORIES' } ,
+ 	{ 'data': 'PPROPRICE' } 
+ ","Product Name, Code , Category , Price","[3]","2","4","","","paper","portrait","fa fa-star-o fa-fw","","","0","1","entdate","no","Products","PrintDataView","order by CATEGORIES, PRONAME, PROCODE","upper(INACTIVE) !='YES'");
+INSERT INTO tblmenu VALUES("54","Product ZERO Level","1005BB","1000","4","","tblProduct","","select PRONAME, PROCODE, CATEGORIES, entdate, PROQTY, UNIT,  REORDER, MAXQTY, LOCATION from tblproduct","","
+                { 'data': 'PRONAME' } ,
+                { 'data': 'PROCODE' } ,
+                { 'data': 'CATEGORIES' } ,
+                { 'data': 'PROQTY' } ,
+ 	{ 'data': 'REORDER' } ,
+	{ 'data': 'MAXQTY' }  
+ ","Product Name, Code , Category , Qty , Min Qty  , Max Qty","[3,4,5]","2","5","","","paper","portrait","fa fa-thermometer-empty fa-fw","","","0","1","no","no","Products","PrintDataView","order by CATEGORIES, PRONAME, PROCODE","upper(INACTIVE) !='YES' and PROQTY = 0");
+INSERT INTO tblmenu VALUES("56","Customer Price List - All Item","1004E","1000","4","","tblProduct","","select PROID, PRONAME, PROCODE, CATEGORIES, entdate, PROQTY, FORMAT(PROPRICE,2) AS PROPRICE, FORMAT(WPROPRICE,2) AS WPROPRICE, FORMAT(PPROPRICE,2) AS PPROPRICE, FORMAT(PURPRICE,2) AS PURPRICE, FORMAT(FORPURPRICE,2) AS FORPURPRICE, FOREX, UNIT, LOCATION from tblproduct","","                { 'data': 'CUSTNAME' },
+                { 'data': 'PRONAME' },
+                { 'data': 'PROCODE' },
+                { 'data': 'PROPRICE' },
+ 	{ 'data': 'WPROPRICE'} ,
+	{ 'data': 'PPROPRICE'} ,
+                { 'data': 'SELLPRICE'},
+	{ 'data': 'LASTDATE'},
+	{ 'data': 'QTY'}
+ 
+ ","Customer, Product Name, Code ,  Retail, Wholesale, Provincial, Cust Price, Last Sold, QTY","[3,4,5,6,8]","-1","9","","cPriceList2","paper","portrait","fa fa-tags fa-fw","","","0","1","entdate","no","*Customer, Products","PrintDataView","order by CATEGORIES, PRONAME, PROCODE","upper(INACTIVE) !='YES'");
+INSERT INTO tblmenu VALUES("57","Customer List","1101","1100","4","","","","select *, IF(CUSTTYPE=3,'P',IF(CUSTTYPE=2,'W','R')) as CTYPE from tblcustomer","","{ 'data': 'custname' }, 
+{ 'data': 'custcode' },
+{ 'data': 'area' },
+{ 'data': 'ENTDATE' },
+{ 'data': 'CONTACT' },
+{ 'data': 'PHONE'} ,
+{ 'data': 'MOBILENO'} ,
+{ 'data': 'FAXNO'},
+{ 'data': 'EMAILADD'},
+{ 'data': 'DISCOUNTPER'},
+{ 'data': 'CTYPE'},
+{ 'data': 'SMANNAME'}
+","Customer, Code, Area, Date, Contact, Tel. No., Mobile No., Fax No., Email, Discount, Type, Salesman 
+","[9]","-1","12","","","paper","landscape","fa fa-file-text fa-fw","","128","0","1","ENTDATE","no","","","order by custname, custcode","upper(BADACCT) !='YES'");
+INSERT INTO tblmenu VALUES("58","Customer List - Bad Account","1102","1100","4","","","","select *, IF(CUSTTYPE=3,'P',IF(CUSTTYPE=2,'W','R')) as CTYPE from tblcustomer","","{ 'data': 'custname' }, 
+{ 'data': 'custcode' },
+{ 'data': 'area' },
+{ 'data': 'ENTDATE' },
+{ 'data': 'CONTACT' },
+{ 'data': 'PHONE'} ,
+{ 'data': 'MOBILENO'} ,
+{ 'data': 'FAXNO'},
+{ 'data': 'EMAILADD'},
+{ 'data': 'DISCOUNTPER'},
+{ 'data': 'CTYPE'},
+{ 'data': 'SMANNAME'}
+","Customer, Code, Area, Date, Contact, Tel. No., Mobile No., Fax No., Email, Discount, Type, Salesman 
+","[9]","-1","12","","","paper","landscape","fa fa-file-text fa-fw","","128","0","1","ENTDATE","no","","","order by area, custname, custcode","upper(BADACCT) ='YES'");
+INSERT INTO tblmenu VALUES("59","Customer List By Salesman","1103","1100","4","","","","select *, IF(CUSTTYPE=3,'P',IF(CUSTTYPE=2,'W','R')) as CTYPE from tblcustomer","","{ 'data': 'custname' }, 
+{ 'data': 'custcode' },
+{ 'data': 'SMANNAME'},
+{ 'data': 'area' },
+{ 'data': 'ENTDATE' },
+{ 'data': 'CONTACT' },
+{ 'data': 'PHONE'} ,
+{ 'data': 'MOBILENO'} ,
+{ 'data': 'FAXNO'},
+{ 'data': 'EMAILADD'},
+{ 'data': 'DISCOUNTPER'},
+{ 'data': 'CTYPE'}
+","Customer, Code, Salesman , Area, Date, Contact, Tel. No., Mobile No., Fax No., Email, Discount, Type
+","[9]","2","12","","","paper","landscape","fa fa-file-text fa-fw","","128","0","1","ENTDATE","no","Salesman","","order by SMANNAME, custname, custcode","upper(BADACCT) !='YES'");
+INSERT INTO tblmenu VALUES("60","Customer List By Area","1104","1100","4","","","","select *, IF(CUSTTYPE=3,'P',IF(CUSTTYPE=2,'W','R')) as CTYPE from tblcustomer","","{ 'data': 'custname' }, 
+{ 'data': 'custcode' },
+{ 'data': 'area' },
+{ 'data': 'ENTDATE' },
+{ 'data': 'CONTACT' },
+{ 'data': 'PHONE'} ,
+{ 'data': 'MOBILENO'} ,
+{ 'data': 'FAXNO'},
+{ 'data': 'EMAILADD'},
+{ 'data': 'DISCOUNTPER'},
+{ 'data': 'CTYPE'},
+{ 'data': 'SMANNAME'}
+","Customer, Code, Area, Date, Contact, Tel. No., Mobile No., Fax No., Email, Discount, Type, Salesman 
+","[9]","2","12","","","paper","landscape","fa fa-file-text fa-fw","","128","0","1","ENTDATE","no","Area","","order by area, custname, custcode","upper(BADACCT) !='YES'");
+INSERT INTO tblmenu VALUES("61","Supplier List","1120","1100","4","","","","select * from tblsupplier","","{ 'data': 'suppname' }, 
+{ 'data': 'suppcode' },
+{ 'data': 'DATEJOIN' },
+{ 'data': 'area'},
+{ 'data': 'CONTACT' },
+{ 'data': 'PHONE'} ,
+{ 'data': 'MOBILENO'} ,
+{ 'data': 'FAXNO'},
+{ 'data': 'EMAILADD'},
+{ 'data': 'STATNAME'}
+","Supplier, Code,  Date, Area, Contact, Tel. No., Mobile No., Fax No., Email, Status","[-1]","-1","10","","","paper","landscape","fa fa-vcard-o fa-fw","","128","0","1","DATEJOIN","no","","","order by suppname","upper(BLACKLISTED) !='YES'");
+INSERT INTO tblmenu VALUES("62","Supplier List By Area","1121","1100","4","","","","select * from tblsupplier","","{ 'data': 'suppname' }, 
+{ 'data': 'suppcode' },
+{ 'data': 'DATEJOIN' },
+{ 'data': 'area'},
+{ 'data': 'CONTACT' },
+{ 'data': 'PHONE'} ,
+{ 'data': 'MOBILENO'} ,
+{ 'data': 'FAXNO'},
+{ 'data': 'EMAILADD'},
+{ 'data': 'STATNAME'}
+","Supplier, Code,  Date, Area, Contact, Tel. No., Mobile No., Fax No., Email, Status","[-1]","3","10","","","paper","portrait","fa fa-vcard-o fa-fw","","128","0","1","DATEJOIN","no","Area","","order by area, suppname","upper(BLACKLISTED) !='YES'");
+INSERT INTO tblmenu VALUES("63","Supplier List By Currency","1122","1100","4","","","","select * from tblsupplier","","{ 'data': 'suppname' }, 
+{ 'data': 'suppcode' },
+{ 'data': 'DATEJOIN' },
+{ 'data': 'FOREX'},
+{ 'data': 'CONTACT' },
+{ 'data': 'PHONE'} ,
+{ 'data': 'MOBILENO'} ,
+{ 'data': 'FAXNO'},
+{ 'data': 'EMAILADD'},
+{ 'data': 'STATNAME'}
+","Supplier, Code,  Date, Currency, Contact, Tel. No., Mobile No., Fax No., Email, Status","[-1]","3","10","","","paper","portrait","fa fa-vcard-o fa-fw","","128","0","1","DATEJOIN","no","","","order by FOREX, suppname","upper(BLACKLISTED) !='YES'");
+INSERT INTO tblmenu VALUES("65","Customer List By Status","1105","1100","4","","","","select *, IF(CUSTTYPE=3,'P',IF(CUSTTYPE=2,'W','R')) as CTYPE from tblcustomer","","{ 'data': 'custname' }, 
+{ 'data': 'custcode' },
+{ 'data': 'STATNAME' },
+{ 'data': 'CONTACT' },
+{ 'data': 'PHONE'} ,
+{ 'data': 'MOBILENO'} ,
+{ 'data': 'FAXNO'},
+{ 'data': 'EMAILADD'},
+{ 'data': 'CTYPE'},
+{ 'data': 'SMANNAME'}
+","Customer, Code, Status, Contact, Tel. No., Mobile No., Fax No., Email, Type, Salesman 
+","[-1]","2","10","","","paper","landscape","fa fa-file-text fa-fw","","128","0","1","ENTDATE","no","Status","","order by STATNAME, custname, custcode","upper(BADACCT) !='YES'");
+INSERT INTO tblmenu VALUES("66","Customer List By Type","1106","1100","4","","","","select *, IF(CUSTTYPE=3,'Provincial',IF(CUSTTYPE=2,'Wholesale','Retail')) as CTYPE from tblcustomer","","{ 'data': 'custname' }, 
+{ 'data': 'custcode' },
+{ 'data': 'CTYPE'},
+{ 'data': 'CONTACT' },
+{ 'data': 'PHONE'} ,
+{ 'data': 'MOBILENO'} ,
+{ 'data': 'FAXNO'},
+{ 'data': 'EMAILADD'},
+{ 'data': 'SMANNAME'}
+","Customer, Code, Type, Contact, Tel. No., Mobile No., Fax No., Email, Salesman 
+","[-1]","2","9","","","paper","landscape","fa fa-file-text fa-fw","","128","0","1","ENTDATE","no","CustomerType","","order by CUSTTYPE, custname, custcode","upper(BADACCT) !='YES'");
+INSERT INTO tblmenu VALUES("67","Supplier List By Status","1123","1100","4","","","","select * from tblsupplier","","{ 'data': 'suppname' }, 
+{ 'data': 'suppcode' },
+{ 'data': 'DATEJOIN' },
+{ 'data': 'STATNAME'},
+{ 'data': 'area'},
+{ 'data': 'CONTACT' },
+{ 'data': 'PHONE'} ,
+{ 'data': 'MOBILENO'} ,
+{ 'data': 'FAXNO'},
+{ 'data': 'EMAILADD'}
+","Supplier, Code,  Date, Status, Area, Contact, Tel. No., Mobile No., Fax No., Email","[-1]","3","10","","","paper","portrait","fa fa-vcard-o fa-fw","","128","0","1","DATEJOIN","no","Status","","order by STATNAME, SUPPNAME","upper(BLACKLISTED) !='YES'");
+INSERT INTO tblmenu VALUES("68","Salesman List","1140","1100","4","","","","select * from tblsalesman","","{ 'data': 'smanname' }, 
+{ 'data': 'smancode' },
+{ 'data': 'DATEJOIN' },
+{ 'data': 'area'},
+{ 'data': 'PHONE'} ,
+{ 'data': 'EMAILADD'},
+{ 'data': 'RANK'},
+{ 'data': 'RATE'}
+","Salesman, Code,  Date, Area, Tel. No., Email, Rank, Rate","[7]","-1","8","","","paper","landascape","fa fa-assistive-listening-systems fa-fw","","128","0","1","DATEJOIN","no","","","order by smanname","");
+INSERT INTO tblmenu VALUES("69","Product List By Categories","1001B","1000","4","","","","select PRONAME, PROCODE, CATEGORIES, entdate, PROQTY,  FORMAT(PROPRICE,2) AS PROPRICE, FORMAT(WPROPRICE,2) AS WPROPRICE, FORMAT(PPROPRICE,2) AS PPROPRICE, FORMAT(PURPRICE,2) AS PURPRICE, FORMAT(FORPURPRICE,2) AS FORPURPRICE, FOREX, UNIT, LOCATION from tblproduct",""," 
+                { 'data': 'PRONAME' } ,
+                { 'data': 'PROCODE' } ,
+                { 'data': 'CATEGORIES' } ,
+                { 'data': 'entdate' } ,
+	{ 'data': 'PROQTY' } ,
+	{ 'data': 'UNIT' } ,
+                { 'data': 'PROPRICE' } ,
+ 	{ 'data': 'WPROPRICE' } ,
+	{ 'data': 'PPROPRICE' } ,
+	{ 'data': 'PURPRICE' },
+                { 'data': 'FOREX' } ,
+                { 'data': 'FORPURPRICE' },
+	{ 'data': 'LOCATION' }
+ ","Product Name, Code , Category , Date , Qty , Unit  ,  Sell Price  , Wholesale, Provincial, Php Cost, Forex,  Foreign Cost,  Locator ","[4,6,7,8,9,11]","2","13","","","paper","landscape","fa fa-file-text fa-fw","","","0","1","entdate","no","Products","PrintDataView","order by CATEGORIES, PRONAME, PROCODE","upper(INACTIVE) !='YES'");
+INSERT INTO tblmenu VALUES("70","Product List w/ Remarks","1001C","1000","4","","","","select PRONAME, PROCODE, CATEGORIES, entdate, REMARKS as note,  LOCATION from tblproduct",""," 
+                { 'data': 'PRONAME' } ,
+                { 'data': 'PROCODE' } ,
+                { 'data': 'CATEGORIES' } ,
+                { 'data': 'entdate' } ,
+                { 'data': 'note' },
+	{ 'data': 'LOCATION' }
+ ","Product Name, Code , Category , Date , Remarks,  Locator ","[-1]","2","6","","","paper","landscape","fa fa-file-text fa-fw","","","0","1","entdate","no","Products","PrintDataView","order by PRONAME, PROCODE","upper(INACTIVE) !='YES'");
+INSERT INTO tblmenu VALUES("71","Product Aging Report","1005D","1000","4","","","","SELECT * FROM (select PRONAME, PROCODE, CATEGORIES, entdate, PROQTY, FORMAT(PROPRICE,2) AS PROPRICE, FORMAT(WPROPRICE,2) AS WPROPRICE, FORMAT(PPROPRICE,2) AS PPROPRICE, FORMAT(PURPRICE,2) AS PURPRICE, FORMAT(FORPURPRICE,2) AS FORPURPRICE, FOREX, UNIT, LOCATION,  DATE_FORMAT(date_add(entdate, interval (AGING * 365) day),'%Y-%m-%d') as AGINGDATE from tblproduct where upper(INACTIVE) !='YES' ) AS A ",""," 
+                { 'data': 'PRONAME' } ,
+                { 'data': 'PROCODE' } ,
+                { 'data': 'CATEGORIES' } ,
+                { 'data': 'AGINGDATE' } ,
+	{ 'data': 'PROQTY' } ,
+	{ 'data': 'UNIT' } ,
+                { 'data': 'PROPRICE' } ,
+ 	{ 'data': 'WPROPRICE' } ,
+	{ 'data': 'PPROPRICE' } ,
+	{ 'data': 'LOCATION' }
+ ","Product Name, Code , Category , Aging , Qty , Unit  ,  Sell Price  , Wholesale, Provincial, Locator ","[4,6,7,8]","2","10","","","paper","landscape","fa fa-calendar-o t fa-fw","","","0","1","no","AGINGDATE","Products","PrintDataView","order by CATEGORIES, PRONAME, PROCODE","");
+INSERT INTO tblmenu VALUES("73","Sales Report - Invoice","2021A","2000","4","","","","SELECT CUSTNAME, CUSTCODE, ENTDATE, b.INVOICENO AS INVDR, INVDATE AS INVDRDATE, PRONAME, PROID, PROCODE, QTY, FORMAT(PROPRICE,2) AS PROPRICE, DISCPER, FORMAT(DISCAMT,2) AS DISCAMT,  FORMAT(AMOUNT,2) AS AMOUNT, UNIT FROM tblslsdetl as a, tblslshead as b","","{ 'data': 'INVDR' },
+{ 'data': 'INVDRDATE'},
+{ 'data': 'CUSTNAME' },
+{ 'data': 'PRONAME' },
+{ 'data': 'QTY' },
+{ 'data': 'UNIT'},
+{ 'data': 'PROPRICE'} ,
+{ 'data': 'DISCAMT'},
+{ 'data': 'AMOUNT'}
+","Invoice No., Date, Customer, Product,Qty, Unit, Unit Price, Discount, Amount","[4,6,7,8]","-1","9","8","","paper","landscape","fa fa-tasks fa-fw","","","0","1","INVDATE","no","","","order by INVDATE, b.SLSID","a.SLSID = B.SLSID and CANCELLED !='Y' and SLSTYPE != 2");
+INSERT INTO tblmenu VALUES("74","Sales Report - Delivery","2021B","2000","4","","","","SELECT CUSTNAME, CUSTCODE, ENTDATE,b.DRNO AS INVDR, DRDATE AS INVDRDATE, PRONAME, PROID, PROCODE, QTY, FORMAT(PROPRICE,2) AS PROPRICE, DISCPER, FORMAT(DISCAMT,2) AS DISCAMT,  FORMAT(AMOUNT,2) AS AMOUNT, UNIT FROM tblslsdetl as a, tblslshead as b","","{ 'data': 'INVDR' },
+{ 'data': 'INVDRDATE'},
+{ 'data': 'CUSTNAME' },
+{ 'data': 'PRONAME' },
+{ 'data': 'QTY' },
+{ 'data': 'UNIT'},
+{ 'data': 'PROPRICE'} ,
+{ 'data': 'DISCAMT'},
+{ 'data': 'AMOUNT'}
+","D.R. No., Date, Customer, Product,Qty, Unit, Unit Price, Discount, Amount","[4,6,7,8]","-1","9","8","","paper","landscape","fa fa-truck fa-fw","","","0","1","DRDATE","no","","","order by DRDATE, b.SLSID","a.SLSID = B.SLSID and CANCELLED !='Y' and SLSTYPE = 2");
+INSERT INTO tblmenu VALUES("75","Sales Summary By Transaction","2022A","2000","4","","","","SELECT *, if(slstype=1,INVOICENO,DRNO) AS INVDR, if(slstype=1,INVDATE,DRDATE) AS INVDRDATE,  FORMAT(TOTAL,2) AS TAMT FROM  tblslshead ","","{ 'data': 'INVDR' },
+{ 'data': 'INVDRDATE'},
+{ 'data': 'CUSTNAME' },
+{ 'data': 'SMANNAME' },
+{ 'data': 'NOTE' },
+{ 'data': 'TERMS'},
+{ 'data': 'DUEDATE'} ,
+{ 'data': 'TAMT'}","No., Date, Customer, Salesman, Remarks,Terms,Due Date,  Amount","[7]","-1","8","7","","paper","landscape","fa fa-clipboard fa-fw","","","0","1","ENTDATE","no","Customer, Salesman","","order by ENTDATE, SLSID"," CANCELLED !='Y'");
+INSERT INTO tblmenu VALUES("76","Sales Summary By Invoice","2022B","2000","4","","","","select * from (SELECT a.*, INVOICENO AS INVDR,  INVDATE AS INVDRDATE,  FORMAT(TOTAL,2) AS TAMT, b.TINNO FROM  tblslshead as a, tblcustomer as b where CANCELLED !='Y' and SLSTYPE != 2 and a.CUSTOMERID = b.CUSTOMERID) as c","","{ 'data': 'INVDR' },
+{ 'data': 'INVDRDATE'},
+{ 'data': 'CUSTNAME' },
+{ 'data': 'SMANNAME' },
+{ 'data': 'TINNO' },
+{ 'data': 'TERMS'},
+{ 'data': 'DUEDATE'} ,
+{ 'data': 'TAMT'}","Invoice No., Date, Customer, Salesman, Tin No.,Terms,Due Date,  Amount","[7]","-1","8","7","","paper","landscape","fa fa-clipboard fa-fw","","","0","1","INVDATE","no","Customer, Salesman","","order by INVDATE, SLSID","");
+INSERT INTO tblmenu VALUES("77","Sales Summary By D.R.","2022C","2000","4","","","","select * from (SELECT a.*, a.DRNO AS INVDR,  a.DRDATE AS INVDRDATE,  FORMAT(TOTAL,2) AS TAMT, b.TINNO FROM  tblslshead as a, tblcustomer as b where CANCELLED !='Y' and SLSTYPE != 2 and a.CUSTOMERID = b.CUSTOMERID) as c","","{ 'data': 'INVDR' },
+{ 'data': 'INVDRDATE'},
+{ 'data': 'CUSTNAME' },
+{ 'data': 'SMANNAME' },
+{ 'data': 'TINNO' },
+{ 'data': 'TERMS'},
+{ 'data': 'DUEDATE'} ,
+{ 'data': 'TAMT'}","D.R. No., Date, Customer, Salesman, Tin No.,Terms,Due Date,  Amount","[7]","-1","8","7","","paper","landscape","fa fa-clipboard fa-fw","","","0","1","DRDATE","no","Customer, Salesman","","order by DRDATE, SLSID","");
+INSERT INTO tblmenu VALUES("78","Sales Report By Customer","2021C","2000","4","","","","SELECT CUSTNAME, CUSTCODE, ENTDATE, if(slstype=1,b.INVOICENO,b.DRNO) AS INVDR, if(slstype=1,INVDATE,DRDATE) AS INVDRDATE, PRONAME, PROID, PROCODE, QTY, FORMAT(PROPRICE,2) AS PROPRICE, DISCPER, FORMAT(DISCAMT,2) AS DISCAMT,  FORMAT(AMOUNT,2) AS AMOUNT, UNIT FROM tblslsdetl as a, tblslshead as b","","{ 'data': 'CUSTNAME' },
+{ 'data': 'INVDR' },
+{ 'data': 'INVDRDATE'},
+{ 'data': 'PRONAME' },
+{ 'data': 'QTY' },
+{ 'data': 'UNIT'},
+{ 'data': 'PROPRICE'} ,
+{ 'data': 'DISCAMT'},
+{ 'data': 'AMOUNT'}
+","Customer, No., Date, Product,Qty, Unit, Unit Price, Discount, Amount","[4,6,7,8]","0","9","4,8","","paper","landscape","fa fa-th-list fa-fw","","","0","1","ENTDATE","no","Customer","","order by CUSTNAME, CUSTOMERID, ENTDATE, b.SLSID","a.SLSID = B.SLSID and CANCELLED !='Y'");
+INSERT INTO tblmenu VALUES("81","Sales By Customer/Agent/Item","2023D","2000","4","","","","SELECT CUSTNAME, CUSTCODE, ENTDATE, if(slstype=1,b.INVOICENO,b.DRNO) AS INVDR, if(slstype=1,INVDATE,DRDATE) AS INVDRDATE, PRONAME, PROID, PROCODE, QTY, FORMAT(PROPRICE,2) AS PROPRICE, DISCPER, FORMAT(DISCAMT,2) AS DISCAMT,  FORMAT(AMOUNT,2) AS AMOUNT, UNIT,SMANNAME,SALESMANID FROM tblslsdetl as a, tblslshead as b","","{ 'data': 'CUSTNAME' },
+{ 'data': 'INVDR' },
+{ 'data': 'INVDRDATE'},
+{ 'data': 'SMANNAME' },
+{ 'data': 'PRONAME' },
+{ 'data': 'QTY' },
+{ 'data': 'UNIT'},
+{ 'data': 'PROPRICE'} ,
+{ 'data': 'DISCAMT'},
+{ 'data': 'AMOUNT'}
+","Customer, No., Date, Salesman, Product,  Qty, Unit, Unit Price, Discount, Amount","[5,7,8,9]","0","10","9","","paper","landscape","fa fa-th-list fa-fw","","","0","1","ENTDATE","no","SProduct, Customer, Salesman","","order by CUSTNAME, CUSTOMERID, SMANNAME, PRONAME, PROID,  ENTDATE, b.SLSID","a.SLSID = B.SLSID and CANCELLED !='Y'");
+INSERT INTO tblmenu VALUES("82","Sales Report By Product","2021D","2000","4","","","","SELECT CUSTNAME, CUSTCODE, ENTDATE, if(slstype=1,b.INVOICENO,b.DRNO) AS INVDR, if(slstype=1,INVDATE,DRDATE) AS INVDRDATE, PRONAME, PROID, PROCODE, QTY, FORMAT(PROPRICE,2) AS PROPRICE, DISCPER, FORMAT(DISCAMT,2) AS DISCAMT,  FORMAT(AMOUNT,2) AS AMOUNT, UNIT FROM tblslsdetl as a, tblslshead as b","","{ 'data': 'PRONAME' },
+{ 'data': 'CUSTNAME' },
+{ 'data': 'INVDR' },
+{ 'data': 'INVDRDATE'},
+{ 'data': 'QTY' },
+{ 'data': 'UNIT'},
+{ 'data': 'PROPRICE'} ,
+{ 'data': 'DISCAMT'},
+{ 'data': 'AMOUNT'}
+","Product, Customer, No., Date, Qty, Unit, Unit Price, Discount, Amount","[4,6,7,8]","0","9","4,8","","paper","landscape","fa fa-th-list fa-fw","","","0","1","ENTDATE","no","SProduct","","order by PRONAME, PROID, CUSTNAME, CUSTOMERID, ENTDATE, b.SLSID","a.SLSID = B.SLSID and CANCELLED !='Y'");
+INSERT INTO tblmenu VALUES("83","Inventory - Sales & Cost Value","10051","1000","4","","","","select PRONAME, PROCODE, CATEGORIES, entdate, PROQTY,  FORMAT(PROPRICE,2) AS PROPRICE, FORMAT(WPROPRICE,2) AS WPROPRICE, FORMAT(PPROPRICE,2) AS PPROPRICE, FORMAT(PURPRICE,2) AS PURPRICE, FORMAT(FORPURPRICE,2) AS FORPURPRICE, FOREX, UNIT, LOCATION, FORMAT((PROQTY * PROPRICE),2) as SALESVALUE, FORMAT((PROQTY * PURPRICE),2) as COSTVALUE  from tblproduct","","                { 'data': 'PRONAME' } ,
+                { 'data': 'PROCODE' } ,
+                { 'data': 'CATEGORIES' } ,
+	{ 'data': 'PROQTY' } ,
+	{ 'data': 'UNIT' } ,
+                { 'data': 'PROPRICE' } ,
+ 	{ 'data': 'SALESVALUE' } ,
+	{ 'data': 'PURPRICE' },
+                { 'data': 'COSTVALUE' }
+	 
+ ","Product Name, Code , Category ,Qty , Unit  ,  Selling Price  , Selling Total, Unit Cost, Total Cost ","[3,5,6,7,8]","2","9","6,8","","paper","landscape","fa fa-file-text fa-fw","","","0","1","entdate","no","Products","PrintDataView","order by CATEGORIES, PRONAME, PROCODE","upper(INACTIVE) !='YES' AND PROQTY >0");
+INSERT INTO tblmenu VALUES("84","Inventory Onhand - Cost","10052","1000","4","","","","select PRONAME, PROCODE, CATEGORIES, entdate, PROQTY,  FORMAT(PROPRICE,2) AS PROPRICE, FORMAT(WPROPRICE,2) AS WPROPRICE, FORMAT(PPROPRICE,2) AS PPROPRICE, FORMAT(PURPRICE,2) AS PURPRICE, FORMAT(FORPURPRICE,2) AS FORPURPRICE, FOREX, UNIT, LOCATION from tblproduct",""," 
+                { 'data': 'PRONAME' } ,
+                { 'data': 'PROCODE' } ,
+                { 'data': 'CATEGORIES' } ,
+                { 'data': 'entdate' } ,
+	{ 'data': 'PROQTY' } ,
+	{ 'data': 'UNIT' } ,
+                { 'data': 'PROPRICE' } ,
+ 	{ 'data': 'WPROPRICE' } ,
+	{ 'data': 'PPROPRICE' } ,
+	{ 'data': 'PURPRICE' },
+                { 'data': 'FOREX' } ,
+                { 'data': 'FORPURPRICE' },
+	{ 'data': 'LOCATION' }
+ ","Product Name, Code , Category , Date , Qty , Unit  ,  Sell Price  , Wholesale, Provincial, Php Cost, Forex,  Foreign Cost,  Locator ","[4,6,7,8,9,11]","-1","13","","","paper","landscape","fa fa-file-text fa-fw","","","0","1","entdate","no","Products","PrintDataView","order by PRONAME, PROCODE","upper(INACTIVE) !='YES'");
+INSERT INTO tblmenu VALUES("85","Re-Order Product By Supplier","1005AA","1000","4","","","","select a.PRONAME, a.PROCODE, a.PROID, a.CATEGORIES, a.REMARKS, a.SUPPITEM, a.QTYPERBOX, a.PROQTY, a.REORDER, a.MAXQTY,   FORMAT(a.PROPRICE,2) AS PROPRICE, FORMAT(a.WPROPRICE,2) AS WPROPRICE, FORMAT(a.PPROPRICE,2) AS PPROPRICE, FORMAT(a.PURPRICE,2) AS PURPRICE, FORMAT(a.FORPURPRICE,2) AS FORPURPRICE, a.FOREX,  a.LOCATION, B.SUPPNAME,B.SUPPLIERID, b.ENTDATE, c.QTY, c.UNIT,  FORMAT(c.FORPURPRICE,2) as UNITCOST from tblproduct as a,  tblpurchasehead as b, tblpurchasedetl as c","","                { 'data': 'SUPPNAME' },
+	{ 'data': 'SUPPITEM' },
+                { 'data': 'PRONAME' },
+             	{ 'data': 'PROQTY'},
+	{ 'data': 'QTY'},
+	{ 'data': 'ENTDATE'},
+	{ 'data': 'UNITCOST'},
+	{ 'data': 'PROPRICE'} ,
+ 	{ 'data': 'WPROPRICE'} ,
+	{ 'data': 'PPROPRICE'} ,
+                { 'data': 'QTYPERBOX'} ,
+	{ 'data': 'REMARKS'}","Supplier, Item No, Product Name, Bal, Prev. Order, Date, PENG, Retail, Wholesale, Provincial, Qty Per Box, Remarks
+","[3,4,6,7,8,9,10]
+ ","0","12","","sPriceList","paper","landscape","fa fa-thermometer fa-fw","","","0","1","b.ENTDATE","no","*Supplier, Products","PrintDataView","order by b.SUPPNAME, a.PRONAME, B.ENTDATE DESC, B.RRID DESC","a.PROID = c.PROID and b.RRID = c.RRID and a.PROQTY <= a.REORDER");
+INSERT INTO tblmenu VALUES("86","Product NEGATIVE Level","1005BC","1000","4","","","","select PRONAME, PROCODE, CATEGORIES, entdate, PROQTY, UNIT,  REORDER, MAXQTY, LOCATION from tblproduct","","
+                { 'data': 'PRONAME' } ,
+                { 'data': 'PROCODE' } ,
+                { 'data': 'CATEGORIES' } ,
+                { 'data': 'PROQTY' } ,
+ 	{ 'data': 'REORDER' } ,
+	{ 'data': 'MAXQTY' }  
+ ","Product Name, Code , Category , Qty , Min Qty  , Max Qty","[3,4,5]","2","5","","","paper","portrait","fa fa-warning fa-fw","","","0","1","no","no","Products","PrintDataView","order by CATEGORIES, PRONAME, PROCODE","upper(INACTIVE) !='YES' and PROQTY < 0");
+INSERT INTO tblmenu VALUES("87","Product WITH STOCK Level","1005BA","1000","4","","","","select PRONAME, PROCODE, CATEGORIES, entdate, PROQTY, UNIT,  REORDER, MAXQTY, LOCATION from tblproduct","","
+                { 'data': 'PRONAME' } ,
+                { 'data': 'PROCODE' } ,
+                { 'data': 'CATEGORIES' } ,
+                { 'data': 'PROQTY' } ,
+ 	{ 'data': 'REORDER' } ,
+	{ 'data': 'MAXQTY' }  
+ ","Product Name, Code , Category , Qty , Min Qty  , Max Qty","[3,4,5]","2","5","","","paper","portrait","fa fa-thermometer-full fa-fw","","","0","1","no","no","Products","PrintDataView","order by CATEGORIES, PRONAME, PROCODE","upper(INACTIVE) !='YES' and PROQTY > 0");
+INSERT INTO tblmenu VALUES("88","Sales Annually By Customer","2024A","2000","4","","","","SELECT CUSTNAME, CUSTOMERID, CUSTCODE, FORMAT(SUM(IF(MONTH(ENTDATE)=1,TOTAL,0)),2) AS JAN , FORMAT(SUM(IF(MONTH(ENTDATE)=2,TOTAL,0)),2) AS FEB, FORMAT(SUM(IF(MONTH(ENTDATE)=3,TOTAL,0)),2) AS MAR, FORMAT(SUM(IF(MONTH(ENTDATE)=4,TOTAL,0)),2) AS APR, FORMAT(SUM(IF(MONTH(ENTDATE)=5,TOTAL,0)),2) AS MAY, FORMAT(SUM(IF(MONTH(ENTDATE)=6,TOTAL,0)),2) AS JUN, FORMAT(SUM(IF(MONTH(ENTDATE)=7,TOTAL,0)),2) AS JUL, FORMAT(SUM(IF(MONTH(ENTDATE)=8,TOTAL,0)),2) AS AUG, FORMAT(SUM(IF(MONTH(ENTDATE)=9,TOTAL,0)),2) AS SEP, FORMAT(SUM(IF(MONTH(ENTDATE)=10,TOTAL,0)),2) AS OCT, FORMAT(SUM(IF(MONTH(ENTDATE)=11,TOTAL,0)),2) AS NOV, FORMAT(SUM(IF(MONTH(ENTDATE)=12,TOTAL,0)),2) AS DECEM, FORMAT(SUM(TOTAL),2) AS CTOTAL  FROM tblslshead","","{ 'data': 'CUSTNAME' },
+{ 'data': 'JAN'},
+{ 'data': 'FEB' },
+{ 'data': 'MAR' },
+{ 'data': 'APR'},
+{ 'data': 'MAY'} ,
+{ 'data': 'JUN'},
+{ 'data': 'JUL'},
+{ 'data': 'AUG'},
+{ 'data': 'SEP'},
+{ 'data': 'OCT'},
+{ 'data': 'NOV'},
+{ 'data': 'DECEM'},
+{ 'data': 'CTOTAL'}
+","Customer, Jan, Feb, Mar, APR, MAY, JUNE, JULY, AUG, SEP, OCT, NOV, DEC, TOTAL","[1,2,3,4,5,6,7,8,9,10,11,12,13]","-1","14","1,2,3,4,5,6,7,8,9,10,11,12,13","","paper","landscape","fa fa-clipboard fa-fw","","","0","1","ENTDATE","no","","","GROUP BY CUSTNAME ORDER BY CUSTNAME","CANCELLED !='Y' ");
+INSERT INTO tblmenu VALUES("89","Sales Annually By Salesman","2024B","2000","4","","","","SELECT SMANNAME, SALESMANID, FORMAT(SUM(IF(MONTH(ENTDATE)=1,TOTAL,0)),2) AS JAN , FORMAT(SUM(IF(MONTH(ENTDATE)=2,TOTAL,0)),2) AS FEB, FORMAT(SUM(IF(MONTH(ENTDATE)=3,TOTAL,0)),2) AS MAR, FORMAT(SUM(IF(MONTH(ENTDATE)=4,TOTAL,0)),2) AS APR, FORMAT(SUM(IF(MONTH(ENTDATE)=5,TOTAL,0)),2) AS MAY, FORMAT(SUM(IF(MONTH(ENTDATE)=6,TOTAL,0)),2) AS JUN, FORMAT(SUM(IF(MONTH(ENTDATE)=7,TOTAL,0)),2) AS JUL, FORMAT(SUM(IF(MONTH(ENTDATE)=8,TOTAL,0)),2) AS AUG, FORMAT(SUM(IF(MONTH(ENTDATE)=9,TOTAL,0)),2) AS SEP, FORMAT(SUM(IF(MONTH(ENTDATE)=10,TOTAL,0)),2) AS OCT, FORMAT(SUM(IF(MONTH(ENTDATE)=11,TOTAL,0)),2) AS NOV, FORMAT(SUM(IF(MONTH(ENTDATE)=12,TOTAL,0)),2) AS DECEM, FORMAT(SUM(TOTAL),2) AS CTOTAL  FROM tblslshead","","{ 'data': 'SMANNAME' },
+{ 'data': 'JAN'},
+{ 'data': 'FEB' },
+{ 'data': 'MAR' },
+{ 'data': 'APR'},
+{ 'data': 'MAY'} ,
+{ 'data': 'JUN'},
+{ 'data': 'JUL'},
+{ 'data': 'AUG'},
+{ 'data': 'SEP'},
+{ 'data': 'OCT'},
+{ 'data': 'NOV'},
+{ 'data': 'DECEM'},
+{ 'data': 'CTOTAL'}
+","Salesman, Jan, Feb, Mar, APR, MAY, JUNE, JULY, AUG, SEP, OCT, NOV, DEC, TOTAL","[1,2,3,4,5,6,7,8,9,10,11,12,13]","-1","14","1,2,3,4,5,6,7,8,9,10,11,12,13","","paper","landscape","fa fa-clipboard fa-fw","","","0","1","ENTDATE","no","","","GROUP BY SMANNAME ORDER BY SMANNAME","CANCELLED !='Y' ");
+INSERT INTO tblmenu VALUES("90","Sales Annually By Product","2024C","2000","4","","","","SELECT PRONAME, PROID, PROCODE, FORMAT(SUM(IF(MONTH(ENTDATE)=1,AMOUNT,0)),2) AS JAN , FORMAT(SUM(IF(MONTH(ENTDATE)=2,AMOUNT,0)),2) AS FEB, FORMAT(SUM(IF(MONTH(ENTDATE)=3,AMOUNT,0)),2) AS MAR, FORMAT(SUM(IF(MONTH(ENTDATE)=4,AMOUNT,0)),2) AS APR, FORMAT(SUM(IF(MONTH(ENTDATE)=5,AMOUNT,0)),2) AS MAY, FORMAT(SUM(IF(MONTH(ENTDATE)=6,AMOUNT,0)),2) AS JUN, FORMAT(SUM(IF(MONTH(ENTDATE)=7,AMOUNT,0)),2) AS JUL, FORMAT(SUM(IF(MONTH(ENTDATE)=8,AMOUNT,0)),2) AS AUG, FORMAT(SUM(IF(MONTH(ENTDATE)=9,AMOUNT,0)),2) AS SEP, FORMAT(SUM(IF(MONTH(ENTDATE)=10,AMOUNT,0)),2) AS OCT, FORMAT(SUM(IF(MONTH(ENTDATE)=11,AMOUNT,0)),2) AS NOV, FORMAT(SUM(IF(MONTH(ENTDATE)=12,AMOUNT,0)),2) AS DECEM, FORMAT(SUM(AMOUNT),2) AS CTOTAL  FROM tblslshead as b, tblslsdetl as c","","{ 'data': 'PRONAME' },
+{ 'data': 'JAN'},
+{ 'data': 'FEB' },
+{ 'data': 'MAR' },
+{ 'data': 'APR'},
+{ 'data': 'MAY'} ,
+{ 'data': 'JUN'},
+{ 'data': 'JUL'},
+{ 'data': 'AUG'},
+{ 'data': 'SEP'},
+{ 'data': 'OCT'},
+{ 'data': 'NOV'},
+{ 'data': 'DECEM'},
+{ 'data': 'CTOTAL'}
+","Customer, Jan, Feb, Mar, APR, MAY, JUNE, JULY, AUG, SEP, OCT, NOV, DEC, TOTAL","[1,2,3,4,5,6,7,8,9,10,11,12,13]","-1","14","1,2,3,4,5,6,7,8,9,10,11,12,13","","paper","landscape","fa fa-clipboard fa-fw","","","0","1","ENTDATE","no","","","GROUP BY PRONAME ORDER BY PRONAME","CANCELLED !='Y' and b.SLSID = c.SLSID");
+INSERT INTO tblmenu VALUES("93","Sales - Counter Receipt","2021E","2000","4","","","","SELECT CUSTNAME, CUSTCODE, CUSTOMERID, ENTDATE, if(slstype=1,b.INVOICENO,b.DRNO) AS INVDR, if(slstype=1,INVDATE,DRDATE) AS INVDRDATE,  FORMAT(TOTAL,2) AS TOTAL, TOTAL AS TAMT, INVOICENO, DRNO FROM   tblslshead as b","","","","","","","","CounterReceipt","paper","landscape","fa fa-th-list fa-fw","","","0","1","ENTDATE","no","Customer","","order by CUSTNAME, CUSTOMERID, ENTDATE, b.SLSID","CANCELLED !='Y'");
+INSERT INTO tblmenu VALUES("94","Sales Commission","2025A","2000","4","","","","SELECT a.*, if(slstype=1,INVOICENO,DRNO) AS INVDR, if(slstype=1,INVDATE,DRDATE) AS INVDRDATE,  FORMAT(TOTAL,2) AS TAMT, b.RATE, FORMAT((a.TOTAL * (b.RATE/100)),2) as COMAMT FROM  tblslshead as a, tblsalesman as b","","{ 'data': 'SMANNAME' },
+{ 'data': 'INVDR' },
+{ 'data': 'ENTDATE'},
+{ 'data': 'CUSTNAME' },
+{ 'data': 'TAMT'},
+{ 'data': 'RATE'} ,
+{ 'data': 'COMAMT'}","Salesman, No., Date, Customer, Amt. Sold, Rate, Commission","[4,5,6]","0","7","4,6","","paper","landscape","fa fa-clipboard fa-fw","","","0","1","a.ENTDATE","no","Salesman","","order by a.SMANNAME, a.SALESMANID, a.ENTDATE, a.SLSID","a.CANCELLED !='Y' and a.SMANNAME !='' and a.SALESMANID = b.SALESMANID");
+INSERT INTO tblmenu VALUES("95","Sales Commission Summary","2025B","2000","4","","","","SELECT a.*,   FORMAT(sum(TOTAL),2) AS TAMT, b.RATE, FORMAT((sum(a.TOTAL) * (b.RATE/100)),2) as COMAMT FROM  tblslshead as a, tblsalesman as b","","{ 'data': 'SMANNAME' },
+{ 'data': 'TAMT'},
+{ 'data': 'RATE'} ,
+{ 'data': 'COMAMT'}","Salesman,  Amt. Sold, Rate, Commission","[1,2,3]","-1","4","1,2,3","","paper","landscape","fa fa-clipboard fa-fw","","","0","1","a.ENTDATE","no","Salesman","","group by a.SMANNAME, a.SALESMANID order by a.SMANNAME, a.SALESMANID, a.ENTDATE, a.SLSID","a.CANCELLED !='Y' and a.SMANNAME !='' and a.SALESMANID = b.SALESMANID");
+INSERT INTO tblmenu VALUES("96","Sales Summary By Product","2022E","2000","4","","","","SELECT PRONAME, PROID, PROCODE, SUM(QTY) AS QTY,  FORMAT(SUM(AMOUNT),2) AS AMOUNT, ENTDATE FROM tblslsdetl as a, tblslshead as b","","{ 'data': 'PRONAME' },
+{ 'data': 'PROCODE' },
+{ 'data': 'QTY' },
+{ 'data': 'AMOUNT'}
+","Product, Code,   Qty,  Amount","[2,3]","-1","4","2,3","","paper","landscape","fa fa-th-list fa-fw","","","0","1","ENTDATE","no","SProduct","","group by PRONAME, PROID order by PRONAME, PROID","a.SLSID = B.SLSID and CANCELLED !='Y'");
+INSERT INTO tblmenu VALUES("97","Sales Summary By Customer","2022D","2000","4","","","","SELECT *,  FORMAT(SUM(TOTAL),2) AS TAMT FROM  tblslshead ","","{ 'data': 'CUSTNAME' },
+{ 'data': 'TAMT'}","Customer, Amount","[1]","-1","2","1","","paper","landscape","fa fa-clipboard fa-fw","","","0","1","ENTDATE","no","Customer","","group by CUSTNAME, CUSTOMERID ORDER BY CUSTNAME"," CANCELLED !='Y'");
+INSERT INTO tblmenu VALUES("98","Receiving Report By Date Range","3001A","3000","4","","","","select PRONAME, PROID, PROCODE, QTY, UNIT, QTYPERBOX, FORMAT(FORPURPRICE,2) AS FORPURPRICE, FORMAT(PURPRICE,2)  AS PURPRICE, FORMAT(AMOUNT,2) AS AMOUNT, FORMAT(FORAMOUNT,2) AS FORAMOUNT, SUPPNAME, SUPPCODE, SUPPLIERID, ENTDATE, TERMS, b.RRNO, b.RRID FROM tblpurchasehead as a, tblpurchasedetl as b ","","{ 'data': 'RRNO' },
+{ 'data': 'ENTDATE'},
+{ 'data': 'SUPPNAME' },
+{ 'data': 'PRONAME' },
+{ 'data': 'QTY' },
+{ 'data': 'UNIT'},
+{ 'data': 'QTYPERBOX'} ,
+{ 'data': 'FORPURPRICE'} ,
+{ 'data': 'FORAMOUNT'} ,
+{ 'data': 'PURPRICE'} ,
+{ 'data': 'AMOUNT'}","RR No., Date, Supplier, Product,Qty, Unit, Qty/Box, For. Price, For. Amt., Php Price, Php Amt.","[4,6,7,8,9,10]","-1","11","7,8,9,10","","paper","landscape","fa fa-map-o fa-fw","","","0","1","entdate","no","Supplier","","order by ENTDATE, b.RRID","a.RRID = B.RRID ");
+INSERT INTO tblmenu VALUES("99","Receiving Report By Supplier","3001B","3000","4","","","","SELECT rrno, RRID, suppname, SUPPLIERID, entdate, terms, duedate, note, FORMAT(FORTOTAL,2) AS FORTOTAL, FORMAT(TOTAL,2) AS TOTAL, FORMAT(IMPORTCOST,2) AS IMPORTCOST, FORMAT(OTHERCHARGES,2) AS OTHERCHARGES, FORMAT(NET,2) AS NET, FOREX, FOREXRATE FROM tblpurchasehead","","{ 'data': 'suppname' },
+{ 'data': 'rrno' },
+{ 'data': 'entdate'},
+{ 'data': 'terms' },
+{ 'data': 'duedate' },
+{ 'data': 'note' },
+{ 'data': 'FOREX'},
+{ 'data': 'FOREXRATE'} ,
+{ 'data': 'IMPORTCOST'},
+{ 'data': 'OTHERCHARGES'},
+{ 'data': 'FORTOTAL'},
+{ 'data': 'TOTAL'},
+{ 'data': 'NET'}
+
+","Supplier, RR No., Date, Terms, Duedate, Remarks, Forex, Rate, Importation Cost, Other Charges, For. Amt, Php Amt., Net Amt","[7,8,9,10,11,12]","0","13","8,9,10,11,12","","paper","landscape","fa fa-map-o fa-fw","","","0","1","entdate","no","Supplier","","order by SUPPNAME, ENTDATE","");
+INSERT INTO tblmenu VALUES("101","Receiving Product By Supplier","3001C","3000","4","","","","select PRONAME, PROID, PROCODE, QTY, UNIT, QTYPERBOX, FORMAT(FORPURPRICE,2) AS FORPURPRICE, FORMAT(PURPRICE,2)  AS PURPRICE, FORMAT(AMOUNT,2) AS AMOUNT, FORMAT(FORAMOUNT,2) AS FORAMOUNT, SUPPNAME, SUPPCODE, SUPPLIERID, ENTDATE, TERMS, b.RRNO, b.RRID FROM tblpurchasehead as a, tblpurchasedetl as b ","","{ 'data': 'SUPPNAME' },
+{ 'data': 'PRONAME' },
+{ 'data': 'RRNO' },
+{ 'data': 'ENTDATE'},
+{ 'data': 'TERMS'},
+{ 'data': 'QTY' },
+{ 'data': 'UNIT'},
+{ 'data': 'FORPURPRICE'} ,
+{ 'data': 'FORAMOUNT'} ,
+{ 'data': 'PURPRICE'} ,
+{ 'data': 'AMOUNT'}","Supplier, Product, RR No., Date, Terms, Qty, Unit,  For. Price, For. Amt., Php Price, Php Amt.","[5,7,8,9,10]","0","11","7,8,9,10","","paper","landscape","fa fa-map-o fa-fw","","","0","1","entdate","no","Supplier","","order by SUPPNAME, PRONAME, ENTDATE, b.RRID","a.RRID = B.RRID ");
+INSERT INTO tblmenu VALUES("102","Sales Payment","2102","2100","2","salespay/index.php?view=34ec78fcc91ffb1e54cd85e4a0924332","","","","","","","","-1","1","","","paper","portrait","fa fa-money fa-fw","","128","0","1","no","no","","","","");
+INSERT INTO tblmenu VALUES("103","Accounts Receivable","2100","2100","1","#","","","","","","","","-1","1","","","paper","portrait","fa fa-rub fa-fw","","","0","1","no","no","","","","");
+INSERT INTO tblmenu VALUES("104","Customer Receivables","2101","2100","2","arinquiry","","","","","","","","-1","1","","","paper","portrait","fa fa-rub fa-fw","","","0","1","no","no","","","","");
+INSERT INTO tblmenu VALUES("105","User Access Level","9001B","9000","2","user","tbluseraccount","","SELECT *, USERID AS KEYID, "" AS U_PASSWORD FROM tbluseraccount","","[{ 	"colName": "KEYID", 
+	"idName": "USERID", 
+	"title": "ID", 
+	"tdStyle":"width='40'",
+	"display": "hidden", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"true", 
+	"class":"easyui-textbox",
+	"sortable":"true" ,
+	"defVal":"" 
+},
+{ 	"colName": "U_NAME", 
+	"title": "Full Name", 
+	"display": "", 
+	"tdStyle":"width='250'",
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true" ,
+	"defVal":"" 
+},{ 	"colName": "U_USERNAME", 
+	"title": "Username", 
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true" ,
+	"defVal":""  
+},{ 	"colName": "U_PASSWORD", 
+	"idName":"U_PASS",
+	"title": "Password", 
+	"display": "hidden", 
+	"input":"password", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-passwordbox",
+	"defVal":"" 
+},{ 	"colName": "U_ROLE", 
+	"title": "Role", 
+	"display": "", 
+	"input":"combo", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-combobox",
+	"sortable":"true" ,
+	"defVal":"url:'getCombo.php?comboName=U_ROLE', method:'get', valueField:'id', textField:'text', panelHeight:'auto'" 
+},{ 	"colName": "U_DATE", 
+	"title": "Date", 
+	"display": "", 
+	"input":"date", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-datebox",
+	"sortable":"true" ,
+	"defVal":""
+},{ 	"colName": "U_STATUS", 
+	"title": "Status", 
+	"display": "", 
+	"input":"combo", 
+	"required": "true", 
+	"readonly":"false",
+	"hidden":"false", 
+	"class":"easyui-combobox",
+	"sortable":"true" ,
+	"defVal":"url:'getCombo.php?comboName=U_STATUS', method:'get', valueField:'id', textField:'text', panelHeight:'auto'"  }]
+","","","-1","50","","","paper","portrait","fa fa-group fa-fw","","128","0","1","no","no","","","","where concat(u_name, u_username ) like ");
+INSERT INTO tblmenu VALUES("106","Auto Number/Code","9001C","9000","9888","dataGridForm","tblautonumber","","SELECT *, ID AS KEYID  FROM tblautonumber","","[{ 	"colName": "KEYID", 
+	"idName": "ID", 
+	"title": "ID", 
+	"tdStyle":"width='40'",
+	"display": "hidden", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"true", 
+	"class":"easyui-textbox",
+	"sortable":"true" ,
+	"defVal":"" 
+},{ 	"colName": "CODENAME", 
+	"title": "Name", 
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true" ,
+	"defVal":""  
+},{ 	"colName": "FLDNAME", 
+	"title": "Field", 
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true" ,
+	"defVal":"" 
+},{ 	"colName": "AUTOTYPE", 
+	"title": "Type", 
+	"display": "", 
+	"input":"combo", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-combobox",
+	"sortable":"true",
+	"defVal":"url:'getCombo.php?comboName=AUTOTYPE',  method:'get',  valueField:'id', textField:'text',  panelHeight:'auto'" 
+ 
+},{ 	"colName": "STARTVALUE", 
+	"title": "Format", 
+	"display": "", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false",
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true" ,
+	"defVal":""  
+},{ 	"colName": "RANDOMKEY", 
+	"title": "Random Key", 
+	"display": "", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false",
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true" ,
+	"defVal":""  
+},{ 	"colName": "CODESIZE", 
+	"title": "Leading Zero", 
+	"display": "", 
+	"input":"spinner", 
+	"required": "false", 
+	"readonly":"false",
+	"hidden":"false", 
+	"class":"easyui-numberspinner",
+	"sortable":"true" ,
+	"defVal":""  
+}]
+","","","-1","50","","","paper","portrait","fa fa-group fa-fw","","128","0","1","no","no","","","","where concat(CODENAME, fldname ) like ");
+INSERT INTO tblmenu VALUES("107","Purchases","3002B","3000","8888","dataGridTran","tblpurchasehead","tblpurchasedetl","SELECT *, RRID AS KEYID  FROM tblpurchasehead","SELECT *, Id AS KEYID  FROM tblpurchasedetl","[{ 	"colName": "KEYID", 
+	"idName": "RRID", 
+	"autoNum":"rrno",
+	"title": "ID", 
+	"tdStyle":"width='40'",
+	"display": "", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"true", 
+	"class":"easyui-textbox",
+	"sortable":"true" ,
+	"defVal":"" 
+},{ 	"colName": "rrno", 
+	"title": "Purchase No.", 
+	"tdStyle":"width='100'",
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"cssStyle":" style='width:250px'",
+	"sortable":"true" ,
+	"defVal":"" 
+},{ 	"colName": "SUPPLIERID", 
+	"colId":"suppname",
+	"title": "Supplier", 
+	"display": "hidden", 
+	"input":"combo", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-combobox",
+	"sortable":"true" ,
+	"defVal":"url:'getCombo.php?comboName=SUPPLIERID',  method:'get',  valueField:'id', textField:'text',  panelHeight:'auto'  " 
+},{ 	"colName": "suppname", 
+	"title": "Supplier", 
+	"tdStyle":"width='350'",
+	"display": "", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"none", 
+	"class":"",
+	"cssStyle":" style='width:250px'",
+	"sortable":"true" ,
+	"defVal":"" 
+},{ 	"colName": "refno", 
+	"title": "Ref. No.", 
+	"tdStyle":"width='100'",
+	"display": "", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"cssStyle":" style='width:250px'",
+	"sortable":"true" ,
+	"defVal":"" 
+},{ 	"colName": "entdate", 
+	"title": "Date", 
+	"display": "", 
+	"input":"date", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-datebox",
+	"sortable":"true",
+	"defVal":"" 
+ 
+},{ 	"colName": "terms", 
+	"title": "Terms", 
+	"tdStyle":"width='50'",
+	"display": "", 
+	"input":"spinner", 
+	"required": "false", 
+	"readonly":"false",
+	"hidden":"false", 
+	"class":"easyui-numberspinner",
+	"sortable":"true" ,
+	"defVal":""  
+},{ 	"colName": "duedate", 
+	"title": "Due Date", 
+	"display": "", 
+	"input":"date", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-datebox",
+	"sortable":"true",
+	"defVal":"" 
+},{ 	"colName": "note", 
+	"title": "Remarks", 
+	"tdStyle":"width='300'",
+	"display": "", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true" ,
+	"defVal":"" 
+},{ 	"colName": "total", 
+	"title": "Total", 
+	"tdStyle":"align='right'",
+	"display": "", 
+	"input":"number", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"none", 
+	"class":"easyui-numberbox",
+	"sortable":"true",
+	"defVal":"" 
+}]
+","","[{ 	"colName": "KEYID2", 
+	"idName": "Id", 
+	"title": "ID", 
+	"tdStyle":"width='40'",
+	"display": "", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"true", 
+	"class":"easyui-textbox",
+	"sortable":"true" ,
+	"defVal":"" 
+},{ 	"colName": "RRID", 
+	"title": "RR ID", 
+	"tdStyle":"width='100'",
+	"display": "hidden", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"true", 
+	"class":"easyui-textbox",
+	"sortable":"true" ,
+	"defVal":"" 
+},{ 	"colName": "PROID", 
+	"colId":"PRONAME",
+	"title": "Description", 
+	"display": "hidden", 
+	"input":"COMBO", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true" ,
+	"defVal":"url:'getCombo.php?comboName=PROID',  method:'get',  valueField:'id', textField:'text',  panelHeight:'auto'" 
+},{ 	"colName": "PRONAME", 
+	"title": "Product", 
+	"tdStyle":"width='400'",
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"true", 
+	"class":"",
+	"sortable":"true" ,
+	"defVal":"" 
+},{ 	"colName": "PROCODE", 
+	"title": "Code", 
+	"tdStyle":"width='100'",
+	"display": "", 
+	"input":"text", 
+	"required": "true", 
+	"readonly":"false", 
+	"hidden":"true", 
+	"class":"",
+	"sortable":"true" ,
+	"defVal":"" 
+},{ 	"colName": "QTY", 
+	"title": "Qty.", 
+	"tdStyle":"width='70' align='right'",
+	"display": "", 
+	"input":"spinner", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-numberspinner",
+	"sortable":"true" ,
+	"defVal":"" 
+
+},{ 	"colName": "UNIT", 
+	"title": "Unit", 
+	"tdStyle":"width='70'",
+	"display": "", 
+	"input":"text", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-textbox",
+	"sortable":"true" ,
+	"defVal":"" 
+},{ 	"colName": "PURPRICE", 
+	"title": "Unit Cost", 
+	"tdStyle":"width='90' align='right'",
+	"display": "", 
+	"input":"number", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-numberbox",
+	"sortable":"true",
+	"defVal":"" 
+},{ 	"colName": "DISCAMT", 
+	"title": "Discount", 
+	"tdStyle":"width='90' align='right'",
+	"display": "", 
+	"input":"number", 
+	"required": "false", 
+	"readonly":"false", 
+	"hidden":"false", 
+	"class":"easyui-numberbox",
+	"sortable":"false",
+	"defVal":"" 
+},{ 	"colName": "AMOUNT", 
+	"title": "Amount", 
+	"tdStyle":"width='90' align='right'",
+	"display": "", 
+	"input":"number", 
+	"required": "false", 
+	"readonly":"true", 
+	"hidden":"false", 
+	"class":"easyui-numberbox",
+	"sortable":"true",
+	"defVal":"" 
+}]
+","-1","60","","","paper","portrait","fa fa-list-alt fa-fw","#","128","0","3","no","no","","","","where concat(suppname, rrno ) like ");
+
+
+
+CREATE TABLE `tblmenu_navuser` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `USERID` varchar(255) DEFAULT NULL,
+  `STATUS` int(1) DEFAULT 0,
+  `MENUID` int(11) DEFAULT 0,
+  `ADDBTN` char(1) DEFAULT 'F',
+  `EDITBTN` char(1) DEFAULT 'F',
+  `DELETEBTN` char(1) DEFAULT 'F',
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1418 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+INSERT INTO tblmenu_navuser VALUES("1222","159","1","1","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1223","159","1","2","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1224","159","1","48","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1226","159","1","3","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1230","159","1","42","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1229","159","1","43","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("981","131","1","105","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("980","131","1","104","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("979","131","1","103","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("978","131","1","102","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("1414","128","1","105","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1406","128","1","104","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1405","128","1","103","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1407","128","1","102","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1394","128","1","48","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1404","128","1","47","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1395","128","1","42","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1416","128","1","22","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1398","128","1","20","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1415","128","1","18","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1413","128","1","17","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1412","128","1","16","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1411","128","1","14","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1410","128","1","13","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1409","128","1","12","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1408","128","1","11","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1400","128","1","10","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1399","128","1","9","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1397","128","1","8","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1403","128","1","6","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1402","128","1","5","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1401","128","1","4","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1392","128","1","1","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1391","128","1","2","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1393","128","1","3","T","T","T");
+INSERT INTO tblmenu_navuser VALUES("1212","159","1","11","T","F","F");
+INSERT INTO tblmenu_navuser VALUES("1211","159","1","102","T","F","F");
+INSERT INTO tblmenu_navuser VALUES("1210","159","1","104","T","F","F");
+INSERT INTO tblmenu_navuser VALUES("1231","159","1","8","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1232","159","1","20","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1213","159","1","103","T","F","F");
+INSERT INTO tblmenu_navuser VALUES("1208","159","1","47","T","F","F");
+INSERT INTO tblmenu_navuser VALUES("1205","159","1","6","T","F","F");
+INSERT INTO tblmenu_navuser VALUES("1209","159","1","5","T","F","F");
+INSERT INTO tblmenu_navuser VALUES("1207","159","1","4","T","F","F");
+INSERT INTO tblmenu_navuser VALUES("1234","159","1","10","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1233","159","1","9","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("977","131","1","48","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("976","131","1","47","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("975","131","1","42","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("974","131","1","22","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("973","131","1","20","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("972","131","1","18","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("971","131","1","17","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("970","131","1","16","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("969","131","1","14","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("968","131","1","13","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("967","131","1","12","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("966","131","1","11","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("965","131","1","10","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("964","131","1","9","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("963","131","1","8","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("962","131","1","6","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("961","131","1","5","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("960","131","1","4","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("959","131","1","3","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("958","131","1","2","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("957","131","1","1","F","F","F");
+INSERT INTO tblmenu_navuser VALUES("1214","159","1","12","T","F","F");
+INSERT INTO tblmenu_navuser VALUES("1215","159","1","13","T","F","F");
+INSERT INTO tblmenu_navuser VALUES("1216","159","1","14","T","F","F");
+INSERT INTO tblmenu_navuser VALUES("1217","159","1","16","T","F","F");
+INSERT INTO tblmenu_navuser VALUES("1218","159","1","17","T","F","F");
+INSERT INTO tblmenu_navuser VALUES("1219","159","1","105","T","F","F");
+INSERT INTO tblmenu_navuser VALUES("1220","159","1","18","T","F","F");
+INSERT INTO tblmenu_navuser VALUES("1221","159","1","22","T","F","F");
+INSERT INTO tblmenu_navuser VALUES("1288","162","1","1","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1287","162","1","2","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1289","162","1","48","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1291","162","1","42","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1290","162","1","3","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1293","162","1","8","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1292","162","1","43","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1294","162","1","20","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1295","162","1","9","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1296","162","1","10","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1297","162","1","4","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1298","162","1","5","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1299","162","1","6","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1300","162","1","47","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1301","162","1","103","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1302","162","1","104","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1303","162","1","102","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1304","162","1","11","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1305","162","1","12","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1306","162","1","13","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1307","162","1","14","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1308","162","1","16","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1309","162","1","17","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1310","162","1","105","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1311","162","1","18","T","T","F");
+INSERT INTO tblmenu_navuser VALUES("1312","162","1","22","T","T","F");
+
+
+
+CREATE TABLE `tblmenu_reportuser` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `USERID` varchar(255) DEFAULT NULL,
+  `STATUS` int(1) DEFAULT 0,
+  `MENUID` int(11) DEFAULT 0,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+INSERT INTO tblmenu_reportuser VALUES("14","159","1","94");
+INSERT INTO tblmenu_reportuser VALUES("2","131","1","1");
+INSERT INTO tblmenu_reportuser VALUES("5","131","1","70");
+INSERT INTO tblmenu_reportuser VALUES("6","131","1","45");
+INSERT INTO tblmenu_reportuser VALUES("7","131","1","57");
+INSERT INTO tblmenu_reportuser VALUES("8","131","1","58");
+INSERT INTO tblmenu_reportuser VALUES("9","131","1","59");
+INSERT INTO tblmenu_reportuser VALUES("10","131","1","4");
+INSERT INTO tblmenu_reportuser VALUES("11","131","1","49");
+INSERT INTO tblmenu_reportuser VALUES("12","131","1","24");
+INSERT INTO tblmenu_reportuser VALUES("13","131","1","50");
+INSERT INTO tblmenu_reportuser VALUES("15","159","1","23");
+INSERT INTO tblmenu_reportuser VALUES("16","159","1","1");
+
+
+
+CREATE TABLE `tblorder` (
+  `ORDERID` int(11) NOT NULL AUTO_INCREMENT,
+  `PROID` int(11) NOT NULL,
+  `ORDEREDQTY` int(11) NOT NULL,
+  `ORDEREDPRICE` double NOT NULL,
+  `ORDEREDNUM` int(11) NOT NULL,
+  `USERID` int(11) NOT NULL,
+  PRIMARY KEY (`ORDERID`),
+  KEY `USERID` (`USERID`),
+  KEY `PROID` (`PROID`),
+  KEY `ORDEREDNUM` (`ORDEREDNUM`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+CREATE TABLE `tblpodetl` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `POID` int(11) DEFAULT 0,
+  `pono` varchar(20) DEFAULT NULL,
+  `PROID` int(11) DEFAULT 0,
+  `PRONAME` varchar(255) DEFAULT NULL,
+  `PROCODE` varchar(20) DEFAULT NULL,
+  `PURPRICE` double(12,2) DEFAULT 0.00,
+  `QTY` double(12,2) DEFAULT 0.00,
+  `DISCPER` double(6,2) DEFAULT 0.00,
+  `DISCAMT` double(12,2) DEFAULT 0.00,
+  `AMOUNT` double(12,2) DEFAULT 0.00,
+  `QTYRECEIVED` double(12,2) DEFAULT 0.00,
+  `FORPURPRICE` double(12,2) DEFAULT 0.00,
+  `FORAMOUNT` double(12,2) DEFAULT 0.00,
+  `SUPPITEM` varchar(255) DEFAULT NULL,
+  `QTYPERBOX` int(6) DEFAULT 0,
+  `FLOORPRICE` double(12,2) DEFAULT 0.00,
+  `FLOORRATE` double(6,2) DEFAULT 0.00,
+  `UNIT` char(20) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+
+
+CREATE TABLE `tblpohead` (
+  `POID` int(11) NOT NULL AUTO_INCREMENT,
+  `pono` varchar(20) DEFAULT NULL,
+  `refno` varchar(20) DEFAULT NULL,
+  `entdate` date DEFAULT NULL,
+  `suppname` varchar(255) DEFAULT NULL,
+  `suppcode` varchar(20) DEFAULT NULL,
+  `SUPPLIERID` int(11) DEFAULT NULL,
+  `total` double(12,2) DEFAULT 0.00,
+  `discountamt` double(12,2) DEFAULT 0.00,
+  `discountper` double(6,2) DEFAULT 0.00,
+  `net` double(12,2) DEFAULT 0.00,
+  `note` varchar(500) DEFAULT NULL,
+  `terms` int(5) DEFAULT 0,
+  `duedate` date DEFAULT NULL,
+  `paidamt` double(12,2) DEFAULT NULL,
+  `USERID` int(11) DEFAULT NULL,
+  `U_NAME` varchar(122) DEFAULT NULL,
+  `FOREX` varchar(5) DEFAULT NULL,
+  `FOREXRATE` double(9,2) DEFAULT 0.00,
+  `FORTOTAL` double(12,2) DEFAULT 0.00,
+  `FORNET` double(12,2) DEFAULT 0.00,
+  `PRINTED` char(3) DEFAULT 'no',
+  PRIMARY KEY (`POID`),
+  KEY `pono` (`pono`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+
+
+CREATE TABLE `tblproduct` (
+  `PROID` int(11) NOT NULL AUTO_INCREMENT,
+  `PROCODE` varchar(20) DEFAULT NULL,
+  `PRONAME` varchar(255) DEFAULT NULL,
+  `entdate` char(10) DEFAULT NULL,
+  `CATEGORIES` varchar(255) DEFAULT NULL,
+  `ITEMBRAND` varchar(100) DEFAULT NULL,
+  `COLOR` varchar(50) DEFAULT NULL,
+  `PROQTY` double(12,2) DEFAULT 0.00,
+  `UNIT` char(20) DEFAULT NULL,
+  `PROPRICE` double(12,2) DEFAULT 0.00,
+  `WPROPRICE` double(12,2) DEFAULT 0.00,
+  `PURPRICE` double(12,2) DEFAULT 0.00,
+  `AVGCOST` double(12,2) NOT NULL DEFAULT 0.00,
+  `CARBRAND` varchar(50) DEFAULT NULL,
+  `PROMODEL` varchar(30) DEFAULT NULL,
+  `PROBRAND` varchar(255) DEFAULT NULL,
+  `PRODESC` varchar(255) DEFAULT NULL,
+  `MAXQTY` double(12,2) DEFAULT 0.00,
+  `REORDER` double(12,2) DEFAULT 0.00,
+  `PPROPRICE` double(12,2) DEFAULT 0.00,
+  `PROMARGIN` double(6,2) DEFAULT 0.00,
+  `CATEGID` int(11) DEFAULT NULL,
+  `IMAGES` varchar(255) DEFAULT NULL,
+  `PROSTATS` varchar(30) DEFAULT NULL,
+  `FORPURPRICE` double(12,2) DEFAULT 0.00,
+  `FOREX` char(5) DEFAULT 'PHP',
+  `FLOORPRICE` double(12,2) DEFAULT 0.00,
+  `FLOORRATE` double(6,2) DEFAULT 0.00,
+  `INACTIVE` char(3) DEFAULT 'No',
+  `CARMAKE` varchar(50) DEFAULT NULL,
+  `ITEMMAKE` varchar(50) DEFAULT NULL,
+  `YEARMODEL` char(10) DEFAULT NULL,
+  `YRSMODEL` varchar(10) DEFAULT NULL,
+  `SIDES` char(10) DEFAULT NULL,
+  `OTHERNAME` varchar(100) DEFAULT NULL,
+  `COUNTRY` varchar(100) DEFAULT NULL,
+  `VOLTS` int(5) DEFAULT 0,
+  `WATTS` int(5) DEFAULT 0,
+  `STOCKTYPE` varchar(50) DEFAULT NULL,
+  `AGING` int(5) DEFAULT 0,
+  `LOCATION` char(20) DEFAULT NULL,
+  `QTYPERBOX` int(5) DEFAULT 0,
+  `REMARKS` varchar(300) DEFAULT NULL,
+  `suppname` varchar(100) DEFAULT NULL,
+  `suppcode` char(20) DEFAULT NULL,
+  `SUPPITEM` varchar(100) DEFAULT NULL,
+  `BEGQTY` double(10,2) NOT NULL DEFAULT 0.00,
+  `BEGAVGCOST` double(12,2) NOT NULL DEFAULT 0.00,
+  `SMANRATE` double(6,2) DEFAULT 0.00,
+  `SUPPLIERID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`PROID`),
+  UNIQUE KEY `PROCODE` (`PROCODE`),
+  KEY `CATEGID` (`CATEGID`),
+  KEY `PRONAME` (`PRONAME`)
+) ENGINE=InnoDB AUTO_INCREMENT=151 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblproduct VALUES("1","SGBWD001","SHORT - GARTERIZED - BLK - WD - SMALL","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE DOT","0.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","images/products/bg1.jpg","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("2","SGBWD002","SHORT - GARTERIZED - BLK - WD - MEDIUM","2020-07-21","SHORT","MALL DISPLAY","BLACK - WHITE DOT","0.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","images/products/2_0c8b7bc9611a23f592b99306ba7f6f66.png","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("3","SGBWD003","SHORT - GARTERIZED - BLK - WD - LARGE","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE DOT","0.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","images/products/3_car-honda-scooter-spare-part-vehicle-vector-brakes-and-parts.jpg","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("4","SGBWD004","SHORT - GARTERIZED - BLK - WD - XL","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE DOT","0.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","images/products/4_carlogo2.png","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("5","SGBWL001","SHORT - GARTERIZED - BLK - WL - SMALL","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE LINE","0.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("6","SGBWL002","SHORT - GARTERIZED - BLK - WL - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE LINE","0.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","images/products/6_carlogo.png","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("7","SGBWL003","SHORT - GARTERIZED - BLK - WL - LARGE","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE LINE","0.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","images/products/7_carbrand.png","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("8","SGBWL004","SHORT - GARTERIZED - BLK - WL - XL","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE LINE","0.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("9","SGBLK001","SHORT - GARTERIZED - BLK - SMALL","2020-06-21","SHORT","MALL DISPLAY","BLACK","1.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("10","SGBLK002","SHORT - GARTERIZED - BLK - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","BLACK","2.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","images/products/10_c1fe308bfc0c37983269bffa93abd20d.png","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("11","SGBLK003","SHORT - GARTERIZED - BLK - LARGE","2020-06-21","SHORT","MALL DISPLAY","BLACK","0.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","images/products/11_CARRR.png","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("22","SGBLK004","SHORT - GARTERIZED - BLK - XL","2020-06-21","SHORT","MALL DISPLAY","BLACK","2.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("23","SGW001","SHORT - GARTERIZED - WHT - SMALL","2020-06-21","SHORT","MALL DISPLAY","WHITE","2.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","images/products/23_Untitled-1.png","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("24","SGW002","SHORT - GARTERIZED - WHT - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","WHITE","1.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","images/products/24_textiles-sale_1398-3775.jpg","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("25","SGW003","SHORT - GARTERIZED - WHT - LARGE","2020-06-21","SHORT","MALL DISPLAY","WHITE","1.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("26","SGW004","SHORT - GARTERIZED - WHT - XL","2020-06-21","SHORT","MALL DISPLAY","WHITE","4.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("27","SGBG001","SHORT - GARTERIZED - BEIGE - SMALL","2020-06-21","SHORT","MALL DISPLAY","BEIGE","1.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("28","SGBG002","SHORT - GARTERIZED - BEIGE - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","BEIGE","1.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","images/products/28_solution.png","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("29","SGBG003","SHORT - GARTERIZED - BEIGE - LARGE","2020-06-21","SHORT","MALL DISPLAY","BEIGE","3.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("30","SGBG004","SHORT - GARTERIZED - BEIGE - XL","2020-06-21","SHORT","MALL DISPLAY","BEIGE","1.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("31","SGTG001","SHORT - GARTERIZED - TEAL GREEN - SMALL","2020-06-21","SHORT","MALL DISPLAY","TEAL GREEN","1.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("32","SGTG002","SHORT - GARTERIZED - TEAL GREEN - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","TEAL GREEN","0.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("33","SGTG003","SHORT - GARTERIZED - TEAL GREEN - LARGE","2020-06-21","SHORT","MALL DISPLAY","TEAL GREEN","0.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("34","SGTG004","SHORT - GARTERIZED - TEAL GREEN - XL","2020-06-21","SHORT","MALL DISPLAY","TEAL GREEN","2.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("35","SGAG001","SHORT - GARTERIZED - ARMY GREEN - SMALL","2020-06-21","SHORT","MALL DISPLAY","ARMY GREEN","1.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("36","SGAG002","SHORT - GARTERIZED - ARMY GREEN - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","ARMY GREEN","1.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("37","SGAG003","SHORT - GARTERIZED - ARMY GREEN - LARGE","2020-06-21","SHORT","MALL DISPLAY","ARMY GREEN","0.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("38","SGAG004","SHORT - GARTERIZED - ARMY GREEN - XL","2020-06-21","SHORT","MALL DISPLAY","ARMY GREEN","1.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("39","SGPNK001","SHORT - GARTERIZED - PINK - SMALL","2020-06-21","SHORT","MALL DISPLAY","PINK","1.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("40","SGPNK002","SHORT - GARTERIZED - PINK - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","PINK","1.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("41","SGPNK003","SHORT - GARTERIZED - PINK - LARGE","2020-06-21","SHORT","MALL DISPLAY","PINK","1.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","images/products/41_CATEGORIES.png","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("42","SGPNK004","SHORT - GARTERIZED - PINK - XL","2020-06-21","SHORT","MALL DISPLAY","PINK","2.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("43","SGOR001","SHORT - GARTERIZED - OLD ROSE - SMALL","2020-06-21","SHORT","MALL DISPLAY","OLD ROSE","2.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("44","SGOR002","SHORT - GARTERIZED - OLD ROSE - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","OLD ROSE","0.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("45","SGOR003","SHORT - GARTERIZED - OLD ROSE - LARGE","2020-06-21","SHORT","MALL DISPLAY","OLD ROSE","2.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("46","SGOR004","SHORT - GARTERIZED - OLD ROSE - XL","2020-06-21","SHORT","MALL DISPLAY","OLD ROSE","1.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("47","SGNB001","SHORT - GARTERIZED - NAVY BLUE - SMALL","2020-06-21","SHORT","MALL DISPLAY","NAVY BLUE","0.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("48","SGNB002","SHORT - GARTERIZED - NAVY BLUE - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","NAVY BLUE","0.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("49","SGNB003","SHORT - GARTERIZED - NAVY BLUE - LARGE","2020-06-21","SHORT","MALL DISPLAY","NAVY BLUE","0.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("50","SGNB004","SHORT - GARTERIZED - NAVY BLUE - XL","2020-06-21","SHORT","MALL DISPLAY","NAVY BLUE","2.00","PC","150.00","130.00","90.00","90.00","","","","","0.00","0.00","0.00","0.00","","images/products/50_COLOR.png","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("51","SBBWD001","SHORT - BUTTONS - BLK - WD - SMALL","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE DOT","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("52","SBBWD002","SHORT - BUTTONS - BLK - WD - MEDIUM","2020-07-21","SHORT","MALL DISPLAY","BLACK - WHITE DOT","1.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("53","SBBWD003","SHORT - BUTTONS - BLK - WD - LARGE","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE DOT","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("54","SBBWD004","SHORT - BUTTONS - BLK - WD - XL","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE DOT","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("55","SBBWL001","SHORT - BUTTONS - BLK - WL - SMALL","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE LINE","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("56","SBBWL002","SHORT - BUTTONS - BLK - WL - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE LINE","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("57","SBBWL003","SHORT - BUTTONS - BLK - WL - LARGE","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE LINE","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("58","SBBWL004","SHORT - BUTTONS - BLK - WL - XL","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE LINE","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("59","SBBLK001","SHORT - BUTTONS - BLK - SMALL","2020-06-21","SHORT","MALL DISPLAY","BLACK","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("60","SBBLK002","SHORT - BUTTONS - BLK - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","BLACK","4.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("61","SBBLK003","SHORT - BUTTONS - BLK - LARGE","2020-06-21","SHORT","MALL DISPLAY","BLACK","1.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("62","SBBLK004","SHORT - BUTTONS - BLK - XL","2020-06-21","SHORT","MALL DISPLAY","BLACK","1.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("63","SBW001","SHORT - BUTTONS - WHT - SMALL","2020-06-21","SHORT","MALL DISPLAY","WHITE","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("64","SBW002","SHORT - BUTTONS - WHT - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","WHITE","1.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("65","SBW003","SHORT - BUTTONS - WHT - LARGE","2020-06-21","SHORT","MALL DISPLAY","WHITE","2.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("66","SBW004","SHORT - BUTTONS - WHT - XL","2020-06-21","SHORT","MALL DISPLAY","WHITE","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("67","SBBG001","SHORT - BUTTONS - BEIGE - SMALL","2020-06-21","SHORT","MALL DISPLAY","BEIGE","1.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("68","SBBG002","SHORT - BUTTONS - BEIGE - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","BEIGE","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("69","SBBG003","SHORT - BUTTONS - BEIGE - LARGE","2020-06-21","SHORT","MALL DISPLAY","BEIGE","2.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("70","SBBG004","SHORT - BUTTONS - BEIGE - XL","2020-06-21","SHORT","MALL DISPLAY","BEIGE","3.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("71","SBTG001","SHORT - BUTTONS - TEAL GREEN - SMALL","2020-06-21","SHORT","MALL DISPLAY","TEAL GREEN","3.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("72","SBTG002","SHORT - BUTTONS - TEAL GREEN - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","TEAL GREEN","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("73","SBTG003","SHORT - BUTTONS - TEAL GREEN - LARGE","2020-06-21","SHORT","MALL DISPLAY","TEAL GREEN","2.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("74","SBTG004","SHORT - BUTTONS - TEAL GREEN - XL","2020-06-21","SHORT","MALL DISPLAY","TEAL GREEN","1.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("75","SBAG001","SHORT - BUTTONS - ARMY GREEN - SMALL","2020-06-21","SHORT","MALL DISPLAY","ARMY GREEN","3.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("76","SBAG002","SHORT - BUTTONS - ARMY GREEN - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","ARMY GREEN","2.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("77","SBAG003","SHORT - BUTTONS - ARMY GREEN - LARGE","2020-06-21","SHORT","MALL DISPLAY","ARMY GREEN","2.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("78","SBAG004","SHORT - BUTTONS - ARMY GREEN - XL","2020-06-21","SHORT","MALL DISPLAY","ARMY GREEN","3.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("79","SBPNK001","SHORT - BUTTONS - PINK - SMALL","2020-06-21","SHORT","MALL DISPLAY","PINK","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("80","SBPNK002","SHORT - BUTTONS - PINK - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","PINK","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("81","SBPNK003","SHORT - BUTTONS - PINK - LARGE","2020-06-21","SHORT","MALL DISPLAY","PINK","1.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("82","SBPNK004","SHORT - BUTTONS - PINK - XL","2020-06-21","SHORT","MALL DISPLAY","PINK","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("83","SBOR001","SHORT - BUTTONS - OLD ROSE - SMALL","2020-06-21","SHORT","MALL DISPLAY","OLD ROSE","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("84","SBOR002","SHORT - BUTTONS - OLD ROSE - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","OLD ROSE","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("85","SBOR003","SHORT - BUTTONS - OLD ROSE - LARGE","2020-06-21","SHORT","MALL DISPLAY","OLD ROSE","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("86","SBOR004","SHORT - BUTTONS - OLD ROSE - XL","2020-06-21","SHORT","MALL DISPLAY","OLD ROSE","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("87","SBNB001","SHORT - BUTTONS - NAVY BLUE - SMALL","2020-06-21","SHORT","MALL DISPLAY","NAVY BLUE","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("88","SBNB002","SHORT - BUTTONS - NAVY BLUE - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","NAVY BLUE","0.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("89","SBNB003","SHORT - BUTTONS - NAVY BLUE - LARGE","2020-06-21","SHORT","MALL DISPLAY","NAVY BLUE","1.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("90","SBNB004","SHORT - BUTTONS - NAVY BLUE - XL","2020-06-21","SHORT","MALL DISPLAY","NAVY BLUE","1.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("91","SMBWD001","SHORT - MIDI - BLK - WD - SMALL","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE DOT","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("92","SMBWD002","SHORT - MIDI - BLK - WD - MEDIUM","2020-07-21","SHORT","MALL DISPLAY","BLACK - WHITE DOT","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("93","SMBWD003","SHORT - MIDI - BLK - WD - LARGE","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE DOT","2.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("94","SMBWD004","SHORT - MIDI - BLK - WD - XL","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE DOT","2.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("95","SMBWL001","SHORT - MIDI - BLK - WL - SMALL","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE LINE","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("96","SMBWL002","SHORT - MIDI - BLK - WL - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE LINE","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("97","SMBWL003","SHORT - MIDI - BLK - WL - LARGE","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE LINE","2.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("98","SMBWL004","SHORT - MIDI - BLK - WL - XL","2020-06-21","SHORT","MALL DISPLAY","BLACK - WHITE LINE","2.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("99","SMBLK001","SHORT - MIDI - BLK - SMALL","2020-06-21","SHORT","MALL DISPLAY","BLACK","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("100","SMBLK002","SHORT - MIDI - BLK - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","BLACK","1.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("101","SMBLK003","SHORT - MIDI - BLK - LARGE","2020-06-21","SHORT","MALL DISPLAY","BLACK","3.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("102","SMBLK004","SHORT - MIDI - BLK - XL","2020-06-21","SHORT","MALL DISPLAY","BLACK","3.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("103","SMW001","SHORT - MIDI - WHT - SMALL","2020-06-21","SHORT","MALL DISPLAY","WHITE","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("104","SMW002","SHORT - MIDI - WHT - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","WHITE","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("105","SMW003","SHORT - MIDI - WHT - LARGE","2020-06-21","SHORT","MALL DISPLAY","WHITE","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("106","SMW004","SHORT - MIDI - WHT - XL","2020-06-21","SHORT","MALL DISPLAY","WHITE","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("107","SMBG001","SHORT - MIDI - BEIGE - SMALL","2020-06-21","SHORT","MALL DISPLAY","BEIGE","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("108","SMBG002","SHORT - MIDI - BEIGE - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","BEIGE","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("109","SMBG003","SHORT - MIDI - BEIGE - LARGE","2020-06-21","SHORT","MALL DISPLAY","BEIGE","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("110","SMBG004","SHORT - MIDI - BEIGE - XL","2020-06-21","SHORT","MALL DISPLAY","BEIGE","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("111","SMTG001","SHORT - MIDI - TEAL GREEN - SMALL","2020-06-21","SHORT","MALL DISPLAY","TEAL GREEN","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("112","SMTG002","SHORT - MIDI - TEAL GREEN - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","TEAL GREEN","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("113","SMTG003","SHORT - MIDI - TEAL GREEN - LARGE","2020-06-21","SHORT","MALL DISPLAY","TEAL GREEN","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("114","SMTG004","SHORT - MIDI - TEAL GREEN - XL","2020-06-21","SHORT","MALL DISPLAY","TEAL GREEN","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("115","SMAG001","SHORT - MIDI - ARMY GREEN - SMALL","2020-06-21","SHORT","MALL DISPLAY","ARMY GREEN","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("116","SMAG002","SHORT - MIDI - ARMY GREEN - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","ARMY GREEN","1.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("117","SMAG003","SHORT - MIDI - ARMY GREEN - LARGE","2020-06-21","SHORT","MALL DISPLAY","ARMY GREEN","2.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("118","SMAG004","SHORT - MIDI - ARMY GREEN - XL","2020-06-21","SHORT","MALL DISPLAY","ARMY GREEN","3.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("119","SMPNK001","SHORT - MIDI - PINK - SMALL","2020-06-21","SHORT","MALL DISPLAY","PINK","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("120","SMPNK002","SHORT - MIDI - PINK - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","PINK","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("121","SMPNK003","SHORT - MIDI - PINK - LARGE","2020-06-21","SHORT","MALL DISPLAY","PINK","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("122","SMPNK004","SHORT - MIDI - PINK - XL","2020-06-21","SHORT","MALL DISPLAY","PINK","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("123","SMOR001","SHORT - MIDI - OLD ROSE - SMALL","2020-06-21","SHORT","MALL DISPLAY","OLD ROSE","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("124","SMOR002","SHORT - MIDI - OLD ROSE - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","OLD ROSE","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("125","SMOR003","SHORT - MIDI - OLD ROSE - LARGE","2020-06-21","SHORT","MALL DISPLAY","OLD ROSE","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("126","SMOR004","SHORT - MIDI - OLD ROSE - XL","2020-06-21","SHORT","MALL DISPLAY","OLD ROSE","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("127","SMNB001","SHORT - MIDI - NAVY BLUE - SMALL","2020-06-21","SHORT","MALL DISPLAY","NAVY BLUE","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("128","SMNB002","SHORT - MIDI - NAVY BLUE - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","NAVY BLUE","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("129","SMNB003","SHORT - MIDI - NAVY BLUE - LARGE","2020-06-21","SHORT","MALL DISPLAY","NAVY BLUE","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("130","SMNB004","SHORT - MIDI - NAVY BLUE - XL","2020-06-21","SHORT","MALL DISPLAY","NAVY BLUE","0.00","PC","160.00","135.00","100.00","100.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("131","SBGRY001","SHORT - BUTTONS - GRAY - SMALL","2020-06-21","SHORT","MALL DISPLAY","GRAY","3.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("132","SBGRY004","SHORT - BUTTONS - GRAY - XL","2020-06-21","SHORT","MALL DISPLAY","GRAY","1.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("135","SBRED002","SHORT - BUTTONS - RED - MEDIUM","2020-06-21","SHORT","MALL DISPLAY","RED","1.00","PC","180.00","150.00","120.00","120.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("136","CB180001","Chicharong Baboy - 150-180g","2020-07-03","CRACKERS","AUTHENTIC BULACAN PRODUCTS","","42.00","PC","100.00","80.00","60.00","60.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("137","PAS001","PASTILLAS - REGULAR","2020-07-03","SWEETS","AUTHENTIC BULACAN PRODUCTS","","13.00","BOX","110.00","90.00","80.00","80.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("138","PAS002","PASTILLAS - JUMBO","2020-07-03","SWEETS","AUTHENTIC BULACAN PRODUCTS","","0.00","BOX","190.00","180.00","170.00","170.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("139","MACB001","MACAPUNO BUTTERMILK ","2020-07-03","SWEETS","AUTHENTIC BULACAN PRODUCTS","","17.00","PACK","60.00","60.00","40.00","40.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("140","ASBW350","AQUA SIS BOTTLED WATER 350ML","2020-07-03","DRINKING WATER","AQUA SIS PURIFIED WATER","","10.00","PC","14.00","10.00","7.50","7.50","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("141","ASBW500","AQUA SIS BOTTLED WATER 500ML","2020-07-03","DRINKING WATER","AQUA SIS PURIFIED WATER","","0.00","PC","10.00","80.00","6.00","6.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("142","SF001","SHIPPING FEE","2020-06-01","","","","0.00","","0.00","0.00","0.00","0.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("143","SPKA001","SIOPAO ASADO W/ SAUCE","2020-06-01","DIMSUM","SIOPAO KING","","0.00","PACK","129.00","129.00","116.00","116.00","","","","","0.00","0.00","0.00","0.00","","images/products/143_0c8b7bc9611a23f592b99306ba7f6f66.png","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("144","SPKB001","SIOPAO BOLA-BOLA W/SAUCE","2020-06-01","DIMSUM","SIOPAO KING","","5.00","PACK","129.00","129.00","116.00","116.00","","","","","0.00","0.00","0.00","0.00","","images/products/144_birthday-cake-wish-greeting-card-e-card-creative-cars-thumb.jpg","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("145","SPKCH001","SIOPAO CHILI ASADO W/ SAUCE","2020-07-03","DIMSUM","SIPAO KING","","5.00","PACK","131.25","131.25","118.50","118.50","","","","","0.00","0.00","0.00","0.00","","images/products/145_carlogo3.png","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("146","SPKC001","SIOPAO COMBI W/ SAUCE","2020-07-03","DIMSUM","SIPAO KING","","0.00","PACK","131.25","131.25","118.50","118.50","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("147","SKHK001","SIOMAI HONG KONG STYLE W/ CHILLI GARLIC","2020-06-01","DIMSUM","SIOMAI KING","","1.00","PACK","313.25","313.25","282.00","282.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("148","SKS001","SIOMAI SHANGHAI W/ CHILLI GARLIC","2020-06-01","DIMSUM","SIOMAI KING","","0.00","PACK","297.50","297.50","268.00","268.00","","","","","0.00","0.00","0.00","0.00","","images/products/148_car-honda-scooter-spare-part-vehicle-vector-brakes-and-parts.jpg","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("149","DMP001","DUMPLING W/ CHILLI GARLIC","2020-07-03","DIMSUM","SIOMA KING","","2.00","PACK","232.00","232.00","209.00","209.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+INSERT INTO tblproduct VALUES("150","SKCHK001","SIOMAI CHICKEN W/ CHILLI GARLIC","2020-07-03","DIMSUM","SIOMAI KING","","2.00","PACK","313.25","313.25","282.00","282.00","","","","","0.00","0.00","0.00","0.00","","","","0.00","PHP","0.00","0.00","No","","","","","","","","0","0","","0","","0","","","","","0.00","0.00","0.00","");
+
+
+
+CREATE TABLE `tblpromopro` (
+  `PROMOID` int(11) NOT NULL AUTO_INCREMENT,
+  `PROID` int(11) NOT NULL,
+  `PRODISCOUNT` double NOT NULL,
+  `PRODISPRICE` double NOT NULL,
+  `PROBANNER` tinyint(4) NOT NULL,
+  `PRONEW` tinyint(4) NOT NULL,
+  PRIMARY KEY (`PROMOID`),
+  UNIQUE KEY `PROID` (`PROID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+CREATE TABLE `tblpurchasedetl` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `RRID` int(11) DEFAULT 0,
+  `POID` int(11) DEFAULT 0,
+  `POPID` int(11) DEFAULT 0,
+  `rrno` varchar(20) DEFAULT NULL,
+  `pono` varchar(20) DEFAULT NULL,
+  `PROID` int(11) DEFAULT 0,
+  `PRONAME` varchar(255) DEFAULT NULL,
+  `PROCODE` varchar(20) DEFAULT NULL,
+  `PURPRICE` double(12,2) DEFAULT 0.00,
+  `QTY` double(9,2) DEFAULT 0.00,
+  `DISCPER` double(6,2) DEFAULT 0.00,
+  `DISCAMT` double(12,2) DEFAULT 0.00,
+  `AMOUNT` double(12,2) DEFAULT 0.00,
+  `QTYRET` double(9,2) DEFAULT 0.00,
+  `UNIT` varchar(20) DEFAULT NULL,
+  `SUPPITEM` varchar(100) DEFAULT NULL,
+  `QTYPERBOX` int(7) DEFAULT 0,
+  `FORPURPRICE` double(12,2) DEFAULT 0.00,
+  `FORAMOUNT` double(12,2) DEFAULT 0.00,
+  `FLOORRATE` double(6,2) DEFAULT 0.00,
+  `FLOORPRICE` double(12,2) DEFAULT 0.00,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=113 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblpurchasedetl VALUES("1","1","0","0","RR-20075M093","","31","SHORT - GARTERIZED - TEAL GREEN - SMALL","SGTG001","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("2","1","0","0","RR-20075M093","","39","SHORT - GARTERIZED - PINK - SMALL","SGPNK001","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("3","1","0","0","RR-20075M093","","23","SHORT - GARTERIZED - WHT - SMALL","SGW001","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("4","1","0","0","RR-20075M093","","9","SHORT - GARTERIZED - BLK - SMALL","SGBLK001","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("5","1","0","0","RR-20075M093","","27","SHORT - GARTERIZED - BEIGE - SMALL","SGBG001","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("6","1","0","0","RR-20075M093","","35","SHORT - GARTERIZED - ARMY GREEN - SMALL","SGAG001","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("7","1","0","0","RR-20075M093","","43","SHORT - GARTERIZED - OLD ROSE - SMALL","SGOR001","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("8","1","0","0","RR-20075M093","","10","SHORT - GARTERIZED - BLK - MEDIUM","SGBLK002","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("9","1","0","0","RR-20075M093","","24","SHORT - GARTERIZED - WHT - MEDIUM","SGW002","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("10","1","0","0","RR-20075M093","","11","SHORT - GARTERIZED - BLK - LARGE","SGBLK003","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("11","1","0","0","RR-20075M093","","29","SHORT - GARTERIZED - BEIGE - LARGE","SGBG003","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("12","1","0","0","RR-20075M093","","33","SHORT - GARTERIZED - TEAL GREEN - LARGE","SGTG003","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("13","1","0","0","RR-20075M093","","37","SHORT - GARTERIZED - ARMY GREEN - LARGE","SGAG003","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("14","1","0","0","RR-20075M093","","41","SHORT - GARTERIZED - PINK - LARGE","SGPNK003","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("15","1","0","0","RR-20075M093","","45","SHORT - GARTERIZED - OLD ROSE - LARGE","SGOR003","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("16","1","0","0","RR-20075M093","","25","SHORT - GARTERIZED - WHT - LARGE","SGW003","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("17","1","0","0","RR-20075M093","","50","SHORT - GARTERIZED - NAVY BLUE - XL","SGNB004","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("18","1","0","0","RR-20075M093","","38","SHORT - GARTERIZED - ARMY GREEN - XL","SGAG004","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("19","1","0","0","RR-20075M093","","30","SHORT - GARTERIZED - BEIGE - XL","SGBG004","90.00","3.00","0.00","0.00","270.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("20","1","0","0","RR-20075M093","","22","SHORT - GARTERIZED - BLK - XL","SGBLK004","90.00","3.00","0.00","0.00","270.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("21","1","0","0","RR-20075M093","","34","SHORT - GARTERIZED - TEAL GREEN - XL","SGTG004","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("22","1","0","0","RR-20075M093","","42","SHORT - GARTERIZED - PINK - XL","SGPNK004","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("23","1","0","0","RR-20075M093","","46","SHORT - GARTERIZED - OLD ROSE - XL","SGOR004","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("24","1","0","0","RR-20075M093","","26","SHORT - GARTERIZED - WHT - XL","SGW004","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("25","1","0","0","RR-20075M093","","115","SHORT - MIDI - ARMY GREEN - SMALL","SMAG001","100.00","3.00","0.00","0.00","300.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("26","1","0","0","RR-20075M093","","99","SHORT - MIDI - BLK - SMALL","SMBLK001","100.00","3.00","0.00","0.00","300.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("27","1","0","0","RR-20075M093","","116","SHORT - MIDI - ARMY GREEN - MEDIUM","SMAG002","100.00","3.00","0.00","0.00","300.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("28","1","0","0","RR-20075M093","","100","SHORT - MIDI - BLK - MEDIUM","SMBLK002","100.00","3.00","0.00","0.00","300.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("29","1","0","0","RR-20075M093","","93","SHORT - MIDI - BLK - WD - LARGE","SMBWD003","100.00","3.00","0.00","0.00","300.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("30","1","0","0","RR-20075M093","","97","SHORT - MIDI - BLK - WL - LARGE","SMBWL003","100.00","2.00","0.00","0.00","200.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("31","1","0","0","RR-20075M093","","101","SHORT - MIDI - BLK - LARGE","SMBLK003","100.00","3.00","0.00","0.00","300.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("32","1","0","0","RR-20075M093","","117","SHORT - MIDI - ARMY GREEN - LARGE","SMAG003","100.00","2.00","0.00","0.00","200.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("33","1","0","0","RR-20075M093","","118","SHORT - MIDI - ARMY GREEN - XL","SMAG004","100.00","3.00","0.00","0.00","300.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("34","1","0","0","RR-20075M093","","102","SHORT - MIDI - BLK - XL","SMBLK004","100.00","3.00","0.00","0.00","300.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("35","1","0","0","RR-20075M093","","94","SHORT - MIDI - BLK - WD - XL","SMBWD004","100.00","2.00","0.00","0.00","200.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("36","1","0","0","RR-20075M093","","98","SHORT - MIDI - BLK - WL - XL","SMBWL004","100.00","2.00","0.00","0.00","200.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("40","3","0","0","RR-2007R8022","","75","SHORT - BUTTONS - ARMY GREEN - SMALL","SBAG001","120.00","3.00","0.00","0.00","360.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("39","3","0","0","RR-2007R8022","","71","SHORT - BUTTONS - TEAL GREEN - SMALL","SBTG001","120.00","3.00","0.00","0.00","360.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("41","3","0","0","RR-2007R8022","","67","SHORT - BUTTONS - BEIGE - SMALL","SBBG001","120.00","1.00","0.00","0.00","120.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("42","3","0","0","RR-2007R8022","","131","SHORT - BUTTONS - GRAY - SMALL","SBGRY001","120.00","3.00","0.00","0.00","360.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("43","3","0","0","RR-2007R8022","","60","SHORT - BUTTONS - BLK - MEDIUM","SBBLK002","120.00","2.00","0.00","0.00","240.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("44","3","0","0","RR-2007R8022","","76","SHORT - BUTTONS - ARMY GREEN - MEDIUM","SBAG002","120.00","2.00","0.00","0.00","240.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("45","3","0","0","RR-2007R8022","","68","SHORT - BUTTONS - BEIGE - MEDIUM","SBBG002","120.00","1.00","0.00","0.00","120.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("46","3","0","0","RR-2007R8022","","64","SHORT - BUTTONS - WHT - MEDIUM","SBW002","120.00","1.00","0.00","0.00","120.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("47","3","0","0","RR-2007R8022","","135","SHORT - BUTTONS - RED - MEDIUM","SBRED002","120.00","1.00","0.00","0.00","120.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("48","3","0","0","RR-2007R8022","","69","SHORT - BUTTONS - BEIGE - LARGE","SBBG003","120.00","2.00","0.00","0.00","240.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("49","3","0","0","RR-2007R8022","","73","SHORT - BUTTONS - TEAL GREEN - LARGE","SBTG003","120.00","2.00","0.00","0.00","240.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("50","3","0","0","RR-2007R8022","","65","SHORT - BUTTONS - WHT - LARGE","SBW003","120.00","2.00","0.00","0.00","240.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("51","3","0","0","RR-2007R8022","","77","SHORT - BUTTONS - ARMY GREEN - LARGE","SBAG003","120.00","1.00","0.00","0.00","120.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("52","3","0","0","RR-2007R8022","","61","SHORT - BUTTONS - BLK - LARGE","SBBLK003","120.00","1.00","0.00","0.00","120.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("53","3","0","0","RR-2007R8022","","89","SHORT - BUTTONS - NAVY BLUE - LARGE","SBNB003","120.00","1.00","0.00","0.00","120.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("54","3","0","0","RR-2007R8022","","81","SHORT - BUTTONS - PINK - LARGE","SBPNK003","120.00","1.00","0.00","0.00","120.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("55","3","0","0","RR-2007R8022","","70","SHORT - BUTTONS - BEIGE - XL","SBBG004","120.00","3.00","0.00","0.00","360.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("56","3","0","0","RR-2007R8022","","74","SHORT - BUTTONS - TEAL GREEN - XL","SBTG004","120.00","2.00","0.00","0.00","240.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("57","3","0","0","RR-2007R8022","","78","SHORT - BUTTONS - ARMY GREEN - XL","SBAG004","120.00","2.00","0.00","0.00","240.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("58","3","0","0","RR-2007R8022","","132","SHORT - BUTTONS - GRAY - XL","SBGRY004","120.00","1.00","0.00","0.00","120.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("59","3","0","0","RR-2007R8022","","62","SHORT - BUTTONS - BLK - XL","SBBLK004","120.00","1.00","0.00","0.00","120.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("60","3","0","0","RR-2007R8022","","90","SHORT - BUTTONS - NAVY BLUE - XL","SBNB004","120.00","1.00","0.00","0.00","120.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("61","3","0","0","RR-2007R8022","","31","SHORT - GARTERIZED - TEAL GREEN - SMALL","SGTG001","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("62","3","0","0","RR-2007R8022","","43","SHORT - GARTERIZED - OLD ROSE - SMALL","SGOR001","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("63","3","0","0","RR-2007R8022","","39","SHORT - GARTERIZED - PINK - SMALL","SGPNK001","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("64","3","0","0","RR-2007R8022","","23","SHORT - GARTERIZED - WHT - SMALL","SGW001","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("65","3","0","0","RR-2007R8022","","9","SHORT - GARTERIZED - BLK - SMALL","SGBLK001","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("66","3","0","0","RR-2007R8022","","27","SHORT - GARTERIZED - BEIGE - SMALL","SGBG001","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("67","3","0","0","RR-2007R8022","","35","SHORT - GARTERIZED - ARMY GREEN - SMALL","SGAG001","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("68","3","0","0","RR-2007R8022","","40","SHORT - GARTERIZED - PINK - MEDIUM","SGPNK002","90.00","3.00","0.00","0.00","270.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("69","3","0","0","RR-2007R8022","","44","SHORT - GARTERIZED - OLD ROSE - MEDIUM","SGOR002","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("70","3","0","0","RR-2007R8022","","24","SHORT - GARTERIZED - WHT - MEDIUM","SGW002","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("71","3","0","0","RR-2007R8022","","10","SHORT - GARTERIZED - BLK - MEDIUM","SGBLK002","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("72","3","0","0","RR-2007R8022","","36","SHORT - GARTERIZED - ARMY GREEN - MEDIUM","SGAG002","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("73","3","0","0","RR-2007R8022","","28","SHORT - GARTERIZED - BEIGE - MEDIUM","SGBG002","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("74","3","0","0","RR-2007R8022","","32","SHORT - GARTERIZED - TEAL GREEN - MEDIUM","SGTG002","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("75","3","0","0","RR-2007R8022","","45","SHORT - GARTERIZED - OLD ROSE - LARGE","SGOR003","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("76","3","0","0","RR-2007R8022","","41","SHORT - GARTERIZED - PINK - LARGE","SGPNK003","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("77","3","0","0","RR-2007R8022","","37","SHORT - GARTERIZED - ARMY GREEN - LARGE","SGAG003","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("78","3","0","0","RR-2007R8022","","29","SHORT - GARTERIZED - BEIGE - LARGE","SGBG003","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("79","3","0","0","RR-2007R8022","","33","SHORT - GARTERIZED - TEAL GREEN - LARGE","SGTG003","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("80","3","0","0","RR-2007R8022","","25","SHORT - GARTERIZED - WHT - LARGE","SGW003","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("81","3","0","0","RR-2007R8022","","42","SHORT - GARTERIZED - PINK - XL","SGPNK004","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("82","3","0","0","RR-2007R8022","","46","SHORT - GARTERIZED - OLD ROSE - XL","SGOR004","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("83","3","0","0","RR-2007R8022","","34","SHORT - GARTERIZED - TEAL GREEN - XL","SGTG004","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("84","3","0","0","RR-2007R8022","","26","SHORT - GARTERIZED - WHT - XL","SGW004","90.00","2.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("85","3","0","0","RR-2007R8022","","22","SHORT - GARTERIZED - BLK - XL","SGBLK004","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("86","3","0","0","RR-2007R8022","","38","SHORT - GARTERIZED - ARMY GREEN - XL","SGAG004","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("87","3","0","0","RR-2007R8022","","30","SHORT - GARTERIZED - BEIGE - XL","SGBG004","90.00","1.00","0.00","0.00","90.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("88","4","0","0","RR-20079340A","","140","AQUA SIS BOTTLED WATER 350ML","ASBW350","7.50","24.00","0.00","0.00","180.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("89","4","0","0","RR-20079340A","","141","AQUA SIS BOTTLED WATER 500ML","ASBW500","6.00","24.00","0.00","0.00","144.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("90","5","0","0","RR-20076EC10","","136","Chicharong Baboy - 150-180g","CB180001","60.00","150.00","0.00","0.00","9000.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("91","5","0","0","RR-20076EC10","","136","Chicharong Baboy - 150-180g","CB180001","0.00","1.00","0.00","0.00","0.00","0.00","PC","FREE","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("92","5","0","0","RR-20076EC10","","139","MACAPUNO BUTTERMILK ","MACB001","50.00","20.00","0.00","0.00","1000.00","0.00","PACK","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("93","5","0","0","RR-20076EC10","","137","PASTILLAS - REGULAR","PAS001","80.00","20.00","0.00","0.00","1600.00","0.00","BOX","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("94","6","0","0","RR-20070566I","","144","SIOPAO BOLA-BOLA W/SAUCE","SPKB001","116.00","5.00","0.00","0.00","580.00","0.00","PACK","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("95","6","0","0","RR-20070566I","","145","SIOPAO CHILI ASADO W/ SAUCE","SPKCH001","118.50","5.00","0.00","0.00","592.50","0.00","PACK","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("96","6","0","0","RR-20070566I","","146","SIOPAO COMBI W/ SAUCE","SPKC001","118.50","1.00","0.00","0.00","118.50","0.00","PACK","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("97","6","0","0","RR-20070566I","","147","SIOMAI HONG KONG STYLE W/ CHILLI GARLIC","SKHK001","282.00","1.00","0.00","0.00","282.00","0.00","PACK","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("98","6","0","0","RR-20070566I","","150","SIOMAI CHICKEN W/ CHILLI GARLIC","SKCHK001","282.00","2.00","0.00","0.00","564.00","0.00","PACK","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("99","6","0","0","RR-20070566I","","149","DUMPLING W/ CHILLI GARLIC","DMP001","209.00","1.00","0.00","0.00","209.00","0.00","PACK","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("100","7","0","0","33312312","","140","AQUA SIS BOTTLED WATER 350ML","ASBW350","7.50","1.00","0.00","0.00","7.50","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("101","7","0","0","33312312","","139","MACAPUNO BUTTERMILK ","MACB001","40.00","1.00","0.00","0.00","40.00","0.00","PACK","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("102","7","0","0","33312312","","136","Chicharong Baboy - 150-180g","CB180001","60.00","1.00","0.00","0.00","60.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("103","7","0","0","33312312","","149","DUMPLING W/ CHILLI GARLIC","DMP001","209.00","1.00","0.00","0.00","209.00","0.00","PACK","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("104","7","0","0","33312312","","136","Chicharong Baboy - 150-180g","CB180001","60.00","1.00","0.00","0.00","60.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("105","7","0","0","33312312","","60","SHORT - BUTTONS - BLK - MEDIUM","SBBLK002","120.00","1.00","0.00","0.00","120.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("106","7","0","0","33312312","","60","SHORT - BUTTONS - BLK - MEDIUM","SBBLK002","120.00","1.00","0.00","0.00","120.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("107","7","0","0","33312312","","136","Chicharong Baboy - 150-180g","CB180001","60.00","1.00","0.00","0.00","60.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("108","7","0","0","33312312","","78","SHORT - BUTTONS - ARMY GREEN - XL","SBAG004","120.00","1.00","0.00","0.00","120.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("109","7","0","0","33312312","","52","SHORT - BUTTONS - BLK - WD - MEDIUM","SBBWD002","120.00","1.00","0.00","0.00","120.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("110","9","0","0","RR-20078G8J2","","140","AQUA SIS BOTTLED WATER 350ML","ASBW350","7.50","1.00","0.00","0.00","7.50","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("111","9","0","0","RR-20078G8J2","","136","Chicharong Baboy - 150-180g","CB180001","60.00","1.00","0.00","0.00","60.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasedetl VALUES("112","9","0","0","RR-20078G8J2","","77","SHORT - BUTTONS - ARMY GREEN - LARGE","SBAG003","120.00","1.00","0.00","0.00","120.00","0.00","PC","","0","0.00","0.00","0.00","0.00");
+
+
+
+CREATE TABLE `tblpurchasehead` (
+  `RRID` int(11) NOT NULL AUTO_INCREMENT,
+  `rrno` varchar(20) DEFAULT NULL,
+  `refno` varchar(20) DEFAULT NULL,
+  `entdate` date DEFAULT NULL,
+  `suppname` varchar(255) DEFAULT NULL,
+  `suppcode` varchar(20) DEFAULT NULL,
+  `SUPPLIERID` int(11) DEFAULT NULL,
+  `total` double(12,2) DEFAULT 0.00,
+  `discountamt` double(12,2) DEFAULT 0.00,
+  `discountper` double(6,2) DEFAULT 0.00,
+  `net` double(12,2) DEFAULT 0.00,
+  `note` varchar(500) DEFAULT NULL,
+  `terms` int(5) DEFAULT 0,
+  `duedate` date DEFAULT NULL,
+  `PAIDAMT` double(12,2) DEFAULT 0.00,
+  `USERID` int(11) DEFAULT NULL,
+  `U_NAME` varchar(122) DEFAULT NULL,
+  `DEBIT` double(12,2) DEFAULT 0.00,
+  `CREDIT` double(12,2) DEFAULT 0.00,
+  `FOREX` char(5) DEFAULT 'PHP',
+  `FOREXRATE` double(7,2) DEFAULT 0.00,
+  `FORTOTAL` double(12,2) DEFAULT 0.00,
+  `IMPORTCOST` double(12,2) DEFAULT 0.00,
+  `OTHERCHARGES` double(12,2) DEFAULT 0.00,
+  PRIMARY KEY (`RRID`),
+  KEY `rrno` (`rrno`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblpurchasehead VALUES("1","RR-20075M093","","2020-07-02","JOCELYN - VISTA VERDE","JV001","2","6800.00","0.00","0.00","6800.00","","30","2020-08-01","0.00","128","Jimmy R. Santos","0.00","0.00","PHP","1.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasehead VALUES("4","RR-20079340A","","2020-07-03","AQUA SIS WATER REFILLING","AQ001","1","324.00","0.00","0.00","324.00","","30","2020-08-02","0.00","128","JSS Business Solution","0.00","0.00","PHP","1.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasehead VALUES("3","RR-2007R8022","","2020-06-27","JOCELYN - VISTA VERDE","JV001","2","8040.00","0.00","0.00","8040.00","","30","2020-07-27","0.00","128","Jimmy R. Santos","0.00","0.00","PHP","1.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasehead VALUES("5","RR-20076EC10","","2020-07-03","EA OCAMPO SWEETS","EA001","3","11600.00","0.00","0.00","11600.00","","30","2020-08-02","0.00","128","JSS Business Solution","0.00","0.00","PHP","1.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasehead VALUES("6","RR-20070566I","","2020-07-03","JC PREMIERE","JCP001","4","2346.00","0.00","0.00","2346.00","","30","2020-08-02","0.00","128","JSS Business Solution","0.00","0.00","PHP","1.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasehead VALUES("7","33312312","123123","2020-07-05","AQUA SIS WATER REFILLING","AQ001","1","916.50","0.00","0.00","916.50","231231","1","2020-07-22","0.00","","","0.00","0.00","PHP","0.00","0.00","0.00","0.00");
+INSERT INTO tblpurchasehead VALUES("9","RR-20078G8J2","","2020-07-06","EA OCAMPO SWEETS","EA001","3","187.50","0.00","0.00","187.50","","30","2020-08-05","0.00","128","JSS Business Solution","0.00","0.00","PHP","1.00","0.00","0.00","0.00");
+
+
+
+CREATE TABLE `tblpureturndetl` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `PRID` int(11) DEFAULT 0,
+  `prno` varchar(20) DEFAULT NULL,
+  `POPID` int(11) DEFAULT 0,
+  `RRPID` int(11) DEFAULT 0,
+  `rrno` varchar(20) DEFAULT NULL,
+  `PROID` int(11) DEFAULT 0,
+  `PRONAME` varchar(255) DEFAULT NULL,
+  `PROCODE` varchar(20) DEFAULT NULL,
+  `PURPRICE` double(12,2) DEFAULT 0.00,
+  `QTY` double(9,2) DEFAULT 0.00,
+  `DISCPER` double(6,2) DEFAULT 0.00,
+  `DISCAMT` double(12,2) DEFAULT 0.00,
+  `AMOUNT` double(12,2) DEFAULT 0.00,
+  `RETTYPE` char(20) DEFAULT 'Others',
+  `UNIT` varchar(20) DEFAULT NULL,
+  `QTYPERBOX` double(9,2) DEFAULT 0.00,
+  `FLOORPRICE` double(12,2) DEFAULT 0.00,
+  `FLOORRATE` double(12,2) DEFAULT 0.00,
+  `FORPURPRICE` double(12,2) DEFAULT 0.00,
+  `FORAMOUNT` double(12,2) DEFAULT 0.00,
+  `SUPPITEM` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblpureturndetl VALUES("1","1","PR-200620I5G","0","14","RR-2006MG1SJ","1","LAMBORGHINI ( TEST ) GALLARDO SPORTS CAR 2020 GLASS LENS FRONT PHILIPPINES Lego #1 Lava Red ( Test ) 220V 110W","51205","1000.00","1.00","0.00","0.00","1000.00","Others","PCS","0.00","0.00","0.00","0.00","0.00","");
+INSERT INTO tblpureturndetl VALUES("2","2","PR-200603002","0","11","RR-2006I50E7","1","LAMBORGHINI ( TEST ) GALLARDO SPORTS CAR 2020 GLASS LENS FRONT PHILIPPINES Lego #1 Lava Red ( Test ) 220V 110W","51205","200.00","1.00","0.00","0.00","200.00","Others","PCS","0.00","0.00","0.00","0.00","0.00","");
+INSERT INTO tblpureturndetl VALUES("3","3","PR-200665501","0","11","RR-2006I50E7","1","LAMBORGHINI ( TEST ) GALLARDO SPORTS CAR 2020 GLASS LENS FRONT PHILIPPINES Lego #1 Lava Red ( Test ) 220V 110W","51205","200.00","1.00","0.00","0.00","200.00","Others","PCS","0.00","0.00","0.00","0.00","0.00","");
+INSERT INTO tblpureturndetl VALUES("4","4","PR-2007040J1","0","67","RR-2007R8022","35","SHORT - GARTERIZED - ARMY GREEN - SMALL","SGAG001","90.00","1.00","0.00","0.00","90.00","Others","PC","0.00","0.00","0.00","0.00","0.00","0");
+
+
+
+CREATE TABLE `tblpureturnhead` (
+  `PRID` int(11) NOT NULL AUTO_INCREMENT,
+  `prno` varchar(20) DEFAULT NULL,
+  `refno` varchar(20) DEFAULT NULL,
+  `entdate` date DEFAULT NULL,
+  `suppname` varchar(255) DEFAULT NULL,
+  `suppcode` varchar(20) DEFAULT NULL,
+  `SUPPLIERID` int(11) DEFAULT NULL,
+  `total` double(12,2) DEFAULT 0.00,
+  `discountamt` double(12,2) DEFAULT 0.00,
+  `discountper` double(6,2) DEFAULT 0.00,
+  `net` double(12,2) DEFAULT 0.00,
+  `note` varchar(500) DEFAULT NULL,
+  `terms` int(5) DEFAULT 0,
+  `duedate` date DEFAULT NULL,
+  `USERID` int(11) DEFAULT NULL,
+  `U_NAME` varchar(122) DEFAULT NULL,
+  `FORTOTAL` double(12,2) DEFAULT 0.00,
+  PRIMARY KEY (`PRID`),
+  KEY `rrno` (`prno`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblpureturnhead VALUES("1","PR-200620I5G","","2020-06-14","AAASDFS","AA342","58","0.00","0.00","0.00","0.00","","0","","128","Jimmy R. Santos","");
+INSERT INTO tblpureturnhead VALUES("2","PR-200603002","","2020-06-14","AAASDFS","AA342","58","200.00","0.00","0.00","200.00","","0","","128","Jimmy R. Santos","");
+INSERT INTO tblpureturnhead VALUES("3","PR-200665501","","2020-06-14","AAASDFS","AA342","58","200.00","0.00","0.00","200.00","","0","","128","Jimmy R. Santos","");
+INSERT INTO tblpureturnhead VALUES("4","PR-2007040J1","","2020-07-07","JOCELYN - VISTA VERDE","JV001","2","90.00","0.00","0.00","90.00","","0","","128","JSS Business Solution","");
+
+
+
+CREATE TABLE `tblreportfld` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `fldName` varchar(50) DEFAULT NULL,
+  `fldTitle` varchar(255) DEFAULT NULL,
+  `fldSize` char(10) DEFAULT NULL,
+  `reportcode` varchar(255) DEFAULT NULL,
+  `indx` int(5) DEFAULT 0,
+  `ftype` char(3) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblreportfld VALUES("1","PROID","Product ID","7%","","0","i");
+INSERT INTO tblreportfld VALUES("2","PRONAME","Product Name","350px","1000, 1001, 1002, 1003","1","c");
+INSERT INTO tblreportfld VALUES("3","PROCODE","Code","91px","1000, 1001, 1002, 1003","2","c");
+INSERT INTO tblreportfld VALUES("4","PROQTY","Qty","80px","1000, 1001, 1003","6","n");
+INSERT INTO tblreportfld VALUES("5","PROMODEL","Brand/Model","250px","1000, 1001, 1002, 1003","4","c");
+INSERT INTO tblreportfld VALUES("6","CATEGORIES","Category","150px","1000, 1001, 1002, 1003","5","c");
+INSERT INTO tblreportfld VALUES("7","PROPRICE","Sell Price","100px","1000, 1001, 1003","7","n");
+INSERT INTO tblreportfld VALUES("8","PURPRICE","Unit Cost","100px","1000, 1001, 1003","8","n");
+INSERT INTO tblreportfld VALUES("9","entdate","Date","90px","1000, 1001, 1003","3","d");
+INSERT INTO tblreportfld VALUES("10","IMAGES","Picture","250px","1002","0","p");
+INSERT INTO tblreportfld VALUES("11","REORDER","Re-Order","10%","","10","n");
+INSERT INTO tblreportfld VALUES("12","TOTAL","Total","10%","","11","n");
+INSERT INTO tblreportfld VALUES("13","CUSTOMERID","Customer ID","","","0","c");
+INSERT INTO tblreportfld VALUES("14","custname","Customer Name","300px","2100, 2101","1","c");
+INSERT INTO tblreportfld VALUES("15","custcode","Code","90px","2100, 2101","2","c");
+INSERT INTO tblreportfld VALUES("16","address","Address","300px","2100, 2101","3","c");
+INSERT INTO tblreportfld VALUES("17","area","Area","150px","2100, 2101","4","c");
+INSERT INTO tblreportfld VALUES("18","PHONE","Tel. No.","120px","2100, 2101","5","c");
+INSERT INTO tblreportfld VALUES("19","EMAILADD","E-mail","150px","2100, 2101","6","c");
+INSERT INTO tblreportfld VALUES("20","TERMS","Terms","70px","","7","c");
+INSERT INTO tblreportfld VALUES("21","note","Note","300px","2100, 2101","8","c");
+INSERT INTO tblreportfld VALUES("22","creditlimit","Credit Limit","100px","","9","n");
+INSERT INTO tblreportfld VALUES("23","Balance","AR Balance","100px","","10","n");
+
+
+
+CREATE TABLE `tblreports` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `REPORTNAME` varchar(255) DEFAULT NULL,
+  `LINK` varchar(255) DEFAULT NULL,
+  `ICON` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+
+
+CREATE TABLE `tblsalesman` (
+  `SALESMANID` int(11) NOT NULL AUTO_INCREMENT,
+  `smanname` varchar(255) DEFAULT NULL,
+  `smancode` varchar(20) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `area` varchar(255) DEFAULT NULL,
+  `PHONE` varchar(20) DEFAULT NULL,
+  `EMAILADD` varchar(40) DEFAULT NULL,
+  `DATEJOIN` date NOT NULL,
+  `note` varchar(500) DEFAULT NULL,
+  `RANK` varchar(50) DEFAULT NULL,
+  `RATE` double(6,2) DEFAULT 0.00,
+  PRIMARY KEY (`SALESMANID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblsalesman VALUES("2","SMAN 1","SMAN001","SDFSDF","","SDFS","SDFSSDFDSDFS@YAHOO.COM","2020-05-31"," ","","10.00");
+INSERT INTO tblsalesman VALUES("3","DAFDSF3dsafdf","DFADSdfadsf","SDF43232sdf","AM-COD","ADFS322432as","JIMa@JIM.COM","2020-04-01","SDFASDaaaaaaFA","DFADSFdsfas","12.00");
+INSERT INTO tblsalesman VALUES("4","GTECHMAN","GTE2061C8207","GTA SAN ANDREAS","WEEKDAYS","9270564223","GTECHGAMING@GMAIL.COM","2020-06-11","test...","ADMIN","10.00");
+INSERT INTO tblsalesman VALUES("5","3123123","1231231","123123","","13123","jim@yahoo.com","2020-07-02","","123123","2.00");
+INSERT INTO tblsalesman VALUES("6","test","erdsfs","323423","","2342342","j@y.com","2020-07-02","","sup","1.00");
+
+
+
+CREATE TABLE `tblsetting` (
+  `SETTINGID` int(11) NOT NULL AUTO_INCREMENT,
+  `PLACE` text NOT NULL,
+  `BRGY` varchar(90) NOT NULL,
+  `DELPRICE` double NOT NULL,
+  PRIMARY KEY (`SETTINGID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+CREATE TABLE `tblslsdetl` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `SLSID` int(11) DEFAULT 0,
+  `INVOICENO` varchar(20) DEFAULT NULL,
+  `PROID` int(11) DEFAULT 0,
+  `PRONAME` varchar(255) DEFAULT NULL,
+  `PROCODE` varchar(20) DEFAULT NULL,
+  `PROPRICE` double(12,2) DEFAULT 0.00,
+  `QTY` int(6) DEFAULT 0,
+  `SRQTY` double(12,2) DEFAULT 0.00,
+  `DISCPER` double(6,2) DEFAULT 0.00,
+  `DISCAMT` double(12,2) DEFAULT 0.00,
+  `AMOUNT` double(12,2) DEFAULT 0.00,
+  `DRNO` varchar(20) DEFAULT NULL,
+  `UNIT` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=74 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblslsdetl VALUES("1","1","","31","SHORT - GARTERIZED - TEAL GREEN - SMALL","SGTG001","115.00","1","0.00","0.00","0.00","115.00","","PC");
+INSERT INTO tblslsdetl VALUES("2","1","","39","SHORT - GARTERIZED - PINK - SMALL","SGPNK001","115.00","2","0.00","0.00","0.00","230.00","","PC");
+INSERT INTO tblslsdetl VALUES("3","1","","23","SHORT - GARTERIZED - WHT - SMALL","SGW001","115.00","2","0.00","0.00","0.00","230.00","","PC");
+INSERT INTO tblslsdetl VALUES("4","1","","9","SHORT - GARTERIZED - BLK - SMALL","SGBLK001","115.00","2","0.00","0.00","0.00","230.00","","PC");
+INSERT INTO tblslsdetl VALUES("5","1","","27","SHORT - GARTERIZED - BEIGE - SMALL","SGBG001","115.00","1","0.00","0.00","0.00","115.00","","PC");
+INSERT INTO tblslsdetl VALUES("6","1","","35","SHORT - GARTERIZED - ARMY GREEN - SMALL","SGAG001","115.00","2","0.00","0.00","0.00","230.00","","PC");
+INSERT INTO tblslsdetl VALUES("7","1","","43","SHORT - GARTERIZED - OLD ROSE - SMALL","SGOR001","115.00","2","0.00","0.00","0.00","230.00","","PC");
+INSERT INTO tblslsdetl VALUES("9","1","","24","SHORT - GARTERIZED - WHT - MEDIUM","SGW002","115.00","1","0.00","0.00","0.00","115.00","","PC");
+INSERT INTO tblslsdetl VALUES("10","1","","11","SHORT - GARTERIZED - BLK - LARGE","SGBLK003","115.00","1","0.00","0.00","0.00","115.00","","PC");
+INSERT INTO tblslsdetl VALUES("11","1","","29","SHORT - GARTERIZED - BEIGE - LARGE","SGBG003","115.00","2","0.00","0.00","0.00","230.00","","PC");
+INSERT INTO tblslsdetl VALUES("12","1","","33","SHORT - GARTERIZED - TEAL GREEN - LARGE","SGTG003","115.00","1","0.00","0.00","0.00","115.00","","PC");
+INSERT INTO tblslsdetl VALUES("13","1","","37","SHORT - GARTERIZED - ARMY GREEN - LARGE","SGAG003","115.00","1","0.00","0.00","0.00","115.00","","PC");
+INSERT INTO tblslsdetl VALUES("37","3","","31","SHORT - GARTERIZED - TEAL GREEN - SMALL","SGTG001","115.00","1","0.00","0.00","0.00","115.00","","PC");
+INSERT INTO tblslsdetl VALUES("16","1","","25","SHORT - GARTERIZED - WHT - LARGE","SGW003","115.00","1","0.00","0.00","0.00","115.00","","PC");
+INSERT INTO tblslsdetl VALUES("32","2","","31","SHORT - GARTERIZED - TEAL GREEN - SMALL","SGTG001","130.00","1","0.00","0.00","0.00","130.00","","PC");
+INSERT INTO tblslsdetl VALUES("18","1","","38","SHORT - GARTERIZED - ARMY GREEN - XL","SGAG004","115.00","2","0.00","0.00","0.00","230.00","","PC");
+INSERT INTO tblslsdetl VALUES("19","1","","30","SHORT - GARTERIZED - BEIGE - XL","SGBG004","115.00","3","0.00","0.00","0.00","345.00","","PC");
+INSERT INTO tblslsdetl VALUES("20","1","","22","SHORT - GARTERIZED - BLK - XL","SGBLK004","115.00","1","0.00","0.00","0.00","115.00","","PC");
+INSERT INTO tblslsdetl VALUES("21","1","","34","SHORT - GARTERIZED - TEAL GREEN - XL","SGTG004","115.00","1","0.00","0.00","0.00","115.00","","PC");
+INSERT INTO tblslsdetl VALUES("31","2","","68","SHORT - BUTTONS - BEIGE - MEDIUM","SBBG002","140.00","1","0.00","0.00","0.00","140.00","","PC");
+INSERT INTO tblslsdetl VALUES("23","1","","46","SHORT - GARTERIZED - OLD ROSE - XL","SGOR004","115.00","1","0.00","0.00","0.00","115.00","","PC");
+INSERT INTO tblslsdetl VALUES("33","2","","27","SHORT - GARTERIZED - BEIGE - SMALL","SGBG001","130.00","1","0.00","0.00","0.00","130.00","","PC");
+INSERT INTO tblslsdetl VALUES("25","1","","115","SHORT - MIDI - ARMY GREEN - SMALL","SMAG001","120.00","1","0.00","0.00","0.00","120.00","","PC");
+INSERT INTO tblslsdetl VALUES("26","1","","99","SHORT - MIDI - BLK - SMALL","SMBLK001","120.00","1","0.00","0.00","0.00","120.00","","PC");
+INSERT INTO tblslsdetl VALUES("27","1","","93","SHORT - MIDI - BLK - WD - LARGE","SMBWD003","120.00","1","0.00","0.00","0.00","120.00","","PC");
+INSERT INTO tblslsdetl VALUES("38","3","","32","SHORT - GARTERIZED - TEAL GREEN - MEDIUM","SGTG002","115.00","1","0.00","0.00","0.00","115.00","","PC");
+INSERT INTO tblslsdetl VALUES("34","2","","35","SHORT - GARTERIZED - ARMY GREEN - SMALL","SGAG001","130.00","1","0.00","0.00","0.00","130.00","","PC");
+INSERT INTO tblslsdetl VALUES("35","2","","40","SHORT - GARTERIZED - PINK - MEDIUM","SGPNK002","130.00","1","0.00","0.00","0.00","130.00","","PC");
+INSERT INTO tblslsdetl VALUES("36","2","","10","SHORT - GARTERIZED - BLK - MEDIUM","SGBLK002","130.00","1","0.00","0.00","0.00","130.00","","PC");
+INSERT INTO tblslsdetl VALUES("39","3","","33","SHORT - GARTERIZED - TEAL GREEN - LARGE","SGTG003","115.00","1","0.00","0.00","0.00","115.00","","PC");
+INSERT INTO tblslsdetl VALUES("40","3","","40","SHORT - GARTERIZED - PINK - MEDIUM","SGPNK002","115.00","1","0.00","0.00","0.00","115.00","","PC");
+INSERT INTO tblslsdetl VALUES("41","3","","41","SHORT - GARTERIZED - PINK - LARGE","SGPNK003","115.00","2","0.00","0.00","0.00","230.00","","PC");
+INSERT INTO tblslsdetl VALUES("42","3","","42","SHORT - GARTERIZED - PINK - XL","SGPNK004","115.00","2","0.00","0.00","0.00","230.00","","PC");
+INSERT INTO tblslsdetl VALUES("43","3","","22","SHORT - GARTERIZED - BLK - XL","SGBLK004","115.00","1","0.00","0.00","0.00","115.00","","PC");
+INSERT INTO tblslsdetl VALUES("44","3","","24","SHORT - GARTERIZED - WHT - MEDIUM","SGW002","115.00","1","0.00","0.00","0.00","115.00","","PC");
+INSERT INTO tblslsdetl VALUES("45","3","","37","SHORT - GARTERIZED - ARMY GREEN - LARGE","SGAG003","115.00","2","0.00","0.00","0.00","230.00","","PC");
+INSERT INTO tblslsdetl VALUES("46","3","","38","SHORT - GARTERIZED - ARMY GREEN - XL","SGAG004","115.00","1","0.00","0.00","0.00","115.00","","PC");
+INSERT INTO tblslsdetl VALUES("47","3","","44","SHORT - GARTERIZED - OLD ROSE - MEDIUM","SGOR002","115.00","1","0.00","0.00","0.00","115.00","","PC");
+INSERT INTO tblslsdetl VALUES("48","3","","45","SHORT - GARTERIZED - OLD ROSE - LARGE","SGOR003","115.00","1","0.00","0.00","0.00","115.00","","PC");
+INSERT INTO tblslsdetl VALUES("49","4","","136","Chicharong Baboy - 150-180g","CB180001","100.00","4","0.00","0.00","0.00","400.00","","PC");
+INSERT INTO tblslsdetl VALUES("50","4","","137","PASTILLAS - REGULAR","PAS001","110.00","3","0.00","0.00","0.00","330.00","","BOX");
+INSERT INTO tblslsdetl VALUES("51","4","","139","MACAPUNO BUTTERMILK ","MACB001","0.00","1","0.00","0.00","0.00","0.00","","PACK");
+INSERT INTO tblslsdetl VALUES("52","5","","137","PASTILLAS - REGULAR","PAS001","110.00","2","0.00","0.00","0.00","220.00","","BOX");
+INSERT INTO tblslsdetl VALUES("53","6","","136","Chicharong Baboy - 150-180g","CB180001","65.00","50","0.00","0.00","0.00","3250.00","","PC");
+INSERT INTO tblslsdetl VALUES("54","6","","140","AQUA SIS BOTTLED WATER 350ML","ASBW350","14.00","24","0.00","0.00","0.00","336.00","","PC");
+INSERT INTO tblslsdetl VALUES("55","6","","141","AQUA SIS BOTTLED WATER 500ML","ASBW500","10.00","24","0.00","0.00","0.00","240.00","","PC");
+INSERT INTO tblslsdetl VALUES("56","7","","136","Chicharong Baboy - 150-180g","CB180001","100.00","10","0.00","0.00","0.00","1000.00","","PC");
+INSERT INTO tblslsdetl VALUES("57","8","","136","Chicharong Baboy - 150-180g","CB180001","100.00","10","0.00","0.00","0.00","1000.00","","PC");
+INSERT INTO tblslsdetl VALUES("58","9","","115","SHORT - MIDI - ARMY GREEN - SMALL","SMAG001","140.00","2","0.00","0.00","0.00","280.00","","PC");
+INSERT INTO tblslsdetl VALUES("59","9","","99","SHORT - MIDI - BLK - SMALL","SMBLK001","140.00","2","0.00","0.00","0.00","280.00","","PC");
+INSERT INTO tblslsdetl VALUES("60","9","","116","SHORT - MIDI - ARMY GREEN - MEDIUM","SMAG002","140.00","2","0.00","0.00","0.00","280.00","","PC");
+INSERT INTO tblslsdetl VALUES("61","9","","100","SHORT - MIDI - BLK - MEDIUM","SMBLK002","140.00","2","0.00","0.00","0.00","280.00","","PC");
+INSERT INTO tblslsdetl VALUES("62","9","","74","SHORT - BUTTONS - TEAL GREEN - XL","SBTG004","160.00","1","0.00","0.00","0.00","160.00","","PC");
+INSERT INTO tblslsdetl VALUES("63","10","","136","Chicharong Baboy - 150-180g","CB180001","80.00","10","0.00","0.00","0.00","800.00","","PC");
+INSERT INTO tblslsdetl VALUES("64","11","","136","Chicharong Baboy - 150-180g","CB180001","80.00","25","0.00","0.00","0.00","2000.00","","PC");
+INSERT INTO tblslsdetl VALUES("65","11","","146","SIOPAO COMBI W/ SAUCE","SPKC001","130.00","1","0.00","0.00","0.00","130.00","","PACK");
+INSERT INTO tblslsdetl VALUES("66","12","","136","Chicharong Baboy - 150-180g","CB180001","100.00","3","0.00","0.00","0.00","300.00","","PC");
+INSERT INTO tblslsdetl VALUES("67","12","","137","PASTILLAS - REGULAR","PAS001","110.00","1","0.00","0.00","0.00","110.00","","BOX");
+INSERT INTO tblslsdetl VALUES("68","12","","139","MACAPUNO BUTTERMILK ","MACB001","60.00","2","0.00","0.00","0.00","120.00","","PACK");
+INSERT INTO tblslsdetl VALUES("69","13","","136","Chicharong Baboy - 150-180g","CB180001","100.00","1","0.00","0.00","0.00","100.00","","PC");
+INSERT INTO tblslsdetl VALUES("70","13","","139","MACAPUNO BUTTERMILK ","MACB001","60.00","1","0.00","0.00","0.00","60.00","","PACK");
+INSERT INTO tblslsdetl VALUES("71","14","","137","PASTILLAS - REGULAR","PAS001","110.00","1","0.00","0.00","0.00","110.00","","BOX");
+INSERT INTO tblslsdetl VALUES("72","15","","140","AQUA SIS BOTTLED WATER 350ML","ASBW350","14.00","1","0.00","0.00","0.00","14.00","","PC");
+INSERT INTO tblslsdetl VALUES("73","16","","140","AQUA SIS BOTTLED WATER 350ML","ASBW350","14.00","1","1.00","0.00","0.00","14.00","","PC");
+
+
+
+CREATE TABLE `tblslshead` (
+  `SLSID` int(11) NOT NULL AUTO_INCREMENT,
+  `INVOICENO` varchar(20) DEFAULT NULL,
+  `DRNO` varchar(20) DEFAULT NULL,
+  `REFNO` varchar(20) DEFAULT NULL,
+  `ENTDATE` date DEFAULT NULL,
+  `CUSTNAME` varchar(255) DEFAULT NULL,
+  `CUSTCODE` varchar(20) DEFAULT NULL,
+  `CUSTOMERID` int(11) DEFAULT NULL,
+  `TOTAL` double(12,2) DEFAULT 0.00,
+  `DISCOUNTAMT` double(12,2) DEFAULT 0.00,
+  `DISCOUNTPER` double(6,2) DEFAULT 0.00,
+  `NET` double(12,2) DEFAULT 0.00,
+  `NOTE` varchar(500) DEFAULT NULL,
+  `TERMS` int(5) DEFAULT 0,
+  `DUEDATE` date DEFAULT NULL,
+  `PAIDAMT` double(12,2) DEFAULT 0.00,
+  `DEBITAMT` double(12,2) DEFAULT 0.00,
+  `CREDITAMT` double(12,2) DEFAULT 0.00,
+  `USERID` int(11) DEFAULT NULL,
+  `U_NAME` varchar(122) DEFAULT NULL,
+  `INVDATE` char(10) DEFAULT NULL,
+  `DRDATE` char(10) DEFAULT NULL,
+  `SLSTYPE` int(1) DEFAULT 1,
+  `DELIVEREDBY` varchar(100) DEFAULT NULL,
+  `SMANNAME` varchar(100) DEFAULT NULL,
+  `SALESMANID` int(11) DEFAULT 0,
+  `PRINTED` char(3) DEFAULT 'no',
+  `SRAMT` double(12,2) DEFAULT 0.00,
+  `CANCELLED` char(1) DEFAULT 'F',
+  PRIMARY KEY (`SLSID`),
+  KEY `invoiceno` (`INVOICENO`)
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblslshead VALUES("1","1","","","2020-07-02","ANNA","AN001","2","3465.00","0.00","0.00","3465.00","","30","2020-08-01","0.00","0.00","0.00","128","Jimmy R. Santos","2020-07-02","","1","","","0","no","0.00","F");
+INSERT INTO tblslshead VALUES("2","2","","","2020-06-30","ANNA","AN001","2","790.00","0.00","0.00","790.00","","30","2020-07-30","0.00","0.00","0.00","128","Jimmy R. Santos","2020-06-30","","1","","","0","no","0.00","F");
+INSERT INTO tblslshead VALUES("3","3","","","2020-07-02","ANNA","AN001","2","1725.00","0.00","0.00","1725.00","","30","2020-08-01","0.00","0.00","0.00","128","Jimmy R. Santos","2020-07-02","","1","","","0","no","0.00","F");
+INSERT INTO tblslshead VALUES("4","4","","","2020-07-03","LYDIA - BROOKSIDE","LYB001","4","730.00","0.00","0.00","730.00","","0","2020-07-03","0.00","0.00","0.00","128","JSS Business Solution","2020-07-03","","1","","","0","no","0.00","F");
+INSERT INTO tblslshead VALUES("5","5","","","2020-07-03","TITSER TIN","TT001","5","220.00","0.00","0.00","220.00","","0","2020-07-03","0.00","0.00","0.00","128","JSS Business Solution","2020-07-03","","1","","","0","no","115.00","F");
+INSERT INTO tblslshead VALUES("6","6","","","2020-07-03","ANNE FACTORY OUTLET","AFO-001","6","3826.00","0.00","0.00","3826.00","","30","2020-08-02","0.00","0.00","0.00","128","JSS Business Solution","2020-07-03","","1","","","0","no","0.00","F");
+INSERT INTO tblslshead VALUES("7","7","","","2020-07-03","DAISY MANALO","DM001","3","1000.00","0.00","0.00","1000.00","","30","2020-08-02","0.00","0.00","0.00","128","JSS Business Solution","2020-07-03","","1","","","0","no","0.00","F");
+INSERT INTO tblslshead VALUES("8","8","","","2020-07-03","EVA GUTTIEREZ","EG001","7","1000.00","0.00","0.00","1000.00","","30","2020-08-02","0.00","0.00","0.00","128","JSS Business Solution","2020-07-03","","1","","","0","no","0.00","F");
+INSERT INTO tblslshead VALUES("9","9","","","2020-07-03","ANNA","AN001","2","1280.00","0.00","0.00","1280.00","","30","2020-08-02","0.00","0.00","0.00","128","JSS Business Solution","2020-07-03","","1","","","0","no","0.00","F");
+INSERT INTO tblslshead VALUES("10","10","","","2020-07-03","NANAY AU","AU001","8","800.00","0.00","0.00","800.00","","30","2020-08-02","0.00","0.00","0.00","128","JSS Business Solution","2020-07-03","","1","","","0","no","0.00","F");
+INSERT INTO tblslshead VALUES("11","11","","","2020-07-03","JHING GUANZON OLANO","JHING01","9","2130.00","0.00","0.00","2130.00","","0","2020-07-03","0.00","0.00","0.00","128","JSS Business Solution","2020-07-03","","1","","","0","no","115.00","F");
+INSERT INTO tblslshead VALUES("12","12","","","2020-07-03","REINIELLE ROGEL","RG001","10","530.00","0.00","0.00","530.00","","0","2020-07-03","0.00","0.00","0.00","128","JSS Business Solution","2020-07-03","","1","","","0","no","0.00","F");
+INSERT INTO tblslshead VALUES("13","13","","","2020-07-03","CASH SALE","CASH001","1","160.00","0.00","0.00","160.00","","0","2020-07-04","0.00","0.00","0.00","128","JSS Business Solution","2020-07-03","","1","","","0","no","0.00","F");
+INSERT INTO tblslshead VALUES("14","14","","","2020-07-03","CASH SALE","CASH001","1","110.00","0.00","0.00","110.00","hannah PP","0","2020-07-04","0.00","0.00","0.00","128","JSS Business Solution","2020-07-03","","1","","","0","no","0.00","F");
+INSERT INTO tblslshead VALUES("15","15","","","2020-07-06","CASH SALE","CASH001","1","14.00","0.00","0.00","14.00","","0","2020-07-06","0.00","0.00","0.00","128","JSS Business Solution","2020-07-06","","1","","","0","no","0.00","F");
+INSERT INTO tblslshead VALUES("16","SA00016","","","2020-07-06","ANNA","AN001","2","14.00","0.00","0.00","14.00","","30","2020-08-05","0.00","0.00","0.00","128","JSS Business Solution","2020-07-06","","1","","","0","no","0.00","F");
+
+
+
+CREATE TABLE `tblsrdetl` (
+  `SRPID` int(11) NOT NULL AUTO_INCREMENT,
+  `SRID` int(11) DEFAULT 0,
+  `SLSPID` int(11) DEFAULT NULL,
+  `INVOICENO` varchar(20) DEFAULT NULL,
+  `DRNO` varchar(20) DEFAULT NULL,
+  `PROID` int(11) DEFAULT 0,
+  `PRONAME` varchar(255) DEFAULT NULL,
+  `PROCODE` varchar(20) DEFAULT NULL,
+  `PROPRICE` double(12,2) DEFAULT 0.00,
+  `QTY` double(9,2) DEFAULT 0.00,
+  `DISCPER` double(6,2) DEFAULT 0.00,
+  `DISCAMT` double(12,2) DEFAULT 0.00,
+  `AMOUNT` double(12,2) DEFAULT 0.00,
+  `UNIT` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`SRPID`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblsrdetl VALUES("5","6","73","SA00016","","140","AQUA SIS BOTTLED WATER 350ML","ASBW350","15.00","1.00","0.00","0.00","15.00","PC");
+
+
+
+CREATE TABLE `tblsrhead` (
+  `SRID` int(11) NOT NULL AUTO_INCREMENT,
+  `SRNO` varchar(20) DEFAULT NULL,
+  `REFNO` varchar(20) DEFAULT NULL,
+  `ENTDATE` date DEFAULT NULL,
+  `CUSTNAME` varchar(255) DEFAULT NULL,
+  `CUSTCODE` varchar(20) DEFAULT NULL,
+  `CUSTOMERID` int(11) DEFAULT NULL,
+  `TOTAL` double(12,2) DEFAULT 0.00,
+  `DISCOUNTAMT` double(12,2) DEFAULT 0.00,
+  `DISCOUNTPER` double(6,2) DEFAULT 0.00,
+  `NET` double(12,2) DEFAULT 0.00,
+  `NOTE` varchar(500) DEFAULT NULL,
+  `USERID` int(11) DEFAULT NULL,
+  `U_NAME` varchar(122) DEFAULT NULL,
+  `DEDUCTDATE` char(10) DEFAULT NULL,
+  `DRDATE` char(10) DEFAULT NULL,
+  `LESSTOACCOUNT` int(1) DEFAULT 1,
+  `CHECKEDBY` varchar(100) DEFAULT NULL,
+  `PRINTED` char(3) DEFAULT 'no',
+  PRIMARY KEY (`SRID`),
+  KEY `invoiceno` (`SRNO`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblsrhead VALUES("6","SR-200708000","","2020-07-08","ANNA","AN001","2","15.00","0.00","0.00","15.00","","128","JSS Business Solution","2020-07-08","","1","","no");
+
+
+
+CREATE TABLE `tblstockadjustdetl` (
+  `ADJPID` int(11) NOT NULL AUTO_INCREMENT,
+  `ADJID` int(11) DEFAULT 0,
+  `PROID` int(11) DEFAULT 0,
+  `PRONAME` varchar(255) DEFAULT NULL,
+  `PROCODE` varchar(20) DEFAULT NULL,
+  `QTY` double(9,2) DEFAULT 0.00,
+  `UNIT` varchar(20) DEFAULT NULL,
+  `QTYRESET` double(9,2) DEFAULT NULL,
+  PRIMARY KEY (`ADJPID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+
+
+
+CREATE TABLE `tblstockadjusthead` (
+  `ADJID` int(11) NOT NULL AUTO_INCREMENT,
+  `ADJNO` varchar(20) DEFAULT NULL,
+  `ADJTYPE` varchar(20) DEFAULT NULL,
+  `REFNO` varchar(20) DEFAULT NULL,
+  `ENTDATE` date DEFAULT NULL,
+  `CUSTNAME` varchar(255) DEFAULT NULL,
+  `CUSTCODE` varchar(20) DEFAULT NULL,
+  `CUSTOMERID` int(11) DEFAULT NULL,
+  `NOTE` varchar(500) DEFAULT NULL,
+  `USERID` int(11) DEFAULT NULL,
+  `U_NAME` varchar(122) DEFAULT NULL,
+  `APPROVEDBY` varchar(100) DEFAULT NULL,
+  `PRINTED` char(3) DEFAULT 'no',
+  PRIMARY KEY (`ADJID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+
+
+
+CREATE TABLE `tblstockin` (
+  `STOCKINID` int(11) NOT NULL AUTO_INCREMENT,
+  `ENTDATE` datetime DEFAULT NULL,
+  `TID` int(11) DEFAULT 0,
+  `TPID` int(11) DEFAULT 0,
+  `TTYPE` char(3) DEFAULT NULL,
+  `TNO` varchar(20) DEFAULT NULL,
+  `PROID` int(11) DEFAULT 0,
+  `QTYIN` double(12,2) DEFAULT 0.00,
+  `QTYOUT` double(12,2) DEFAULT 0.00,
+  `PRICE` double(12,2) DEFAULT 0.00,
+  `USERID` int(11) DEFAULT 0,
+  PRIMARY KEY (`STOCKINID`)
+) ENGINE=InnoDB AUTO_INCREMENT=231 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblstockin VALUES("2","2020-06-11 00:00:00","10","2","AD","AD200602063","1","10.00","0.00","180.00","128");
+INSERT INTO tblstockin VALUES("3","2020-06-11 00:00:00","11","3","AD","AD200601080","1","10.00","0.00","180.00","128");
+INSERT INTO tblstockin VALUES("4","2020-06-11 00:00:00","12","4","AD","AD200607602","1","0.00","20.00","180.00","128");
+INSERT INTO tblstockin VALUES("7","2020-06-11 00:00:00","14","7","AD","AD200603000","1","0.00","1.00","180.00","128");
+INSERT INTO tblstockin VALUES("8","2020-06-11 00:00:00","15","8","AD","AD200600030","1","0.00","9.00","180.00","128");
+INSERT INTO tblstockin VALUES("21","2020-06-14 00:00:00","2","2","PR","PR-200603002","1","0.00","1.00","200.00","128");
+INSERT INTO tblstockin VALUES("22","2020-06-14 00:00:00","3","3","PR","PR-200665501","1","0.00","1.00","200.00","128");
+INSERT INTO tblstockin VALUES("23","2020-07-02 00:00:00","1","1","SA","1","31","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("24","2020-07-02 00:00:00","1","2","SA","1","39","0.00","2.00","115.00","128");
+INSERT INTO tblstockin VALUES("25","2020-07-02 00:00:00","1","3","SA","1","23","0.00","2.00","115.00","128");
+INSERT INTO tblstockin VALUES("26","2020-07-02 00:00:00","1","4","SA","1","9","0.00","2.00","115.00","128");
+INSERT INTO tblstockin VALUES("32","2020-07-02 00:00:00","1","9","SA","1","24","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("35","2020-07-02 00:00:00","15","17","RR","RR-20075M093","20","2.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("36","2020-07-02 00:00:00","1","1","RR","RR-20075M093","31","2.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("37","2020-07-02 00:00:00","1","2","RR","RR-20075M093","39","2.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("38","2020-07-02 00:00:00","1","3","RR","RR-20075M093","23","2.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("39","2020-07-07 00:00:00","1","4","RR","PR-2007040J1","9","1.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("40","2020-07-02 00:00:00","1","5","RR","RR-20075M093","27","1.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("41","2020-07-02 00:00:00","1","6","RR","RR-20075M093","35","2.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("42","2020-07-02 00:00:00","1","7","RR","RR-20075M093","43","2.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("43","2020-07-02 00:00:00","1","8","RR","RR-20075M093","10","2.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("44","2020-07-02 00:00:00","1","9","RR","RR-20075M093","24","1.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("45","2020-07-02 00:00:00","1","10","RR","RR-20075M093","11","1.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("46","2020-07-02 00:00:00","1","11","RR","RR-20075M093","29","2.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("47","2020-07-02 00:00:00","1","12","RR","RR-20075M093","33","1.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("48","2020-07-02 00:00:00","1","13","RR","RR-20075M093","37","1.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("49","2020-07-02 00:00:00","1","14","RR","RR-20075M093","41","1.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("50","2020-07-02 00:00:00","1","15","RR","RR-20075M093","45","1.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("51","2020-07-02 00:00:00","1","16","RR","RR-20075M093","25","1.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("52","2020-07-02 00:00:00","1","17","RR","RR-20075M093","50","2.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("53","2020-07-02 00:00:00","1","18","RR","RR-20075M093","38","2.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("54","2020-07-02 00:00:00","1","19","RR","RR-20075M093","30","3.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("55","2020-07-02 00:00:00","1","20","RR","RR-20075M093","22","3.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("56","2020-07-02 00:00:00","1","21","RR","RR-20075M093","34","1.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("57","2020-07-02 00:00:00","1","22","RR","RR-20075M093","42","2.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("58","2020-07-02 00:00:00","1","23","RR","RR-20075M093","46","1.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("59","2020-07-02 00:00:00","1","24","RR","RR-20075M093","26","2.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("60","2020-07-02 00:00:00","1","25","RR","RR-20075M093","115","3.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("61","2020-07-02 00:00:00","1","26","RR","RR-20075M093","99","3.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("62","2020-07-02 00:00:00","1","27","RR","RR-20075M093","116","3.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("63","2020-07-02 00:00:00","1","28","RR","RR-20075M093","100","3.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("64","2020-07-02 00:00:00","1","29","RR","RR-20075M093","93","3.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("65","2020-07-02 00:00:00","1","30","RR","RR-20075M093","97","2.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("66","2020-07-02 00:00:00","1","31","RR","RR-20075M093","101","3.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("67","2020-07-02 00:00:00","1","32","RR","RR-20075M093","117","2.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("68","2020-07-02 00:00:00","1","33","RR","RR-20075M093","118","3.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("69","2020-07-02 00:00:00","1","34","RR","RR-20075M093","102","3.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("70","2020-07-02 00:00:00","1","35","RR","RR-20075M093","94","2.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("71","2020-07-02 00:00:00","1","36","RR","RR-20075M093","98","2.00","0.00","100.00","128");
+INSERT INTO tblstockin VALUES("72","2020-07-02 00:00:00","1","1","SA","1","31","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("73","2020-07-02 00:00:00","1","2","SA","1","39","0.00","2.00","115.00","128");
+INSERT INTO tblstockin VALUES("74","2020-07-02 00:00:00","1","3","SA","1","23","0.00","2.00","115.00","128");
+INSERT INTO tblstockin VALUES("75","2020-07-02 00:00:00","1","4","SA","1","9","0.00","2.00","115.00","128");
+INSERT INTO tblstockin VALUES("76","2020-07-02 00:00:00","1","5","SA","1","27","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("77","2020-07-02 00:00:00","1","6","SA","1","35","0.00","2.00","115.00","128");
+INSERT INTO tblstockin VALUES("78","2020-07-02 00:00:00","1","7","SA","1","43","0.00","2.00","115.00","128");
+INSERT INTO tblstockin VALUES("79","2020-07-02 00:00:00","1","8","SA","1","10","0.00","2.00","150.00","128");
+INSERT INTO tblstockin VALUES("80","2020-07-02 00:00:00","1","9","SA","1","24","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("81","2020-07-02 00:00:00","1","10","SA","1","11","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("82","2020-07-02 00:00:00","1","11","SA","1","29","0.00","2.00","115.00","128");
+INSERT INTO tblstockin VALUES("83","2020-07-02 00:00:00","1","12","SA","1","33","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("84","2020-07-02 00:00:00","1","13","SA","1","37","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("87","2020-07-02 00:00:00","1","16","SA","1","25","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("89","2020-07-02 00:00:00","1","18","SA","1","38","0.00","2.00","115.00","128");
+INSERT INTO tblstockin VALUES("90","2020-07-02 00:00:00","1","19","SA","1","30","0.00","3.00","115.00","128");
+INSERT INTO tblstockin VALUES("91","2020-07-02 00:00:00","1","20","SA","1","22","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("92","2020-07-02 00:00:00","1","21","SA","1","34","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("94","2020-07-02 00:00:00","1","23","SA","1","46","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("96","2020-07-02 00:00:00","1","25","SA","1","115","0.00","1.00","120.00","128");
+INSERT INTO tblstockin VALUES("97","2020-07-02 00:00:00","1","26","SA","1","99","0.00","1.00","120.00","128");
+INSERT INTO tblstockin VALUES("98","2020-07-02 00:00:00","1","27","SA","1","93","0.00","1.00","120.00","128");
+INSERT INTO tblstockin VALUES("102","2020-06-27 00:00:00","3","39","RR","RR-2007R8022","71","3.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("103","2020-07-07 00:00:00","3","40","RR","PR-2007040J1","75","3.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("104","2020-06-27 00:00:00","3","41","RR","RR-2007R8022","67","1.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("105","2020-06-27 00:00:00","3","42","RR","RR-2007R8022","131","3.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("106","2020-06-27 00:00:00","3","43","RR","RR-2007R8022","60","2.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("107","2020-06-27 00:00:00","3","44","RR","RR-2007R8022","76","2.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("108","2020-07-07 00:00:00","3","45","RR","PR-2007040J1","68","1.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("109","2020-06-27 00:00:00","3","46","RR","RR-2007R8022","64","1.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("110","2020-06-27 00:00:00","3","47","RR","RR-2007R8022","135","1.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("111","2020-06-27 00:00:00","3","48","RR","RR-2007R8022","69","2.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("112","2020-06-27 00:00:00","3","49","RR","RR-2007R8022","73","2.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("113","2020-06-27 00:00:00","3","50","RR","RR-2007R8022","65","2.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("114","2020-06-27 00:00:00","3","51","RR","RR-2007R8022","77","1.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("115","2020-06-27 00:00:00","3","52","RR","RR-2007R8022","61","1.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("116","2020-06-27 00:00:00","3","53","RR","RR-2007R8022","89","1.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("117","2020-06-27 00:00:00","3","54","RR","RR-2007R8022","81","1.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("118","2020-06-27 00:00:00","3","55","RR","RR-2007R8022","70","3.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("119","2020-06-27 00:00:00","3","56","RR","RR-2007R8022","74","2.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("120","2020-06-27 00:00:00","3","57","RR","RR-2007R8022","78","2.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("121","2020-06-27 00:00:00","3","58","RR","RR-2007R8022","132","1.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("122","2020-06-27 00:00:00","3","59","RR","RR-2007R8022","62","1.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("123","2020-06-27 00:00:00","3","60","RR","RR-2007R8022","90","1.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("124","2020-06-27 00:00:00","3","61","RR","RR-2007R8022","31","2.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("125","2020-06-27 00:00:00","3","62","RR","RR-2007R8022","43","2.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("126","2020-06-27 00:00:00","3","63","RR","RR-2007R8022","39","1.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("127","2020-06-27 00:00:00","3","64","RR","RR-2007R8022","23","2.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("128","2020-06-27 00:00:00","3","65","RR","RR-2007R8022","9","1.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("129","2020-06-27 00:00:00","3","66","RR","RR-2007R8022","27","1.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("130","2020-06-27 00:00:00","3","67","RR","RR-2007R8022","35","1.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("131","2020-06-27 00:00:00","3","68","RR","RR-2007R8022","40","3.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("132","2020-06-27 00:00:00","3","69","RR","RR-2007R8022","44","1.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("133","2020-06-27 00:00:00","3","70","RR","RR-2007R8022","24","2.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("134","2020-06-27 00:00:00","3","71","RR","RR-2007R8022","10","1.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("135","2020-06-27 00:00:00","3","72","RR","RR-2007R8022","36","1.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("136","2020-06-27 00:00:00","3","73","RR","RR-2007R8022","28","1.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("137","2020-06-27 00:00:00","3","74","RR","RR-2007R8022","32","1.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("138","2020-06-27 00:00:00","3","75","RR","RR-2007R8022","45","2.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("139","2020-06-27 00:00:00","3","76","RR","RR-2007R8022","41","2.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("140","2020-06-27 00:00:00","3","77","RR","RR-2007R8022","37","2.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("141","2020-06-27 00:00:00","3","78","RR","RR-2007R8022","29","2.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("142","2020-06-27 00:00:00","3","79","RR","RR-2007R8022","33","1.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("143","2020-06-27 00:00:00","3","80","RR","RR-2007R8022","25","1.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("144","2020-06-27 00:00:00","3","81","RR","RR-2007R8022","42","2.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("145","2020-06-27 00:00:00","3","82","RR","RR-2007R8022","46","1.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("146","2020-06-27 00:00:00","3","83","RR","RR-2007R8022","34","2.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("147","2020-06-27 00:00:00","3","84","RR","RR-2007R8022","26","2.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("148","2020-06-27 00:00:00","3","85","RR","RR-2007R8022","22","1.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("149","2020-06-27 00:00:00","3","86","RR","RR-2007R8022","38","1.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("150","2020-06-27 00:00:00","3","87","RR","RR-2007R8022","30","1.00","0.00","90.00","128");
+INSERT INTO tblstockin VALUES("153","2020-06-30 00:00:00","2","31","SA","2","68","0.00","1.00","140.00","128");
+INSERT INTO tblstockin VALUES("154","2020-06-30 00:00:00","2","32","SA","2","31","0.00","1.00","130.00","128");
+INSERT INTO tblstockin VALUES("155","2020-06-30 00:00:00","2","33","SA","2","27","0.00","1.00","130.00","128");
+INSERT INTO tblstockin VALUES("156","2020-06-30 00:00:00","2","34","SA","2","35","0.00","1.00","130.00","128");
+INSERT INTO tblstockin VALUES("157","2020-06-30 00:00:00","2","35","SA","2","40","0.00","1.00","130.00","128");
+INSERT INTO tblstockin VALUES("158","2020-06-30 00:00:00","2","36","SA","2","10","0.00","1.00","130.00","128");
+INSERT INTO tblstockin VALUES("159","2020-07-02 00:00:00","3","37","SA","3","31","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("160","2020-07-02 00:00:00","3","38","SA","3","32","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("161","2020-07-02 00:00:00","3","39","SA","3","33","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("162","2020-07-02 00:00:00","3","40","SA","3","40","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("163","2020-07-02 00:00:00","3","41","SA","3","41","0.00","2.00","115.00","128");
+INSERT INTO tblstockin VALUES("164","2020-07-02 00:00:00","3","42","SA","3","42","0.00","2.00","115.00","128");
+INSERT INTO tblstockin VALUES("165","2020-07-02 00:00:00","3","43","SA","3","22","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("166","2020-07-02 00:00:00","3","44","SA","3","24","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("167","2020-07-02 00:00:00","3","45","SA","3","37","0.00","2.00","115.00","128");
+INSERT INTO tblstockin VALUES("168","2020-07-02 00:00:00","3","46","SA","3","38","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("169","2020-07-02 00:00:00","3","47","SA","3","44","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("170","2020-07-02 00:00:00","3","48","SA","3","45","0.00","1.00","115.00","128");
+INSERT INTO tblstockin VALUES("171","2020-07-03 00:00:00","4","88","RR","RR-20079340A","140","24.00","0.00","7.50","128");
+INSERT INTO tblstockin VALUES("172","2020-07-03 00:00:00","4","89","RR","RR-20079340A","141","24.00","0.00","6.00","128");
+INSERT INTO tblstockin VALUES("173","2020-07-03 00:00:00","5","90","RR","RR-20076EC10","136","150.00","0.00","60.00","128");
+INSERT INTO tblstockin VALUES("174","2020-07-03 00:00:00","5","91","RR","RR-20076EC10","136","1.00","0.00","0.00","128");
+INSERT INTO tblstockin VALUES("175","2020-07-03 00:00:00","5","92","RR","RR-20076EC10","139","20.00","0.00","50.00","128");
+INSERT INTO tblstockin VALUES("176","2020-07-03 00:00:00","5","93","RR","RR-20076EC10","137","20.00","0.00","80.00","128");
+INSERT INTO tblstockin VALUES("177","2020-07-03 00:00:00","4","49","SA","4","136","0.00","4.00","100.00","128");
+INSERT INTO tblstockin VALUES("178","2020-07-03 00:00:00","4","50","SA","4","137","0.00","3.00","110.00","128");
+INSERT INTO tblstockin VALUES("179","2020-07-03 00:00:00","4","51","SA","4","139","0.00","1.00","0.00","128");
+INSERT INTO tblstockin VALUES("180","2020-07-03 00:00:00","5","52","SA","5","137","0.00","2.00","110.00","128");
+INSERT INTO tblstockin VALUES("181","2020-07-03 00:00:00","6","53","SA","6","136","0.00","50.00","65.00","128");
+INSERT INTO tblstockin VALUES("182","2020-07-03 00:00:00","6","54","SA","6","140","0.00","24.00","14.00","128");
+INSERT INTO tblstockin VALUES("183","2020-07-03 00:00:00","6","55","SA","6","141","0.00","24.00","10.00","128");
+INSERT INTO tblstockin VALUES("184","2020-07-03 00:00:00","7","56","SA","7","136","0.00","10.00","100.00","128");
+INSERT INTO tblstockin VALUES("185","2020-07-03 00:00:00","8","57","SA","8","136","0.00","10.00","100.00","128");
+INSERT INTO tblstockin VALUES("186","2020-07-03 00:00:00","9","58","SA","9","115","0.00","2.00","140.00","128");
+INSERT INTO tblstockin VALUES("187","2020-07-03 00:00:00","9","59","SA","9","99","0.00","2.00","140.00","128");
+INSERT INTO tblstockin VALUES("188","2020-07-03 00:00:00","9","60","SA","9","116","0.00","2.00","140.00","128");
+INSERT INTO tblstockin VALUES("189","2020-07-03 00:00:00","9","61","SA","9","100","0.00","2.00","140.00","128");
+INSERT INTO tblstockin VALUES("190","2020-07-03 00:00:00","9","62","SA","9","74","0.00","1.00","160.00","128");
+INSERT INTO tblstockin VALUES("191","2020-07-03 00:00:00","6","94","RR","RR-20070566I","144","5.00","0.00","116.00","128");
+INSERT INTO tblstockin VALUES("192","2020-07-03 00:00:00","6","95","RR","RR-20070566I","145","5.00","0.00","118.50","128");
+INSERT INTO tblstockin VALUES("193","2020-07-03 00:00:00","6","96","RR","RR-20070566I","146","1.00","0.00","118.50","128");
+INSERT INTO tblstockin VALUES("194","2020-07-03 00:00:00","10","63","SA","10","136","0.00","10.00","80.00","128");
+INSERT INTO tblstockin VALUES("195","2020-07-03 00:00:00","11","64","SA","11","136","0.00","25.00","80.00","128");
+INSERT INTO tblstockin VALUES("196","2020-07-03 00:00:00","11","65","SA","11","146","0.00","1.00","130.00","128");
+INSERT INTO tblstockin VALUES("197","2020-07-03 00:00:00","6","97","RR","RR-20070566I","147","1.00","0.00","282.00","128");
+INSERT INTO tblstockin VALUES("198","2020-07-03 00:00:00","6","98","RR","RR-20070566I","150","2.00","0.00","282.00","128");
+INSERT INTO tblstockin VALUES("199","2020-07-03 00:00:00","6","99","RR","RR-20070566I","149","1.00","0.00","209.00","128");
+INSERT INTO tblstockin VALUES("200","2020-07-03 00:00:00","12","66","SA","12","136","0.00","3.00","100.00","128");
+INSERT INTO tblstockin VALUES("201","2020-07-03 00:00:00","12","67","SA","12","137","0.00","1.00","110.00","128");
+INSERT INTO tblstockin VALUES("202","2020-07-03 00:00:00","12","68","SA","12","139","0.00","2.00","60.00","128");
+INSERT INTO tblstockin VALUES("203","2020-07-04 00:00:00","13","69","SA","13","136","0.00","1.00","100.00","128");
+INSERT INTO tblstockin VALUES("204","2020-07-04 00:00:00","13","70","SA","13","139","0.00","1.00","60.00","128");
+INSERT INTO tblstockin VALUES("205","2020-07-04 00:00:00","14","71","SA","14","137","0.00","1.00","110.00","128");
+INSERT INTO tblstockin VALUES("206","2020-07-05 00:00:00","7","100","RR","33312312","140","1.00","0.00","7.50","128");
+INSERT INTO tblstockin VALUES("207","2020-07-05 00:00:00","7","101","RR","33312312","139","1.00","0.00","40.00","128");
+INSERT INTO tblstockin VALUES("208","2020-07-05 00:00:00","7","102","RR","33312312","136","1.00","0.00","60.00","128");
+INSERT INTO tblstockin VALUES("209","2020-07-05 00:00:00","7","103","RR","33312312","149","1.00","0.00","209.00","128");
+INSERT INTO tblstockin VALUES("210","2020-07-05 00:00:00","7","104","RR","33312312","136","1.00","0.00","60.00","128");
+INSERT INTO tblstockin VALUES("211","2020-07-05 00:00:00","7","105","RR","33312312","60","1.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("212","2020-07-05 00:00:00","7","106","RR","33312312","60","1.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("213","2020-07-05 00:00:00","7","107","RR","33312312","136","1.00","0.00","60.00","128");
+INSERT INTO tblstockin VALUES("214","2020-07-05 00:00:00","7","108","RR","33312312","78","1.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("215","2020-07-05 00:00:00","7","109","RR","33312312","52","1.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("216","2020-07-06 00:00:00","9","110","RR","RR-20078G8J2","140","1.00","0.00","7.50","128");
+INSERT INTO tblstockin VALUES("217","2020-07-06 00:00:00","9","111","RR","RR-20078G8J2","136","1.00","0.00","60.00","128");
+INSERT INTO tblstockin VALUES("218","2020-07-06 00:00:00","9","112","RR","RR-20078G8J2","77","1.00","0.00","120.00","128");
+INSERT INTO tblstockin VALUES("219","2020-07-06 00:00:00","15","72","SA","15","140","0.00","1.00","14.00","128");
+INSERT INTO tblstockin VALUES("220","2020-07-06 00:00:00","16","73","SA","SA00016","140","0.00","1.00","14.00","128");
+INSERT INTO tblstockin VALUES("223","2020-07-07 00:00:00","4","4","PR","PR-2007040J1","35","0.00","1.00","90.00","128");
+INSERT INTO tblstockin VALUES("230","2020-07-08 00:00:00","6","5","SR","SR-200708000","140","1.00","0.00","15.00","128");
+
+
+
+CREATE TABLE `tblstocktype` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `STOCKTYPE` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `STOCKTYPE` (`STOCKTYPE`)
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblstocktype VALUES("1","HU/HG/VS PRODUCTS");
+INSERT INTO tblstocktype VALUES("2","LAMP");
+INSERT INTO tblstocktype VALUES("3","MIRROR");
+INSERT INTO tblstocktype VALUES("4","LENS");
+INSERT INTO tblstocktype VALUES("5","BODY PARTS");
+INSERT INTO tblstocktype VALUES("6","FRAME/HOUSING");
+INSERT INTO tblstocktype VALUES("7","ACCESSORIES");
+INSERT INTO tblstocktype VALUES("8","WIPER");
+INSERT INTO tblstocktype VALUES("9","BULB");
+INSERT INTO tblstocktype VALUES("14","LED LIGHTS ( TEST )");
+
+
+
+CREATE TABLE `tblsummary` (
+  `SUMMARYID` int(11) NOT NULL AUTO_INCREMENT,
+  `ORDEREDDATE` datetime NOT NULL,
+  `CUSTOMERID` int(11) NOT NULL,
+  `ORDEREDNUM` int(11) NOT NULL,
+  `DELFEE` double NOT NULL,
+  `PAYMENT` double NOT NULL,
+  `PAYMENTMETHOD` varchar(30) NOT NULL,
+  `ORDEREDSTATS` varchar(30) NOT NULL,
+  `ORDEREDREMARKS` varchar(125) NOT NULL,
+  `CLAIMEDADTE` datetime NOT NULL,
+  `HVIEW` tinyint(4) NOT NULL,
+  `USERID` int(11) NOT NULL,
+  PRIMARY KEY (`SUMMARYID`),
+  UNIQUE KEY `ORDEREDNUM` (`ORDEREDNUM`),
+  KEY `CUSTOMERID` (`CUSTOMERID`),
+  KEY `USERID` (`USERID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+CREATE TABLE `tblsupplier` (
+  `SUPPLIERID` int(11) NOT NULL AUTO_INCREMENT,
+  `suppname` varchar(100) DEFAULT NULL,
+  `suppcode` varchar(20) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `area` varchar(255) DEFAULT NULL,
+  `PHONE` varchar(100) DEFAULT NULL,
+  `EMAILADD` varchar(100) DEFAULT NULL,
+  `TERMS` int(5) NOT NULL DEFAULT 0,
+  `DATEJOIN` date DEFAULT NULL,
+  `note` varchar(500) DEFAULT NULL,
+  `creditlimit` double(12,2) DEFAULT 0.00,
+  `balance` double(12,2) DEFAULT 0.00,
+  `pdc_note` double(12,2) DEFAULT 0.00,
+  `blacklisted` char(3) DEFAULT 'No',
+  `CONTACT` varchar(100) DEFAULT NULL,
+  `POSITION` varchar(255) DEFAULT NULL,
+  `FAXNO` varchar(255) DEFAULT NULL,
+  `FOREX` varchar(255) DEFAULT NULL,
+  `MOBILENO` varchar(50) DEFAULT NULL,
+  `ISHIDDEN` varchar(255) DEFAULT NULL,
+  `STATNAME` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`SUPPLIERID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+INSERT INTO tblsupplier VALUES("1","AQUA SIS WATER REFILLING","AQ001","PAG-ASA, PINAMBARAN, SAN MIGUEL, BULACAN","","","JSCALANDAY@YAHOO.COM","30","2020-06-01","","100000.00","1240.50","0.00","No","JOCELYN CALANDAY","","","","","","");
+INSERT INTO tblsupplier VALUES("2","JOCELYN - VISTA VERDE","JV001","27 LIRIA CIRCLE, VISTA VERDE, CAINTA, RIZAL","","","A@A.COM","30","2020-06-21","","100000.00","14750.00","0.00","No","MS. JOCELYN","","","","","","");
+INSERT INTO tblsupplier VALUES("3","EA OCAMPO SWEETS","EA001","CAMBIO, SAN MIGUEL, BULACAN","","","A@AC.COM","30","2020-06-01","","100000.00","11787.50","0.00","No","RECHELE OCAMPO","","","","","","");
+INSERT INTO tblsupplier VALUES("4","JC PREMIERE","JCP001","SANTOLAN PASIG","","","A@A.COM","30","2020-07-03","","1000000.00","2346.00","0.00","No","REINIELLE ROGEL","","","","","","");
+
+
+
+CREATE TABLE `tbluseraccount` (
+  `USERID` int(11) NOT NULL AUTO_INCREMENT,
+  `U_NAME` varchar(122) DEFAULT NULL,
+  `U_USERNAME` varchar(122) DEFAULT NULL,
+  `U_PASS` varchar(122) DEFAULT NULL,
+  `U_ROLE` varchar(30) DEFAULT NULL,
+  `USERIMAGE` varchar(255) DEFAULT NULL,
+  `OVERWRITE` int(1) DEFAULT 0,
+  `SUPER` char(1) DEFAULT 'F',
+  `U_STATUS` char(10) DEFAULT 'Active',
+  `U_DATE` char(10) DEFAULT NULL,
+  PRIMARY KEY (`USERID`)
+) ENGINE=InnoDB AUTO_INCREMENT=163 DEFAULT CHARSET=latin1;
+
+INSERT INTO tbluseraccount VALUES("128","JSS Business Solution","Maverick","5c995bbb81b028b869ee4ea7c44bb1a9ea6152bc","Administrator","","0","T","Active","2020-01-02");
+INSERT INTO tbluseraccount VALUES("162","Lady Jaimee Santos","jaimee","52b6196e37cda5d58a3c085330ae94d1f43c4915","Staff","","0","F","Active","2020-07-01");
+
+
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(50) DEFAULT NULL,
+  `lastname` varchar(50) DEFAULT NULL,
+  `phone` varchar(200) DEFAULT NULL,
+  `email` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+
+INSERT INTO users VALUES("3","fname1","lname1","(000)000-0000","name1@gmail.com");
+INSERT INTO users VALUES("4","fname2","lname2","(000)000-0000","name2@gmail.com");
+INSERT INTO users VALUES("5","fname3","lname3","(000)000-0000","name3@gmail.com");
+INSERT INTO users VALUES("7","fname4","lname4","(000)000-0000","name4@gmail.com");
+INSERT INTO users VALUES("8","fname5","lname5","(000)000-0000","name5@gmail.com");
+INSERT INTO users VALUES("9","fname6","lname6","(000)000-0000","name6@gmail.com");
+INSERT INTO users VALUES("10","fname7","lname7","(000)000-0000","name7@gmail.com");
+INSERT INTO users VALUES("11","fname8","lname8","(000)000-0000","name8@gmail.com");
+INSERT INTO users VALUES("12","fname9","lname9","(000)000-0000","name9@gmail.com");
+INSERT INTO users VALUES("13","fname10","lname10","(000)000-0000","name10@gmail.com");
+
