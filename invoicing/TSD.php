@@ -1,0 +1,1 @@
+echo '<td>' . $result->PRONAME.'</td>';echo '<td>' . $result->PRONAME.'</td>';
